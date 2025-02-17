@@ -15,7 +15,8 @@
 
 
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('jp-style', plugins_url('styles.css', __FILE__));
+    // version is filetime 
+    wp_enqueue_style('jp-style', plugins_url('styles.css', __FILE__), [], filemtime(plugin_dir_path(__FILE__) . 'styles.css'));
 });
 
 function enable_excerpt_on_custom_post_type() {
