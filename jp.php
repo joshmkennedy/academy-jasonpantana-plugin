@@ -2,6 +2,7 @@
 
 /**
  * Plugin Name:  Ai Marketing Academy
+ * Version:      1.1.0
  **/
 
 //$filepath = apply_filters( 'learndash_template', $filepath, $name, $args, $echo, $return_file_path );
