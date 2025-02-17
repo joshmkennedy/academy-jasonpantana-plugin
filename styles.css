@@ -1,0 +1,125 @@
+.sfwd-courses-template-default .content-container {
+	max-width: var(--global-content-width)!important;
+	.learndash_post_sfwd-courses > .learndash-wrapper > div:not(:last-child) {
+		max-width: var(--global-content-narrow-width);
+		margin-inline: auto;
+	}
+	.learndash_post_sfwd-courses > .learndash-wrapper > div:last-child {
+		margin-top: 5rem;
+	}
+}
+
+:is(#important, .learndash-wrapper) .ld-item-list {
+		/*Removes the program content heading*/
+	.ld-section-heading{
+		display: none;
+	}
+	.ld-item-list-section-heading {
+		margin-top:2rem;
+		border-bottom: 1px solid var(--brand-c-primary, #30dba6);
+	}
+	.ld-item-list-items {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: 1rem;
+	}
+
+	.ld-item-list-section-heading {
+		grid-column: 1 / -1;
+		color:var(--brand-c-secondary, #1C4C8A);
+	}
+
+	.ld-item-list-item {
+		margin-block: 0;
+	}
+
+	.ld-item-list-item-preview.ld-item-list-item-preview {
+		flex-direction: column;
+		align-items: start;
+		height: 100%;
+	}
+
+	.ld-item-category {
+		margin-bottom: 0.5rem;
+	}
+
+	.ld-item-category-item {
+		display: flex;
+		font-weight: 500;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		background: #cbd5e055;
+		padding: 0.125rem 0.5rem 0.125rem 0.125rem;
+		border-radius: 0.25rem;
+
+		color: var(--brand-c-secondary, #237590);
+
+		.ld-item-category-item-icon {
+			fill: var(--brand-c-secondary, #237590);
+			border-radius: 0.25rem;
+			display: inline-flex;
+			width: 1.5rem;
+			padding: 0.25rem;
+			background: #cbd5e077;
+		}
+	}
+
+	.ld-item-name {
+		max-height: fit-content;
+		margin-bottom: 0.25em;
+		gap:.5rem;
+		align-items: start;
+		.ld-status-icon {
+			margin:0;
+		}
+		.ld-status-icon.ld-status-complete {
+			background-color:#CBD5E033!important;	
+			font-size: .8rem;
+			color:#30DBA6;
+		}
+		.ld-item-title{
+			margin-top:.16em;
+		}
+	}
+
+	.ld-item-title {
+		line-height: 1.2;
+		font-family: "Space Grotesk", sans-serif;
+	}
+
+	.ld-item-details {
+		flex-direction: column;
+		align-items: start;
+		flex: 1;
+		height: 100%;
+
+		@media (max-width: 640px) {
+			margin-inline: 0;
+		}
+
+		p {
+			font-size: 0.8rem;
+			flex: 1;
+		}
+
+		.button {
+			padding: 0.5rem 1rem;
+			background: #cbd5e077;
+			font-size: 1rem;
+
+			&:hover {
+				background: var(--brand-c-primary, #30dba6);
+				color: inherit;
+			}
+		}
+	}
+
+	/* RESOURCES ONLY */
+	&.ld-course-content-1273 {
+		.ld-status-icon {
+			display: none;
+		}
+	}
+}
