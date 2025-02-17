@@ -1,23 +1,28 @@
 .sfwd-courses-template-default .content-container {
-	max-width: var(--global-content-width)!important;
-	.learndash_post_sfwd-courses > .learndash-wrapper > div:not(:last-child) {
+	max-width: var(--global-content-width) !important;
+
+	.learndash_post_sfwd-courses>.learndash-wrapper>div:not(:last-child) {
 		max-width: var(--global-content-narrow-width);
 		margin-inline: auto;
 	}
-	.learndash_post_sfwd-courses > .learndash-wrapper > div:last-child {
+
+	.learndash_post_sfwd-courses>.learndash-wrapper>div:last-child {
 		margin-top: 5rem;
 	}
 }
 
 :is(#important, .learndash-wrapper) .ld-item-list {
-		/*Removes the program content heading*/
-	.ld-section-heading{
+
+	/*Removes the program content heading*/
+	.ld-section-heading {
 		display: none;
 	}
+
 	.ld-item-list-section-heading {
-		margin-top:2rem;
+		margin-top: 2rem;
 		border-bottom: 1px solid var(--brand-c-primary, #30dba6);
 	}
+
 	.ld-item-list-items {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -26,7 +31,7 @@
 
 	.ld-item-list-section-heading {
 		grid-column: 1 / -1;
-		color:var(--brand-c-secondary, #1C4C8A);
+		color: var(--brand-c-secondary, #1c4c8a);
 	}
 
 	.ld-item-list-item {
@@ -69,18 +74,21 @@
 	.ld-item-name {
 		max-height: fit-content;
 		margin-bottom: 0.25em;
-		gap:.5rem;
+		gap: 0.5rem;
 		align-items: start;
+
 		.ld-status-icon {
-			margin:0;
+			margin: 0;
 		}
+
 		.ld-status-icon.ld-status-complete {
-			background-color:#CBD5E033!important;	
-			font-size: .8rem;
-			color:#30DBA6;
+			background-color: #cbd5e033 !important;
+			font-size: 0.8rem;
+			color: #30dba6;
 		}
-		.ld-item-title{
-			margin-top:.16em;
+
+		.ld-item-title {
+			margin-top: 0.16em;
 		}
 	}
 
@@ -94,6 +102,10 @@
 		align-items: start;
 		flex: 1;
 		height: 100%;
+
+		&:has(p:empty) {
+			margin-top: 0.25rem;
+		}
 
 		@media (max-width: 640px) {
 			margin-inline: 0;
