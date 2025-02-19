@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name:  Ai Marketing Academy
- * Version:      1.1.0
+ * Version:      1.1.1
  **/
 
 require_once __DIR__ . '/utils.php';
