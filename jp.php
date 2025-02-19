@@ -5,21 +5,18 @@
  * Version:      1.1.0
  **/
 
-//$filepath = apply_filters( 'learndash_template', $filepath, $name, $args, $echo, $return_file_path );
-// add_filter("learndash_template", function ($filepath, $name, $args, $echo, $return_file_path) {
-//     if ($name == 'lesson/partials/row.php') {
-//         // error_log(print_r($filepath,true));
-//         $filepath = dirname(__FILE__) . '/course-content.php';
-//     }
-//     return $filepath;
-// }, 10, 5);
+require_once __DIR__ . '/utils.php';
 
+/*╭───────────────────────────╮*/
+/*│    [   Course Grid   ]    │*/
+/*╰───────────────────────────╯*/
 
+// GRID STYLES
 add_action('wp_enqueue_scripts', function () {
     // version is filetime 
     wp_enqueue_style('jp-style', plugins_url('styles.css', __FILE__), [], filemtime(plugin_dir_path(__FILE__) . 'styles.css'));
 });
-
+// ADD EXCERPT USED IN GRID CARDS
 function enable_excerpt_on_custom_post_type() {
     add_post_type_support('sfwd-lessons', 'excerpt');
 }
@@ -61,12 +58,52 @@ add_action('learndash-lesson-row-attributes-before', function ($lesson_id, $cour
 <?php
 }, 10, 3);
 
-/**
- * Fires after the lesson title.
- *
- * @since 3.0.0
- *
- * @param int $lesson_id Lesson ID.
- * @param int $course_id Course ID.
- * @param int $user_id   User ID.
- */
+
+/*╭────────────────────────────────────╮*/
+/*│    [   Join or Login Button   ]    │*/
+/*╰────────────────────────────────────╯*/
+
+add_shortcode('join_or_profile_button', function () {
+    $url = getCurrentURL();
+    $registration = "registration/";
+    if (strpos($url, $registration) != false) {
+        error_log("should hide");
+        return null;
+    }
+    error_log("$url does not contain $registration.\n" . strpos($url, $registration) == 0 ? "0" : "its falsey");
+    $paidGroups = [1822, 1699];
+    $userId = get_current_user_id();
+    $groups = array_filter(learndash_get_users_group_ids($userId), fn($id) => in_array($id, $paidGroups));
+    $link = ($userId > 0) ? (
+        count($groups) ? "/profile" : getRegistrationURL($userId, "/choose-your-plan")
+    ) : "/choose-your-plan/";
+    $buttonText = $userId > 0 ? (
+        count($groups) ? "My Profile" : "Finish Account Setup"
+    ) : "Join Now";
+    ob_start(); ?>
+    <div class="header-button-wrap">
+        <div class="header-button-inner-wrap">
+            <a href="<?= $link; ?>" target="_self" class="button header-button button-size-custom button-style-filled button-style-gradient--primary" style="padding-block:16px;">
+                <?= $buttonText; ?>
+            </a>
+        </div>
+    </div>
+
+<?php return ob_get_clean();
+});
+
+add_action('user_register', function ($userId) {
+    error_log(print_r(["POST" => $_POST, "GET" => $_GET], true));
+    if (isset($_POST['ld_register_id']) && $_POST['ld_register_id']) {
+        update_user_meta($userId, "initial_registered_ld_group", $_POST['ld_register_id']);
+    }
+}, 10, 1);
+
+function getRegistrationURL($userId, $fallbackURL) {
+    if (!$userId) return $fallbackURL;
+
+    $groupId = get_user_meta($userId, "initial_registered_ld_group", true);
+    if (!$groupId) return $fallbackURL;
+
+    return site_url("registration/?ld-registered=true&ld_register_id=$groupId");
+}
