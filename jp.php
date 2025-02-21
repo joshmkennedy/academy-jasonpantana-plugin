@@ -108,8 +108,14 @@ function getRegistrationURL($userId, $fallbackURL) {
 }
 
 add_filter('wp_mail_from', function ($from) {
-    if(strpos($from, 'wordpress') !== false) {
+    if (strpos($from, 'wordpress') !== false) {
         return 'info@academy.jasonpantana.com';
     }
     return $from;
 },  99, 1);
+add_filter('wp_mail_from_name', function (string $from_name) {
+    if (strpos(strtolower($from_name), 'wordpress') !== false) {
+        return 'Jason Pantana and Ai Marketing Academy';
+    }
+    return $from_name;
+}, 99, 1);
