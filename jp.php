@@ -70,7 +70,6 @@ add_shortcode('join_or_profile_button', function () {
         error_log("should hide");
         return null;
     }
-    error_log("$url does not contain $registration.\n" . strpos($url, $registration) == 0 ? "0" : "its falsey");
     $paidGroups = [1822, 1699];
     $userId = get_current_user_id();
     $groups = array_filter(learndash_get_users_group_ids($userId), fn($id) => in_array($id, $paidGroups));
@@ -107,3 +106,10 @@ function getRegistrationURL($userId, $fallbackURL) {
 
     return site_url("registration/?ld-registered=true&ld_register_id=$groupId");
 }
+
+add_filter('wp_mail_from', function ($from) {
+    if(strpos($from, 'wordpress') !== false) {
+        return 'info@jasonpantana.com';
+    }
+    return $from;
+},  99, 1);
