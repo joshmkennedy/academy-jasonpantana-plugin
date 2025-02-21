@@ -109,7 +109,7 @@ function getRegistrationURL($userId, $fallbackURL) {
 
 add_filter('wp_mail_from', function ($from) {
     if(strpos($from, 'wordpress') !== false) {
-        return 'info@jasonpantana.com';
+        return 'info@academy.jasonpantana.com';
     }
     return $from;
 },  99, 1);
