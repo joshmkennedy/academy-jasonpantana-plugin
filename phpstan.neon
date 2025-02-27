@@ -1,0 +1,8 @@
+parameters:
+	scanFiles:
+		- /Users/joshkennedy/.config/php-stubs/wp-stubs.php
+	level: 6
+
+	paths:
+		- /Users/joshkennedy/work/jp/wp-content/plugins/jp
+		- /Users/joshkennedy/work/jp/wp-content/plugins/sfwd-lms

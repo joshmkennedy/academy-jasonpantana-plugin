@@ -7,6 +7,8 @@
 
 require_once __DIR__ . '/utils.php';
 
+require_once __DIR__ . '/userbyemail.php';
+
 /*╭───────────────────────────╮*/
 /*│    [   Course Grid   ]    │*/
 /*╰───────────────────────────╯*/
@@ -17,10 +19,20 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('jp-style', plugins_url('styles.css', __FILE__), [], filemtime(plugin_dir_path(__FILE__) . 'styles.css'));
 });
 // ADD EXCERPT USED IN GRID CARDS
-function enable_excerpt_on_custom_post_type() {
+function enable_excerpt_on_custom_post_type(): void {
     add_post_type_support('sfwd-lessons', 'excerpt');
 }
 add_action('init', 'enable_excerpt_on_custom_post_type');
+
+
+add_action('init', function () {
+    $courses = get_post_types(['name' => 'sfwd-courses'], 'objects');
+    if (isset($courses['sfwd-courses'])) {
+        $courses['sfwd-courses']->rewrite['slug'] = 'aim';
+        register_post_type('sfwd-courses', (array)$courses['sfwd-courses']);
+    }
+}, 10, 99999999999);
+
 
 add_action('learndash-lesson-row-title-before', function ($lesson_id, $course_id, $user_id) {
     $cats = get_the_terms($lesson_id, 'ld_lesson_category');
@@ -92,13 +104,12 @@ add_shortcode('join_or_profile_button', function () {
 });
 
 add_action('user_register', function ($userId) {
-    error_log(print_r(["POST" => $_POST, "GET" => $_GET], true));
     if (isset($_POST['ld_register_id']) && $_POST['ld_register_id']) {
         update_user_meta($userId, "initial_registered_ld_group", $_POST['ld_register_id']);
     }
 }, 10, 1);
 
-function getRegistrationURL($userId, $fallbackURL) {
+function getRegistrationURL(int $userId, string $fallbackURL): string {
     if (!$userId) return $fallbackURL;
 
     $groupId = get_user_meta($userId, "initial_registered_ld_group", true);
@@ -113,6 +124,7 @@ add_filter('wp_mail_from', function ($from) {
     }
     return $from;
 },  99, 1);
+
 add_filter('wp_mail_from_name', function (string $from_name) {
     if (strpos(strtolower($from_name), 'wordpress') !== false) {
         return 'Jason Pantana and Ai Marketing Academy';
