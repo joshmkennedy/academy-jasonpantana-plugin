@@ -17,9 +17,9 @@ if (!function_exists("getAimAssetUrl")) {
 }
 
 if (!function_exists("getAimAssetPath")) {
-    function getAimAssetPath(string $slug): string|null|false {
+    function getAimAssetPath(string $slug): string {
         $path = plugin_dir_path(__FILE__) . 'assets/' . $slug;
-        return file_exists($path) ? $path : (error_log(print_r("$path not exist", true))) || null;
+        return file_exists($path) ? $path : "";
     }
 }
 
@@ -52,6 +52,7 @@ if (!function_exists("enqueueAsset")) {
         $assetPath = "build/$slug";
 
         $configPath = getAimAssetPath("$slug.asset.php");
+        do_action("qm/debug", ["configPath", $configPath]);
         $config = include($configPath);
 
         if ($uri = getAimAssetUrl($assetPath . ".css")) {
