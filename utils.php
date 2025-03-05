@@ -53,7 +53,14 @@ if (!function_exists("enqueueAsset")) {
 
         $configPath = getAimAssetPath("$slug.asset.php");
         do_action("qm/debug", ["configPath", $configPath]);
+        if($configPath){
         $config = include($configPath);
+        } else{
+            $config = [
+                'dependencies' => [],
+                'version' => time(),
+            ];
+        }
 
         if ($uri = getAimAssetUrl($assetPath . ".css")) {
             wp_enqueue_style("jp-$slug-styles", $uri, [], $config['version'], 'all');
