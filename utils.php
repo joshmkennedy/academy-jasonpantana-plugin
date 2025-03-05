@@ -11,14 +11,14 @@ if (!function_exists("getCurrentURL")) {
 
 if (!function_exists("getAimAssetUrl")) {
     function getAimAssetUrl(string $slug): string {
-        $path = plugin_dir_url(__FILE__) . 'assets/' . $slug;
+        $path = JP_PLUGIN_ROOT_DIR_URL . 'assets/' . $slug;
         return $path;
     }
 }
 
 if (!function_exists("getAimAssetPath")) {
     function getAimAssetPath(string $slug): string {
-        $path = plugin_dir_path(__FILE__) . 'assets/' . $slug;
+        $path = JP_PLUGIN_ROOT_DIR_PATH . 'assets/' . $slug;
         return file_exists($path) ? $path : "";
     }
 }
