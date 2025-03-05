@@ -6,7 +6,9 @@
  **/
 
 require_once __DIR__ . '/utils.php';
+require_once __DIR__ . '/Vimeo.php';
 
+// custom rest endpoint
 require_once __DIR__ . '/userbyemail.php';
 
 /*╭───────────────────────────╮*/
@@ -16,7 +18,7 @@ require_once __DIR__ . '/userbyemail.php';
 // GRID STYLES
 add_action('wp_enqueue_scripts', function () {
     // version is filetime 
-    wp_enqueue_style('jp-style', plugins_url('styles.css', __FILE__), [], filemtime(plugin_dir_path(__FILE__) . 'styles.css'));
+    wp_enqueue_style('jp-style', getAimAssetUrl('styles.css'), [], filemtime(getAimAssetPath('styles.css')));
 });
 // ADD EXCERPT USED IN GRID CARDS
 function enable_excerpt_on_custom_post_type(): void {
@@ -36,7 +38,7 @@ add_action('init', function () {
 
 add_action('learndash-lesson-row-title-before', function ($lesson_id, $course_id, $user_id) {
     $cats = get_the_terms($lesson_id, 'ld_lesson_category');
-    if ($cats && is_array($cats) && count($cats) > 0) {
+    if ($cats && is_array($cats) && count($cats)) {
 ?>
         <div class="ld-item-category">
             <?php foreach ($cats as $cat) { ?>
@@ -131,3 +133,6 @@ add_filter('wp_mail_from_name', function (string $from_name) {
     }
     return $from_name;
 }, 99, 1);
+
+
+require_once __DIR__ . '/profile/profile.php';

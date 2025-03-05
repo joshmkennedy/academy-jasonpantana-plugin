@@ -1,7 +1,7 @@
 <?php
 
 if (!function_exists("getCurrentURL")) {
-    function getCurrentURL() {
+    function getCurrentURL(): string {
         $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") .
             "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
@@ -9,3 +9,56 @@ if (!function_exists("getCurrentURL")) {
     }
 }
 
+if (!function_exists("getAimAssetUrl")) {
+    function getAimAssetUrl(string $slug): string {
+        $path = plugin_dir_url(__FILE__) . 'assets/' . $slug;
+        return $path;
+    }
+}
+
+if (!function_exists("getAimAssetPath")) {
+    function getAimAssetPath(string $slug): string|null|false {
+        $path = plugin_dir_path(__FILE__) . 'assets/' . $slug;
+        return file_exists($path) ? $path : (error_log(print_r("$path not exist", true))) || null;
+    }
+}
+
+if (!function_exists("dumpSvg")) {
+    function dumpSvg(string $name): string {
+        $path = getAimAssetPath($name . '.svg');
+        if (!$path) return '';
+        return file_get_contents($path);
+    }
+}
+
+if (!function_exists("isurl")) {
+    /**
+     * Checks if current url is the passed in relative url
+     * @param string $path 
+     * @return bool 
+     */
+    function isurl(string $path): bool {
+        $actual = trailingslashit(
+            preg_replace('/\?.*/', '', getCurrentURL())
+        );
+        $withFront = trailingslashit(site_url($path));
+        error_log(print_r("$actual == $withFront", true));
+        return $actual === $withFront;
+    }
+}
+
+if (!function_exists("enqueueAsset")) {
+    function enqueueAsset(string $slug): void {
+        $assetPath = "build/$slug";
+
+        $configPath = getAimAssetPath("$slug.asset.php");
+        $config = include($configPath);
+
+        if ($uri = getAimAssetUrl($assetPath . ".css")) {
+            wp_enqueue_style("jp-$slug-styles", $uri, [], $config['version'], 'all');
+        }
+        if ($uri = getAimAssetUrl($assetPath . ".js")) {
+            wp_enqueue_script("jp-$slug-script", $uri, $config['dependencies'], $config['version']);
+        }
+    }
+}

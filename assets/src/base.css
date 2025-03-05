@@ -1,0 +1,30 @@
+body,
+html,
+body::after,
+body::before {
+	box-sizing: border-box;
+
+	*,
+	*::after,
+	*::before {
+		box-sizing: inherit;
+	}
+}
+
+:root {
+	--white-fade: linear-gradient(90deg,
+			rgba(255, 255, 255, 1) 30%,
+			rgba(255, 255, 255, 0) 100%);
+
+	--blue-green-gradient: linear-gradient(90deg,
+			rgba(48, 219, 166, 1) 0%,
+			rgba(28, 76, 138, 1) 100%);
+
+	--slate-800: rgba(60, 65, 74, 1);
+	--slate-200: rgba(228, 232, 238, 1);
+	--slate-100: rgba(236, 239, 243, 1);
+	--slate-300: rgba(203, 213, 224, 1);
+	--blue-800: rgba(12, 43, 84, 1);
+	--blue-700: rgba(28, 76, 138, 1);
+	--blue-300: rgba(76, 133, 206, 1);
+}
