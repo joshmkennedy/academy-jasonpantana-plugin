@@ -26,6 +26,7 @@ add_action('wp_enqueue_scripts', function () {
 // ADD EXCERPT USED IN GRID CARDS
 function enable_excerpt_on_custom_post_type(): void {
     add_post_type_support('sfwd-lessons', 'excerpt');
+    add_post_type_support('sfwd-courses', 'excerpt');
 }
 add_action('init', 'enable_excerpt_on_custom_post_type');
 
