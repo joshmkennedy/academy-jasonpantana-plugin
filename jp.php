@@ -7,6 +7,7 @@
 define('JP_PLUGIN_ROOT_DIR_PATH', plugin_dir_path(__FILE__));
 define('JP_PLUGIN_ROOT_DIR_URL', plugin_dir_url(__FILE__));
 
+require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/utils.php';
 require_once __DIR__ . '/Vimeo.php';
 

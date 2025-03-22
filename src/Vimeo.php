@@ -1,15 +1,19 @@
 <?php
 
+namespace JP;
+
+use WP_Post;
 /*
  * A collection of Vimeo utilities
  */
+
 class VimeoUtils {
     /**
      * Get the first embed url from a post content
      * @param WP_Post $post 
      * @return string|null 
      */
-    public static function firstEmbedUrl(\WP_Post $post): string|null {
+    public static function firstEmbedUrl(WP_Post $post): string|null {
         if (!has_block("core/embed", $post)) return null;
         $blocks = parse_blocks($post->post_content);
         foreach ($blocks as $block) {
@@ -22,7 +26,7 @@ class VimeoUtils {
         error_log("no vimeo embed found");
         return null;
     }
-    
+
     /**
      * Get the Vimeo ID from a url
      * @param string $url 
@@ -42,12 +46,12 @@ class VimeoUtils {
      * @param string|null $fallback fallback image url
      * @return string 
      **/
-    public static function getThumb(string $id, null|string $fallback=null): string {
-        if(!$fallback) {
+    public static function getThumb(string $id, null|string $fallback = null): string {
+        if (!$fallback) {
             $fallback = getAimAssetUrl("fallbackvidthum.avif");
         }
         //TODO: implement this
-        error_log(print_r("video embed is not implemented",true));
+        error_log(print_r("video embed is not implemented", true));
         return $fallback;
     }
 }

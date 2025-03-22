@@ -1,12 +1,17 @@
 {
-    "name": "joshkennedy/jp",
-    "authors": [
-        {
-            "name": "josh kennedy",
-            "email": "josh@outthinkgroup.com"
-        }
-    ],
-    "require-dev": {
-        "phpstan/phpstan": "^2.1"
-    }
+	"name": "joshkennedy/jp",
+	"authors": [
+		{
+			"name": "josh kennedy",
+			"email": "josh@outthinkgroup.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"JP\\": "src/"
+		}
+	},
+	"require-dev": {
+		"phpstan/phpstan": "^2.1"
+	}
 }

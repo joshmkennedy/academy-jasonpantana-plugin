@@ -69,6 +69,13 @@
 			height: 1.5rem;
 			padding: 0.25rem;
 			background: #cbd5e077;
+			svg {
+				height:auto;
+				fill: currentColor;
+				path {
+					fill: currentColor;
+				}
+			}
 		}
 	}
 
