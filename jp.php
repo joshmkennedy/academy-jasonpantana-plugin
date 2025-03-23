@@ -139,3 +139,5 @@ add_filter('wp_mail_from_name', function (string $from_name) {
 
 require_once __DIR__ . '/pages/profile.php';
 require_once __DIR__ . '/pages/lesson-category.php';
+//ADMIN
+require_once __DIR__ . '/pages/vimeo-settings.php';

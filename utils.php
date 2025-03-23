@@ -76,3 +76,9 @@ if (!function_exists("enqueueAsset")) {
         }
     }
 }
+
+if (!function_exists("getAimVimeoToken")) {
+    function getAimVimeoToken():string | false {
+        return get_option('jp_vimeo_api_key');
+    }
+}

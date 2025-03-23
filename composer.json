@@ -1,5 +1,10 @@
 {
 	"name": "joshkennedy/jp",
+	"config": {
+		"platform": {
+			"php": "8.1"
+		}
+	},
 	"authors": [
 		{
 			"name": "josh kennedy",
@@ -10,8 +15,5 @@
 		"psr-4": {
 			"JP\\": "src/"
 		}
-	},
-	"require-dev": {
-		"phpstan/phpstan": "^2.1"
 	}
 }
