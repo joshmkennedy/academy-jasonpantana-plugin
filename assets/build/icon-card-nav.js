@@ -26,34 +26,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./assets/src/card/essentials-card.css":
-/*!*********************************************!*\
-  !*** ./assets/src/card/essentials-card.css ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
 /***/ "./assets/src/card/icon-card.css":
 /*!***************************************!*\
   !*** ./assets/src/card/icon-card.css ***!
   \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./assets/src/card/session-card.css":
-/*!******************************************!*\
-  !*** ./assets/src/card/session-card.css ***!
-  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -197,10 +173,10 @@ function initCarousel(emblaNode, options = {}) {
 
 /***/ }),
 
-/***/ "./assets/src/profile.css":
-/*!********************************!*\
-  !*** ./assets/src/profile.css ***!
-  \********************************/
+/***/ "./assets/src/icon-card-nav.css":
+/*!**************************************!*\
+  !*** ./assets/src/icon-card-nav.css ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1953,32 +1929,30 @@ EmblaCarousel.globalOptions = undefined;
 var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
 (() => {
-/*!*******************************!*\
-  !*** ./assets/src/profile.ts ***!
-  \*******************************/
+/*!*************************************!*\
+  !*** ./assets/src/icon-card-nav.ts ***!
+  \*************************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _base_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base.css */ "./assets/src/base.css");
-/* harmony import */ var _card_card_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./card/card.css */ "./assets/src/card/card.css");
-/* harmony import */ var _card_icon_card_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./card/icon-card.css */ "./assets/src/card/icon-card.css");
-/* harmony import */ var _card_session_card_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./card/session-card.css */ "./assets/src/card/session-card.css");
-/* harmony import */ var _card_essentials_card_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./card/essentials-card.css */ "./assets/src/card/essentials-card.css");
-/* harmony import */ var _profile_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./profile.css */ "./assets/src/profile.css");
-/* harmony import */ var _carousel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./carousel */ "./assets/src/carousel/index.ts");
-
-
+/* harmony import */ var _carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./carousel */ "./assets/src/carousel/index.ts");
+/* harmony import */ var _base_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./base.css */ "./assets/src/base.css");
+/* harmony import */ var _card_card_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./card/card.css */ "./assets/src/card/card.css");
+/* harmony import */ var _card_icon_card_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./card/icon-card.css */ "./assets/src/card/icon-card.css");
+/* harmony import */ var _icon_card_nav_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./icon-card-nav.css */ "./assets/src/icon-card-nav.css");
 
 
 
 
 
 addEventListener("DOMContentLoaded", () => {
-  const sliders = document.querySelectorAll(".lolole-slider");
+  const sliders = document.querySelectorAll(".icon-card-nav");
   sliders.forEach(slider => {
-    (0,_carousel__WEBPACK_IMPORTED_MODULE_6__.initCarousel)(slider);
+    (0,_carousel__WEBPACK_IMPORTED_MODULE_0__.initCarousel)(slider, {
+      slidesToScroll: 3
+    });
   });
 });
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=profile.js.map
+//# sourceMappingURL=icon-card-nav.js.map

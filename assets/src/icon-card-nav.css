@@ -1,0 +1,48 @@
+.icon-card-nav {
+	position: relative;
+	padding:0px;	
+	display: flex;
+	margin-bottom:2em;
+	.icon-card {
+		flex-shrink: 2 !important;
+		flex-basis: 0 !important;
+		aspect-ratio: 1;
+		min-width: 70px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		.icon-card__thumb {
+			width: 30px;
+			padding: 10px;
+		}
+	}
+
+	.embla__viewport {
+		margin-inline:33px;
+	}
+	
+	.embla__button {
+		height:73px;
+		box-shadow: none !important;
+		position: absolute;
+		font-size: 0.5rem;
+		min-width: 40px;
+		max-width: 40px;
+		width: 40px;
+		padding: 5px;
+
+		background:var(--slate-100);
+		&:hover{
+			fill:var(--brand-c-primary, rgba(48, 219, 166, 1));
+		}
+		svg {
+			width: 1em;
+		}
+	}
+	.embla__button--prev {
+		right: calc(100% - 30px);
+	}
+	.embla__button--next {
+		left: calc(100% - 30px);
+	}
+}

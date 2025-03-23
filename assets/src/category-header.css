@@ -1,0 +1,33 @@
+.aim-template-header__content {
+	.mark :is(img,svg) {
+		width: 0.95em;
+	}
+	.title {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+
+		.title-with-mark {
+			display: flex;
+			gap: 0.5em;
+			align-items: center;
+		}
+		.mark{
+			display: flex;
+			align-items: center;
+			fill: white;
+			border:1px solid white;
+			border-radius: 4px;
+			padding: 0.10em;
+		}
+
+		.archive-type {
+			text-transform: uppercase;
+			font-weight: lighter;
+			font-family: "Archivo", sans-serif;
+			font-size: 0.5em;
+			color: var(--slate-200);
+		}
+	}
+}

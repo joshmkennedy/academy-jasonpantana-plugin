@@ -5,7 +5,8 @@ import { addPrevNextBtnsClickHandlers } from "./buttons";
 import { addDotBtnsAndClickHandlers } from "./dots";
 
 const OPTIONS = { loop: false };
-export function initCarousel(emblaNode: HTMLElement) {
+export function initCarousel(emblaNode: HTMLElement, options = {}) {
+	options = { ...OPTIONS, ...options };
 	const viewportNode = emblaNode.querySelector<HTMLElement>(".embla__viewport");
 	const prevBtnNode = emblaNode.querySelector<HTMLElement>(
 		".embla__button--prev",
@@ -20,7 +21,7 @@ export function initCarousel(emblaNode: HTMLElement) {
 		return;
 	}
 
-	const emblaApi = EmblaCarousel(viewportNode, OPTIONS);
+	const emblaApi = EmblaCarousel(viewportNode, options);
 	if (prevBtnNode && nextBtnNode) {
 		const removePrevNextBtnsClickHandlers = addPrevNextBtnsClickHandlers(
 			emblaApi,

@@ -1,0 +1,14 @@
+.pagination-wrapper {
+	display: flex;
+	justify-content: center;
+
+	.pagination {
+		a:hover {
+			background: var(--slate-200);
+			border-color:var(--slate-100);
+		}
+		.current {
+			color: white;
+		}
+	}
+}

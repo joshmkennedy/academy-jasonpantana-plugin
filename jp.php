@@ -9,11 +9,8 @@ define('JP_PLUGIN_ROOT_DIR_URL', plugin_dir_url(__FILE__));
 
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/utils.php';
-require_once __DIR__ . '/Vimeo.php';
-
 // custom rest endpoint
 require_once __DIR__ . '/userbyemail.php';
-
 
 /*╭───────────────────────────╮*/
 /*│    [   Course Grid   ]    │*/
@@ -24,6 +21,7 @@ add_action('wp_enqueue_scripts', function () {
     // version is filetime 
     wp_enqueue_style('jp-style', getAimAssetUrl('styles.css'), [], filemtime(getAimAssetPath('styles.css')));
 });
+
 // ADD EXCERPT USED IN GRID CARDS
 function enable_excerpt_on_custom_post_type(): void {
     add_post_type_support('sfwd-lessons', 'excerpt');
@@ -89,9 +87,8 @@ add_shortcode('join_or_profile_button', function () {
         error_log("should hide");
         return null;
     }
-    $paidGroups = [1822, 1699];
     $userId = get_current_user_id();
-    $groups = array_filter(learndash_get_users_group_ids($userId), fn($id) => in_array($id, $paidGroups));
+    $groups = array_filter(learndash_get_users_group_ids($userId), fn($id) => isPaidGroup($id));
     $link = ($userId > 0) ? (
         count($groups) ? "/profile" : getRegistrationURL($userId, "/choose-your-plan")
     ) : "/choose-your-plan/";
@@ -140,4 +137,5 @@ add_filter('wp_mail_from_name', function (string $from_name) {
 }, 99, 1);
 
 
-require_once __DIR__ . '/profile/profile.php';
+require_once __DIR__ . '/pages/profile.php';
+require_once __DIR__ . '/pages/lesson-category.php';

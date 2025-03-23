@@ -1,5 +1,11 @@
 <?php
 
+if (!function_exists('isPaidGroup')) {
+    function isPaidGroup(int $id): bool {
+        $paidGroups = [1822, 1699];
+        return in_array($id, $paidGroups);
+    }
+}
 if (!function_exists("getCurrentURL")) {
     function getCurrentURL(): string {
         $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") .
@@ -53,9 +59,9 @@ if (!function_exists("enqueueAsset")) {
 
         $configPath = getAimAssetPath("$slug.asset.php");
         do_action("qm/debug", ["configPath", $configPath]);
-        if($configPath){
-        $config = include($configPath);
-        } else{
+        if ($configPath) {
+            $config = include($configPath);
+        } else {
             $config = [
                 'dependencies' => [],
                 'version' => time(),

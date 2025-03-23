@@ -1,0 +1,32 @@
+.aim-card.essentials-card {
+	background-image: var(--bg-image);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	aspect-ratio: 16 / 9;
+}
+
+.aim-card.essentials-card .card-title {
+	transition: background-color ease-in 200ms;
+	background: hsl(from var(--slate-200) h s l / 50%);
+	padding: 0.25em 0.75em;
+	border-radius: 1em;
+	align-items: start;
+	font-size: 0.75rem;
+	display: inline-flex;
+
+	span:last-child {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+
+	.icon {
+		height: 16px;
+		margin-top: 0.15em;
+	}
+}
+
+.essentials-card:hover .card-title {
+	background: var(--slate-200);
+}

@@ -1,4 +1,5 @@
 <?php
+
 namespace JP;
 
 use WP_Post;
@@ -43,7 +44,7 @@ class Lolole {
     private function essentialCard(\WP_Post $post, int $programId): void {
         $thumbUrl = $this->lessonService->getThumbUrl($post, $programId, 'full');
     ?>
-        <a href="<?= get_the_permalink($post->ID); ?>" class="embla__slide card essentials-card " style="--bg-image: url('<?= $thumbUrl; ?>');">
+        <a href="<?= get_the_permalink($post->ID); ?>" class="embla__slide aim-card essentials-card " style="--bg-image: url('<?= $thumbUrl; ?>');">
             <h4 class="card-title" title="<?= get_the_title($post->ID); ?>">
                 <span class="icon"><?= dumpSvg('play-circle'); ?></span>
                 <span><?= get_the_title($post->ID); ?></span>
@@ -81,7 +82,7 @@ class Lolole {
 
     ?>
 
-        <div class="embla__slide card session-card " style="--type-color: <?= $color; ?>;">
+        <div class="embla__slide aim-card session-card " style="--type-color: <?= $color; ?>;">
             <div class="session-card__image">
                 <a href="<?= $link; ?>" class="session-card__thumb">
                     <img src="<?= $thumbUrl; ?>" alt="<?= $title; ?>" />
@@ -122,12 +123,12 @@ class Lolole {
         $link = get_term_link($cat);
 
     ?>
-        <div class="card category-card " style="--color: <?= $color; ?>; --slide-size:max(16.6%, 75px);">
-            <div class="category-card__contents">
-                <a href="<?= $link; ?>" class="category-card__thumb">
+        <div class="aim-card icon-card " style="--color: <?= $color; ?>; --slide-size:max(16.6%, 75px);">
+            <div class="icon-card__contents">
+                <a href="<?= $link; ?>" class="icon-card__thumb">
                     <?= $icon; ?>
                 </a>
-                <h4 class="category-card__title card-title">
+                <h4 class="icon-card__title card-title">
                     <a href="<?= $link; ?>"><?= $cat->name; ?></a>
                 </h4>
             </div>
@@ -139,7 +140,7 @@ class Lolole {
         $cats = $this->lessonCategoryService->getAllFor($post);
         $excerpt = $post->post_excerpt;
     ?>
-        <div class="embla__slide card resource-card ">
+        <div class="embla__slide aim-card resource-card ">
             <div class="card-contents">
                 <div class="meta">
                     <?php
@@ -247,7 +248,7 @@ class Lolole {
             $collection =  array_filter(
                 get_terms(['taxonomy' => 'ld_lesson_category']),
                 // Only non resource cats currently are for sessions so we take out those
-                fn($arg) => !LessonCategoryService::isLessonTypeCategory($arg) && $arg
+                fn($arg) => !$this->lessonCategoryService->isSessionTypeCategory($arg) && $arg
             );
         }
 
@@ -288,12 +289,12 @@ class Lolole {
         $link = get_the_permalink($programId);
 
     ?>
-        <div class="embla__slide card last-slide" style="--color:  hsl(from #cbd5e0 h s 40%);">
-            <div class="category-card__contents">
-                <a href="<?= $link; ?>" class="category-card__thumb">
+        <div class="embla__slide aim-card icon-card" style="--color:  hsl(from #cbd5e0 h s 40%);">
+            <div class="icon-card__contents">
+                <a href="<?= $link; ?>" class="icon-card__thumb">
                     <?= dumpSvg('grid'); ?>
                 </a>
-                <h4 class="category-card__title card-title">
+                <h4 class="icon-card__title card-title">
                     <a href="<?= $link; ?>">
                         View All
                     </a>

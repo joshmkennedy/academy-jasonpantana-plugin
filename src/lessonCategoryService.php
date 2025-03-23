@@ -10,7 +10,6 @@ class LessonCategoryService {
     }
 
     /**
-     * 😽
      * @param WP_Post $post
      * @return WP_Term[]|false
      */
@@ -22,11 +21,23 @@ class LessonCategoryService {
     }
 
     /**
+     * @param null|callable $filterFn 
+     * @return array<WP_Term> 
+     */
+    public function getAll(?callable $filterFn): array {
+        $terms = get_terms(['taxonomy' => 'ld_lesson_category']);
+        if ($filterFn) {
+            return array_filter($terms, $filterFn);
+        }
+        return $terms;
+    }
+
+    /**
      * Checks if the term is a lesson type category
      * @param WP_Term $term 
      * @return bool 
      */
-    public static function isLessonTypeCategory(\WP_Term|null|false $term): bool {
+    public static function isSessionTypeCategory(\WP_Term|null|false $term): bool {
         return $term && str_starts_with($term->slug, 'session-');
     }
 
@@ -34,9 +45,18 @@ class LessonCategoryService {
         $cats = $this->getAllFor($post);
         if (!$cats) return false;
 
-        $sessionTypes = array_filter($cats, fn($arg) => LessonCategoryService::isLessonTypeCategory($arg));
+        $sessionTypes = array_filter($cats, fn($arg) => LessonCategoryService::isSessionTypeCategory($arg));
         if (count($sessionTypes) <= 0) return false;
         return $sessionTypes[0];
+    }
+
+    public function resourceType(\WP_Post $post): \WP_Term|false {
+        $cats = $this->getAllFor($post);
+        if (!$cats) return false;
+
+        $resourceTypes = array_filter($cats, fn($arg) => !LessonCategoryService::isSessionTypeCategory($arg));
+        if (count($resourceTypes) <= 0) return false;
+        return $resourceTypes[0];
     }
 
     public function icon(\WP_Term|false $category): string {
