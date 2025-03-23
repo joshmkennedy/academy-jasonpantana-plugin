@@ -37,7 +37,7 @@ $categoryNavigation->enqueueAssets();
 
 <div class="lesson-cat-archive aim-template">
     <!-- HEADER -->
-    <div class="aim-template-header" style="--bg-image: url('/wp-content/uploads/2025/03/Gradients-01.png');">
+    <div class="aim-template-header" style="--bg-image: url(<?= getAimAssetUrl('green-gradient.png'); ?>);">
         <div class="aim-template-header__content">
 
             <div class="title">
