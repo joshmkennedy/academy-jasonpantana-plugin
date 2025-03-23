@@ -25,16 +25,16 @@ class Lolole {
                 cardCB: fn($args, $programId) => $this->sessionCard($args, $programId),
             ); ?>
 
-            <?php $this->renderLessonsSection(
-                title: 'Essentials',
-                programId: 1294,
-                cardCB: fn($lesson, $programId) => $this->essentialCard($lesson, $programId),
-            ); ?>
-
             <?php $this->renderLessonCategorySection(
                 title: 'Resources',
                 programId: 1273,
                 cardCB: fn($args) => $this->resourceCategoryCard($args),
+            ); ?>
+
+            <?php $this->renderLessonsSection(
+                title: 'Essentials',
+                programId: 1294,
+                cardCB: fn($lesson, $programId) => $this->essentialCard($lesson, $programId),
             ); ?>
         </div>
     <?php
@@ -99,7 +99,7 @@ class Lolole {
 
                 <?php if ($sessionType && $sessionType->slug == 'session-lab'): ?>
                     <div class="sessionAction">
-                        <a href="<?= $link; ?>">
+                        <a href="<?= $link; ?>" class="sessionAction__button sessionAction__button--play">
                             <?= dumpSvg('play-circle'); ?>
                         </a>
                     </div>

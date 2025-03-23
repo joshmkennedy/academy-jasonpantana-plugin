@@ -192,19 +192,32 @@ body::before {
 	--blue-800: rgba(12, 43, 84, 1);
 	--blue-700: rgba(28, 76, 138, 1);
 	--blue-300: rgba(76, 133, 206, 1);
+
+	--brand-c-primary: #31dba5;
+	--brand-c-transition-green: #2a858a;
+	--brand-c-secondary: #1c4c8a;
+	--brand-c-secondary-shade-1: #153a6a;
+	/* slightly darker */
+	--brand-c-tertiary: #e0a458;
+	--brand-c-dark: #2d323b;
+	--brand-c-neutral: #d9d9d9;
+	--brand-c-light: #f9f9f9;
+
+	--brand-f-copy: "Archivo", sans-serif;
+	--brand-f-heading: "Space Grotesk", sans-serif;
 }
 
 svg {
-	width:100%;
-	height:auto;
+	width: 100%;
+	height: auto;
 }
 
 svg g {
-	fill:currentColor;
+	fill: currentColor;
 }
 
 svg path[fill] {
-	fill:currentColor;
+	fill: currentColor;
 }
 
 /*!******************************************************************************************************************************************************************************!*\
