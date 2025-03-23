@@ -173,7 +173,7 @@ svg path[fill] {
 			display: flex;
 			align-items: center;
 			fill: white;
-			border:1px solid white;
+			/* border:1px solid var(--slate-300); */
 			border-radius: 4px;
 			padding: 0.10em;
 		}

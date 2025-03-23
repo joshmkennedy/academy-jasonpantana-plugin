@@ -6,8 +6,11 @@ $queried = get_queried_object();
 $catService = new \JP\LessonCategoryService();
 
 // this is kinda dumb should probably be its own actual class
-$categoryNav = new \JP\IconCardNav(
-    //resources
+/**
+ * @var \JP\IconCardNav $categoryNavigation a slider of resource category icon cards
+ **/
+$categoryNavigation = new \JP\IconCardNav(
+    //resources only for now
     collection: $catService->getAll(fn($arg) => !\JP\LessonCategoryService::isSessionTypeCategory($arg)),
     // property accessor for terms
     propertyAccessor: new class implements \JP\IconCardPropertyAccessorInterface {
@@ -29,7 +32,7 @@ $categoryNav = new \JP\IconCardNav(
         }
     }
 );
-$categoryNav->enqueueAssets();
+$categoryNavigation->enqueueAssets();
 ?>
 
 <div class="lesson-cat-archive aim-template">
@@ -37,16 +40,15 @@ $categoryNav->enqueueAssets();
     <div class="aim-template-header" style="--bg-image: url('/wp-content/uploads/2025/03/Gradients-01.png');">
         <div class="aim-template-header__content">
 
-
-            <h1 class="title">
-                <span class="archive-type">Category</span>
-                <span class="title-with-mark">
-                    <span class="mark">
-                        <?= \get_taxonomy_image($queried->term_id, true); ?>
-                    </span>
-                    <?php the_archive_title(); ?>
+            <div class="title">
+                <span class="mark">
+                    <?= \get_taxonomy_image($queried->term_id, true); ?>
                 </span>
-            </h1>
+                <span class="title-with-mark">
+                    <h1><?php the_archive_title(); ?></h1>
+                </span>
+                <span class="archive-type">Category</span>
+            </div>
         </div>
         <?php include $tutil->useTemplate('utils/circutry-graphic'); ?>
     </div>
@@ -54,7 +56,7 @@ $categoryNav->enqueueAssets();
     <div class="aim-template-content">
         <div class="aim-template-content__page">
 
-            <?php $categoryNav->render(); ?>
+            <?php $categoryNavigation->render(); ?>
 
             <?php if (have_posts()): ?>
                 <div class="lesson-grid">

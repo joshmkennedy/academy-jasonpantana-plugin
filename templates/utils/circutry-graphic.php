@@ -1,25 +1,10 @@
 <div class="">
     <!-- THIS IS THE CIRCUT GRAPHIC IN THE CORNER OF THE HEADER -->
     <style>
-        .profile-header:has(.corner-graphic) {
-            position: relative;
-            overflow: hidden;
-
-        }
-
-        .elementor-widget:has(.corner-graphic) {
-            position: static;
-            height: 0;
-        }
-
-        .profile-header .elementor-widget:not(:has(.corner-graphic)) {
-            z-index: 2;
-        }
-
         .corner-graphic {
             z-index: 0;
             position: absolute;
-            top: 50%;
+            top: 60%;
             right: -1%;
         }
 

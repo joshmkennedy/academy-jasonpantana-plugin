@@ -388,6 +388,9 @@ svg path[fill] {
 	}
 	
 	.embla__button {
+		&:disabled{
+			visibility:hidden;
+		}
 		height:73px;
 		box-shadow: none !important;
 		position: absolute;
@@ -396,9 +399,9 @@ svg path[fill] {
 		max-width: 40px;
 		width: 40px;
 		padding: 5px;
-
-		background:var(--slate-100);
+		background:none;
 		&:hover{
+			background:var(--slate-100);
 			fill:var(--brand-c-primary, rgba(48, 219, 166, 1));
 		}
 		svg {
