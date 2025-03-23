@@ -97,7 +97,7 @@ class Lolole {
 
             <div class="session-card__header">
 
-                <?php if ($sessionType && $sessionType->slug == 'session-lab'): ?>
+                <?php if (has_block('core/embed', $post)): ?>
                     <div class="sessionAction">
                         <a href="<?= $link; ?>" class="sessionAction__button sessionAction__button--play">
                             <?= dumpSvg('play-circle'); ?>
