@@ -39,7 +39,7 @@ add_action('init', function () {
 }, 10, 99999999999);
 
 
-add_action('learndash-lesson-row-title-before', function ($lesson_id, $course_id, $user_id) {
+add_action('learndash-lesson-row-title-before', function ($lesson_id) {
     $cats = get_the_terms($lesson_id, 'ld_lesson_category');
     if ($cats && is_array($cats) && count($cats)) {
 ?>
@@ -58,7 +58,7 @@ add_action('learndash-lesson-row-title-before', function ($lesson_id, $course_id
 }, 10, 3);
 
 
-add_action('learndash-lesson-row-attributes-before', function ($lesson_id, $course_id, $user_id) {
+add_action('learndash-lesson-row-attributes-before', function ($lesson_id, $course_id) {
     $excerpt = get_post($lesson_id)->post_excerpt;
     ?>
     <p><?= $excerpt; ?></p>
