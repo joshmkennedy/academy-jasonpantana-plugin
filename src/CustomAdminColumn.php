@@ -11,6 +11,7 @@ class CustomAdminColumn {
         private string $postType,
         private string $columnSlug,
         private string $columnTitle,
+        private int $position = -1,
     ) {
         if ($this->postType === 'post') {
             $this->addColumnHook = 'manage_posts_columns';
@@ -35,8 +36,21 @@ class CustomAdminColumn {
      * @return array<string,string>
      */
     public function add_column(array $columns): array {
-        $columns[$this->columnSlug] = $this->columnTitle;
-        return $columns;
+        if ($this->position === -1) {
+            $this->position = count($columns);
+        }
+
+        $i = 0;
+        $results = [];
+        foreach ($columns as $key => $value) {
+            $results[$key] = $value;
+            $i++;
+            if ($i === $this->position) {
+                $results[$this->columnSlug] = $this->columnTitle;
+            }
+        }
+
+        return $results;
     }
 
     public function render(string $column, int  $postId): void {
