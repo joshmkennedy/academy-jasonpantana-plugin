@@ -75,6 +75,8 @@ add_action('learndash-lesson-row-attributes-before', function ($lesson_id, $cour
 <?php
 }, 10, 3);
 
+require_once __DIR__ . '/acf/index.php';
+
 // ENSURES FONTS ARE LOADED
 add_action('wp_head', function () {
 ?>
