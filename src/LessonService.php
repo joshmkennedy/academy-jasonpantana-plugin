@@ -11,7 +11,6 @@ class LessonService {
         if (has_post_thumbnail($post)) return get_the_post_thumbnail_url($post->ID, $size);
 
         $videoUrl = VimeoUtils::firstEmbedUrl($post);
-        error_log(print_r('$videoUrl for '. $post->post_title . ':'. $videoUrl, true));
         if ($videoUrl) {
             $vimeoId = VimeoUtils::getId($videoUrl);
             $thumbUrl = VimeoUtils::getThumb($vimeoId);
@@ -26,4 +25,5 @@ class LessonService {
         }
         return '';
     }
+
 }

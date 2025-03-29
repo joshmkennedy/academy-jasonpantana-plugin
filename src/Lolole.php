@@ -69,17 +69,24 @@ class Lolole {
     private function sessionCard(\WP_Post $post, int $programId): void {
         $title = get_the_title($post->ID);
         $link = get_the_permalink($post->ID);
-
+        $comingSoon = get_field('coming_soon', $post->ID);
         $date = get_the_date('F', $post->ID);
         if (function_exists('get_field')) {
             $date = \get_field("session_date", $post->ID) ?: $date;
         }
 
         $sessionType = $this->lessonCategoryService->sessionType($post);
-        $icon = $this->lessonCategoryService->icon($sessionType);
-        $color = $this->lessonCategoryService->color($sessionType);
-        $thumbUrl = $this->lessonService->getThumbUrl($post, $programId, 'full');
 
+        $icon = $this->lessonCategoryService->icon($sessionType);
+
+        $color = $this->lessonCategoryService->color($sessionType);
+
+        if ($comingSoon) {
+            // hard coded for now
+            $thumbUrl = getAimAssetUrl('session-coming-soon.webp');
+        } else {
+            $thumbUrl = $this->lessonService->getThumbUrl($post, $programId, 'full');
+        }
     ?>
 
         <div class="embla__slide aim-card session-card " style="--type-color: <?= $color; ?>;">
@@ -104,7 +111,11 @@ class Lolole {
                         </a>
                     </div>
                 <?php endif; ?>
-
+                <?php if ($comingSoon): ?>
+                    <div class="session-card__session-coming-soon">
+                        coming soon
+                    </div>
+                <?php endif; ?>
                 <h4 class="card-title">
                     <a href="<?= $link; ?>"><?= get_the_title($post->ID); ?></a>
                 </h4>
@@ -131,43 +142,6 @@ class Lolole {
                 <h4 class="icon-card__title card-title">
                     <a href="<?= $link; ?>"><?= $cat->name; ?></a>
                 </h4>
-            </div>
-        </div>
-    <?php
-    }
-
-    private function resourceCard(\WP_Post $post, int $programId): void {
-        $cats = $this->lessonCategoryService->getAllFor($post);
-        $excerpt = $post->post_excerpt;
-    ?>
-        <div class="embla__slide aim-card resource-card ">
-            <div class="card-contents">
-                <div class="meta">
-                    <?php
-                    if ($cats) {
-                        foreach ($cats as $cat) {
-                    ?>
-                            <div class="meta-item">
-                                <span class="meta-item-icon">
-                                    <?= $this->lessonCategoryService->icon($cat); ?>
-                                </span>
-                                <span class="meta-item-label"><?= $cat->name; ?></span>
-                            </div>
-                    <?php
-                        }
-                    }
-                    ?>
-                </div>
-                <h4 class="card-title">
-                    <a href="<?= get_the_permalink($post->ID); ?>">
-                        <?= get_the_title($post->ID); ?>
-                    </a>
-                </h4>
-                <p class="excerpt"><?= $excerpt; ?></p>
-
-                <a href="<?= get_the_permalink($post->ID); ?>" class="link">
-                    View <?= $cats[0]->name ?? 'Resource'; ?>
-                </a>
             </div>
         </div>
     <?php

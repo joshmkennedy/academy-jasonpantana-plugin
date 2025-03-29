@@ -2,7 +2,6 @@
 
 namespace JP;
 
-use WP_Post;
 
 class CustomAdminColumn {
     private string $renderHook;
@@ -55,7 +54,7 @@ class CustomAdminColumn {
 
     public function render(string $column, int  $postId): void {
 ?>
-        <p>Implement the render method for this column</p>
+        <p><?= "Implement $column render method for this post:($postId)"; ?></p>
 <?php
     }
 }

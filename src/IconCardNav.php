@@ -2,11 +2,7 @@
 
 namespace JP;
 
-use WP_Post;
-
 class IconCardNav {
-
-
     /**
      * @param array<mixed> $collection 
      * @param IconCardPropertyAccessorInterface $propertyAccessor;
