@@ -64,6 +64,15 @@
 	}
 }
 
+.catnavigation-label{
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 0rem;
+	color: var(--slate-500);
+}
+
 .aim-template-content {
 	background-color: var(--slate-200);
 	padding: 0px 40px 40px;

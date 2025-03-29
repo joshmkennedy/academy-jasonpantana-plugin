@@ -28,7 +28,10 @@ class Lolole {
             <?php $this->renderLessonCategorySection(
                 title: 'Resources',
                 programId: 1273,
-                cardCB: fn($args) => $this->resourceCategoryCard($args),
+                categories: $this->resourceCatgories(),
+                slideWidth: 'max(16.6%, 75px)',
+                categoryCardCB: fn($args) => $this->resourceCategoryCard($args),
+                collectionCardCB: fn($args) => $this->resourceCard($args),
             ); ?>
 
             <?php $this->renderLessonsSection(
@@ -134,7 +137,7 @@ class Lolole {
         $link = get_term_link($cat);
 
     ?>
-        <div class="aim-card icon-card " style="--color: <?= $color; ?>; --slide-size:max(16.6%, 75px);">
+        <div class="aim-card icon-card embla__slide" style="--color: <?= $color; ?>; --slide-size:max(16.6%, 75px);">
             <div class="icon-card__contents">
                 <a href="<?= $link; ?>" class="icon-card__thumb">
                     <?= $icon; ?>
@@ -152,9 +155,10 @@ class Lolole {
      * @param int $programId 
      * @param callable $cardCB 
      * @param ?array<WP_Post> $collection 
+     * @param ?string $slideWidth sets the --slide-size css variable
      * @return void 
      */
-    private function renderLessonsSection(string $title, int $programId,  callable $cardCB, ?array $collection = null): void {
+    private function renderLessonsSection(string $title, int $programId,  callable $cardCB, ?array $collection = null, ?string $slideWidth = null): void {
         if (!$collection) {
             /** @var array<\WP_Post> $collection */
             $collection = \learndash_get_lesson_list($programId, ['num' => 25]);
@@ -164,7 +168,7 @@ class Lolole {
     ?>
         <div class="lolole-section">
             <header>
-                <div class="section-header-flex-row">
+                <div class="section-header-flex-row section-title-wrapper">
                     <div class="section-title">
                         <h2>
                             <?= $title ?>
@@ -193,7 +197,7 @@ class Lolole {
                     </div>
                 </div>
                 <div class="embla__viewport">
-                    <div class="embla__container">
+                    <div class="embla__container" <?php if ($slideWidth): ?>style="--slide-size:<?= $slideWidth; ?>;" <?php endif; ?>>
                         <?php foreach ($collection as $item) { ?>
                             <?= $cardCB($item, $programId); ?>
                         <?php } ?>
@@ -206,31 +210,48 @@ class Lolole {
             <footer>
                 <a href="<?= get_the_permalink($programId); ?>" class="view-all-button">View All</a>
             </footer>
+
         </div>
     <?php
     }
 
+    private function resourceCatgories(): array {
+        return array_filter(
+            get_terms(['taxonomy' => 'ld_lesson_category']),
+            // Only non resource cats currently are for sessions so we take out those
+            fn($arg) => !$this->lessonCategoryService->isSessionTypeCategory($arg) && $arg
+        );
+    }
+
+
     /**
      * @param string $title 
      * @param int $programId 
-     * @param callable $cardCB 
-     * @param ?array<WP_Term> $collection 
+     * @param callable $categoryCardCB
+     * @param callable $collectionCardCB
+     * @param ?array<WP_Post> $collection 
+     * @param ?array<WP_Term> $categories
+     * @param ?string $slideWidth sets the --slide-size css variable
      * @return void 
      */
-    private function renderLessonCategorySection(string $title, int $programId, callable $cardCB, ?array $collection = null): void {
-        if (!$collection) {
-            $collection =  array_filter(
+    private function renderLessonCategorySection(string $title, int $programId, callable $categoryCardCB, callable $collectionCardCB, ?array $collection = null, ?array $categories = null, ?string $slideWidth = null): void {
+        if (!$categories) {
+            $categories =  array_filter(
                 get_terms(['taxonomy' => 'ld_lesson_category']),
                 // Only non resource cats currently are for sessions so we take out those
                 fn($arg) => !$this->lessonCategoryService->isSessionTypeCategory($arg) && $arg
             );
         }
+        if (!$collection) {
+            $collection = \learndash_get_lesson_list($programId, ['num' => 25]);
+        }
+
 
         $post = get_post($programId);
     ?>
         <div class="lolole-section">
             <header>
-                <div class="section-header-flex-row">
+                <div class="section-header-flex-row section-title-wrapper">
                     <div class="section-title">
                         <h2>
                             <?= $title ?>
@@ -241,16 +262,63 @@ class Lolole {
                         <a href="<?= get_the_permalink($programId); ?>" class="view-all-button">View All</a>
                     </div>
                 </div>
-
                 <?php if ($post->post_excerpt): ?>
                     <p class="section-description"><?= $post->post_excerpt; ?></p>
                 <?php endif; ?>
             </header>
 
-            <div class="lolole-grid ">
-                <?php foreach ($collection as $item) { ?>
-                    <?= $cardCB($item); ?>
-                <?php } ?>
+            <div style="gap:36px; display:flex; flex-direction:column; justify-content:space-between;">
+                <div class="lolole-slider embla">
+                    <div class="lolole__controls">
+                        <div class="embla__buttons">
+                            <button class="embla__button--prev embla__button">
+                                <?= dumpSvg('chevron-left'); ?>
+                            </button>
+                            <h3 class="section__subtitle">
+                                Categories
+                            </h3>
+                            <button class="embla__button--next embla__button">
+                                <?= dumpSvg('chevron-right'); ?>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="embla__viewport">
+                        <div class="embla__container" <?php if ($slideWidth): ?>style="--slide-size:<?= $slideWidth; ?>;" <?php endif; ?>>
+                            <?php foreach ($categories as $item) { ?>
+                                <?= $categoryCardCB($item, $programId); ?>
+                            <?php } ?>
+                            <?php if (count($categories) > 3) { ?>
+                                <?php $this->lastSlide($programId); ?>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="lolole-slider embla">
+                    <div class="lolole__controls">
+
+                        <div class="embla__buttons">
+                            <button class="embla__button--prev embla__button">
+                                <?= dumpSvg('chevron-left'); ?>
+                            </button>
+                            <h3 class="section__subtitle">Recent</h3>
+                            <button class="embla__button--next embla__button">
+                                <?= dumpSvg('chevron-right'); ?>
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="embla__viewport">
+                        <div class="embla__container">
+                            <?php foreach ($collection as $item) { ?>
+                                <?= $collectionCardCB($item, $programId); ?>
+                            <?php } ?>
+                            <?php if (count($collection) > 3) { ?>
+                                <?php $this->lastSlide($programId); ?>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
             </div>
             <footer>
                 <a href="<?= get_the_permalink($programId); ?>" class="view-all-button">View All</a>
@@ -259,22 +327,66 @@ class Lolole {
     <?php
     }
 
-    private function lastSlide(int $programId): void {
+    private function resourceCard(\WP_Post $post): void {
+        $resourceCard = new \JP\ResourceCard;
+        $resourceCard->render($post);
+    }
+    public function lastSlide(int $programId): void {
         $link = get_the_permalink($programId);
 
     ?>
-        <div class="embla__slide aim-card icon-card" style="--color:  hsl(from #cbd5e0 h s 40%);">
+        <div class="embla__slide aim-card icon-card embla__slide" style="--color:  hsl(from #cbd5e0 h s 40%);">
             <div class="icon-card__contents">
                 <a href="<?= $link; ?>" class="icon-card__thumb">
                     <?= dumpSvg('grid'); ?>
                 </a>
                 <h4 class="icon-card__title card-title">
                     <a href="<?= $link; ?>">
-                        View All
+                        All
                     </a>
                 </h4>
             </div>
         </div>
-<?php
+    <?php
     }
 }
+
+// this feels hacky but Im experimenting with it
+// inject some stuff after just the resources
+
+add_action('jp_after_lessons_section', function ($lolole, $title, $programId, $collection) {
+    if ($title !== 'Resources') return;
+    $collection = \learndash_get_lesson_list($programId, ['num' => 25]);
+    $resourceCard = new \JP\ResourceCard;
+    ?>
+    <div class="lolole-slider embla">
+        <div class="lolole__controls">
+            <div class="embla__buttons">
+                <button class="embla__button--prev embla__button">
+                    <?= dumpSvg('chevron-left'); ?>
+                </button>
+                <button class="embla__button--next embla__button">
+                    <?= dumpSvg('chevron-right'); ?>
+                </button>
+            </div>
+            <div class="right">
+                <a href="<?= get_the_permalink($programId); ?>" class="view-all-button">View All</a>
+            </div>
+
+        </div>
+        <div class="embla__viewport">
+            <div class="embla__container">
+                <?php foreach ($collection as $item) { ?>
+
+                    <?php $resourceCard->render($item); ?>
+
+                <?php } ?>
+                <?php if (count($collection) > 3) { ?>
+                    <?php $lolole->lastSlide($programId); ?>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+<?php
+
+}, 10, 4);

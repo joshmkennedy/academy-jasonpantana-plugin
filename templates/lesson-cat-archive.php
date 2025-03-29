@@ -1,11 +1,10 @@
 <?php
 get_header();
-$tutil = new \JP\JPTemplate();
-$card = new \JP\ResourceCard();
+$tutil = new \JP\JPTemplate;
+$card = new \JP\ResourceCard;
 $queried = get_queried_object();
-$catService = new \JP\LessonCategoryService();
+$catService = new \JP\LessonCategoryService;
 
-// this is kinda dumb should probably be its own actual class
 /**
  * @var \JP\IconCardNav $categoryNavigation a slider of resource category icon cards
  **/
@@ -13,24 +12,7 @@ $categoryNavigation = new \JP\IconCardNav(
     //resources only for now
     collection: $catService->getAll(fn($arg) => !\JP\LessonCategoryService::isSessionTypeCategory($arg)),
     // property accessor for terms
-    propertyAccessor: new class implements \JP\IconCardPropertyAccessorInterface {
-        public \JP\LessonCategoryService $catService;
-        public function __construct() {
-            $this->catService = new \JP\LessonCategoryService();
-        }
-        public function getItemLink(mixed $item): string {
-            return get_term_link($item);
-        }
-        public function getItemIcon(mixed $item): string {
-            return $this->catService->icon($item);
-        }
-        public function getItemColor(mixed $item): string {
-            return $this->catService->color($item);
-        }
-        public function getItemTitle(mixed $item): string {
-            return $item->name;
-        }
-    }
+    propertyAccessor: new \JP\LessonCategoryNavCardAccessor,
 );
 $categoryNavigation->enqueueAssets();
 ?>
@@ -55,7 +37,7 @@ $categoryNavigation->enqueueAssets();
     <!-- CONTENT -->
     <div class="aim-template-content">
         <div class="aim-template-content__page">
-
+            <p class="catnavigation-label">Categories</p>
             <?php $categoryNavigation->render(); ?>
 
             <?php if (have_posts()): ?>

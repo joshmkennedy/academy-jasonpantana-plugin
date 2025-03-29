@@ -1,15 +1,17 @@
 .icon-card {
 	border-color: var(--color);
-
+	display: flex;
+	flex-direction: column;
+	padding:6px;
 	.icon-card__contents {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		gap: 1rem;
+		gap: .5rem;
 
 		@media (max-width: 640px) {
-			gap: 0.5em;
+			gap: 0.25em;
 		}
 	}
 
@@ -40,6 +42,14 @@
 		pointer-events: none;
 		fill: var(--color);
 		color: var(--color);
+	}
+
+	.icon-card__title {
+		text-decoration: none;
+		color: var(--color);
+		line-height: 1;
+		font-size: 14px;
+		font-weight: 600;
 	}
 
 	&:has(a:hover) {

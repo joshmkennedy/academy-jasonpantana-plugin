@@ -46,7 +46,12 @@ class IconCardNav {
                                     <a href="<?= $link; ?>" class="icon-card__thumb" title="<?= $title; ?>">
                                         <?= $icon; ?>
                                     </a>
+                                    <a href="<?= $link; ?>" style="font-size:10px;" class="icon-card__title" >
+                                        <?= $item->name; ?>
+                                    </a>
+
                                 </div>
+
                             </div>
                         <?php } ?>
                     </div>
