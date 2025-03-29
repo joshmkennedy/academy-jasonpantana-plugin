@@ -142,7 +142,7 @@ class Lolole {
                     <?= $icon; ?>
                 </a>
                 <h4 class="icon-card__title card-title">
-                    <a href="<?= $link; ?>"><?= $this->lessonCategoryService->pluralLabel($cat); ?></a>
+                    <a href="<?= $link; ?>"><?= $cat ? $this->lessonCategoryService->pluralLabel($cat) : ''; ?></a>
                 </h4>
             </div>
         </div>
