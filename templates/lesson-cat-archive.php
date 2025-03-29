@@ -29,7 +29,7 @@ $categoryNavigation->enqueueAssets();
                 <span class="title-with-mark">
                     <h1><?php the_archive_title(); ?></h1>
                 </span>
-                <span class="archive-type">Category</span>
+                <span class="archive-type">Resources</span>
             </div>
         </div>
         <?php include $tutil->useTemplate('utils/circutry-graphic'); ?>
