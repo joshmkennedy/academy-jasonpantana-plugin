@@ -26,7 +26,7 @@ class ResourceCard {
                                 <span class="meta-item-icon">
                                     <?= $this->lessonCategoryService->icon($cat); ?>
                                 </span>
-                                <span class="meta-item-label"><?= $cat->name; ?></span>
+                                <span class="meta-item-label"><?= $this->lessonCategoryService->pluralLabel($cat); ?></span>
                             </div>
                     <?php
                         }
@@ -41,7 +41,7 @@ class ResourceCard {
                 <p class="excerpt"><?= $excerpt; ?></p>
 
                 <a href="<?= get_the_permalink($post->ID); ?>" class="link">
-                    View <?= $cats[0]->name ?? 'Resource'; ?>
+                    View <?= $this->lessonCategoryService->singlularLabel($cats[0]) ?? 'Resource'; ?>
                 </a>
             </div>
         </div>

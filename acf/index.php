@@ -27,6 +27,27 @@ add_action('acf/include_fields', function () {
                 'return_format' => 'string',
                 'allow_in_bindings' => 0,
             ),
+            array(
+                'key' => 'field_67e86cfb53446',
+                'label' => 'Singular Label',
+                'name' => 'single',
+                'aria-label' => '',
+                'type' => 'text',
+                'instructions' => 'Category Label Should be plural and this fields should be the single version',
+                'required' => 1,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'maxlength' => '',
+                'allow_in_bindings' => 0,
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+            ),
         ),
         'location' => array(
             array(

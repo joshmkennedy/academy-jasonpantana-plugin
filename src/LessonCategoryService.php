@@ -71,4 +71,15 @@ class LessonCategoryService {
             return $defaultColor;
         return \get_field('color', $category) ?: $defaultColor;
     }
+
+    public function singlularLabel(\WP_Term|false $category): string {
+        if (!$category || !function_exists('get_field'))
+            return '';
+        return \get_field('single', $category) ?: $category->name;
+    }
+    public function pluralLabel(\WP_Term|false $category): string {
+        if (!$category)
+            return '';
+        return $category->name;
+    }
 }

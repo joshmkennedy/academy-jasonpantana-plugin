@@ -52,7 +52,6 @@ class Lolole {
                 <span class="icon"><?= dumpSvg('play-circle'); ?></span>
                 <span><?= get_the_title($post->ID); ?></span>
             </h4>
-
         </a>
     <?php
     }
@@ -124,7 +123,7 @@ class Lolole {
                 </h4>
                 <p class="session-card__type">
                     <span class="session-card__date"><?= $date; ?></span>
-                    <span class="session-card__type-label"><?= $sessionType ? $sessionType->name : ''; ?></span>
+                    <span class="session-card__type-label"><?= $sessionType ? $this->lessonCategoryService->singlularLabel($sessionType) : ''; ?></span>
                 </p>
             </div>
         </div>
@@ -143,7 +142,7 @@ class Lolole {
                     <?= $icon; ?>
                 </a>
                 <h4 class="icon-card__title card-title">
-                    <a href="<?= $link; ?>"><?= $cat->name; ?></a>
+                    <a href="<?= $link; ?>"><?= $this->lessonCategoryService->pluralLabel($cat); ?></a>
                 </h4>
             </div>
         </div>

@@ -49,7 +49,7 @@ add_action('learndash-lesson-row-title-before', function ($lesson_id) {
                     <span class="ld-item-category-item-icon">
                         <?php echo get_taxonomy_image($cat->term_id, true); ?>
                     </span>
-                    <span class="ld-item-category-item-label"><?= $cat->name; ?></span>
+                    <span class="ld-item-category-item-label"><?= (new \JP\LessonCategoryService())->pluralLabel($cat); ?></span>
                 </div>
             <?php } ?>
         </div>
