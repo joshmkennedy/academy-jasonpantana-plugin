@@ -41,7 +41,7 @@ class ResourceCard {
                 <p class="excerpt"><?= $excerpt; ?></p>
 
                 <a href="<?= get_the_permalink($post->ID); ?>" class="link">
-                    View <?= $cats[0] ? $this->lessonCategoryService->singlularLabel($cats[0]) : 'Resource'; ?>
+                    View <?= ($cats && $cats[0]) ? $this->lessonCategoryService->singlularLabel($cats[0]) : 'Resource'; ?>
                 </a>
             </div>
         </div>

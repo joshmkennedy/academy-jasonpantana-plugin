@@ -242,7 +242,7 @@ class Lolole {
             );
         }
         if (!$collection) {
-            $collection = \learndash_get_lesson_list($programId, ['num' => 25]);
+            $collection = \learndash_get_lesson_list($programId, ['num' => 25, 'order' => 'DESC', 'orderby' => 'date']);
         }
 
 

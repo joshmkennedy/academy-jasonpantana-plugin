@@ -118,6 +118,11 @@ add_shortcode('join_or_profile_button', function () {
 <?php return ob_get_clean();
 });
 
+// add_action('learndash_course_lessons_order', function ($args, $courseId) {
+//     if(!$courseId !== 1273 || ) return $args;
+// }, 10, 2);
+
+
 add_action('user_register', function ($userId) {
     if (isset($_POST['ld_register_id']) && $_POST['ld_register_id']) {
         update_user_meta($userId, "initial_registered_ld_group", $_POST['ld_register_id']);
