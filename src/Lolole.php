@@ -242,7 +242,20 @@ class Lolole {
             );
         }
         if (!$collection) {
-            $collection = \learndash_get_lesson_list($programId, ['num' => 25, 'order' => 'DESC', 'orderby' => 'date']);
+            //$collection = \learndash_get_lesson_list($programId, ['num' => 25, 'order' => 'DESC', 'orderby' => 'date']);
+            $collection = get_posts([
+                'post_type' => 'sfwd-lessons',
+                'posts_per_page' => 25,
+                'order' => 'DESC',
+                'orderby' => 'date',
+                'post_status' => 'publish',
+                'meta_query' => [
+                    [
+                        'meta_key' => 'course_id',
+                        'meta_value' => $programId,
+                    ],
+                ]
+            ]);
         }
 
 
