@@ -251,8 +251,8 @@ class Lolole {
                 'post_status' => 'publish',
                 'meta_query' => [
                     [
-                        'meta_key' => 'course_id',
-                        'meta_value' => $programId,
+                        'key' => 'course_id',
+                        'value' => $programId,
                     ],
                 ]
             ]);
