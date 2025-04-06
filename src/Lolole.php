@@ -273,9 +273,6 @@ class Lolole {
                             <button class="embla__button--prev embla__button">
                                 <?= dumpSvg('chevron-left'); ?>
                             </button>
-                            <h3 class="section__subtitle">
-                                Categories
-                            </h3>
                             <button class="embla__button--next embla__button">
                                 <?= dumpSvg('chevron-right'); ?>
                             </button>
@@ -299,7 +296,6 @@ class Lolole {
                             <button class="embla__button--prev embla__button">
                                 <?= dumpSvg('chevron-left'); ?>
                             </button>
-                            <h3 class="section__subtitle">Recent</h3>
                             <button class="embla__button--next embla__button">
                                 <?= dumpSvg('chevron-right'); ?>
                             </button>
