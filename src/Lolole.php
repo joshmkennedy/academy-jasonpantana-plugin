@@ -83,9 +83,9 @@ class Lolole {
 
         $color = $this->lessonCategoryService->color($sessionType);
 
-        if ($comingSoon) {
+        if ($comingSoon && $sessionType) {
             // hard coded for now
-            $thumbUrl = getAimAssetUrl('session-coming-soon.webp');
+            $thumbUrl = getAimAssetUrl($sessionType->slug . '-coming-soon.webp');
         } else {
             $thumbUrl = $this->lessonService->getThumbUrl($post, $programId, 'full');
         }
