@@ -66,10 +66,12 @@ class LessonCategoryService {
     }
 
     public function color(\WP_Term|false $category): string {
-        $defaultColor = 'var(--blue-700)';
-        if (!$category || !function_exists('get_field'))
-            return $defaultColor;
-        return \get_field('color', $category) ?: $defaultColor;
+        // DONT DO THE CUSTOM ICON COLOR - 2025-04-06 
+        // $defaultColor = 'var(--blue-700)';
+        // if (!$category || !function_exists('get_field'))
+        //     return $defaultColor;
+        // return \get_field('color', $category) ?: $defaultColor;
+        return 'var(--blue-700)';
     }
 
     public function singlularLabel(\WP_Term|false $category): string {
