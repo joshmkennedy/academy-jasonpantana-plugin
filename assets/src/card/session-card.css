@@ -1,7 +1,6 @@
 .session-card {
   padding: 4px;
   position: relative;
-  border-color: var(--type-color, var(--slate-300));
 
   .session-card__image {
     position: relative;
@@ -20,6 +19,7 @@
 
   .session-card__top-left {
     position: absolute;
+  border-color: var(--type-color, var(--slate-300));
     top: 0.5em;
     left: 0.5em;
     z-index: 1;
