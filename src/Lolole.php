@@ -174,9 +174,6 @@ class Lolole {
                         </h2>
                     </div>
 
-                    <div class="right">
-                        <a href="<?= get_the_permalink($programId); ?>" class="view-all-button">View All</a>
-                    </div>
                 </div>
 
                 <?php if ($post->post_excerpt): ?>
@@ -193,6 +190,9 @@ class Lolole {
                         <button class="embla__button--next embla__button">
                             <?= dumpSvg('chevron-right'); ?>
                         </button>
+                    </div>
+                    <div class="right">
+                        <a href="<?= get_the_permalink($programId); ?>" class="view-all-button">View All</a>
                     </div>
                 </div>
                 <div class="embla__viewport">
@@ -257,9 +257,6 @@ class Lolole {
                         </h2>
                     </div>
 
-                    <div class="right">
-                        <a href="<?= get_the_permalink($programId); ?>" class="view-all-button">View All</a>
-                    </div>
                 </div>
                 <?php if ($post->post_excerpt): ?>
                     <p class="section-description"><?= $post->post_excerpt; ?></p>
@@ -301,6 +298,9 @@ class Lolole {
                             </button>
                         </div>
 
+                        <div class="right">
+                            <a href="<?= get_the_permalink($programId); ?>" class="view-all-button">View All</a>
+                        </div>
                     </div>
 
                     <div class="embla__viewport">

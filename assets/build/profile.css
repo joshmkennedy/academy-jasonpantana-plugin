@@ -455,7 +455,7 @@ svg path[fill] {
 		}
 
 		@media (max-width: 640px) {
-			header .view-all-button {
+			.lolole__controls .view-all-button {
 				display: none;
 			}
 
@@ -572,9 +572,9 @@ svg path[fill] {
 	}
 
 	.lolole-section .lolole__controls {
-		/* display: flex; */
+		display: flex;
 		gap: 10px;
-		/* justify-content: space-between; */
+		justify-content: space-between;
 
 		.embla__buttons {
 			justify-content: flex-start;
