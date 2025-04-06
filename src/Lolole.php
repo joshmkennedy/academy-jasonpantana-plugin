@@ -274,6 +274,9 @@ class Lolole {
                                 <?= dumpSvg('chevron-right'); ?>
                             </button>
                         </div>
+                        <div class="right">
+                            <a href="<?= get_the_permalink($programId); ?>" class="view-all-button">View All</a>
+                        </div>
                     </div>
                     <div class="embla__viewport">
                         <div class="embla__container" <?php if ($slideWidth): ?>style="--slide-size:<?= $slideWidth; ?>;" <?php endif; ?>>
