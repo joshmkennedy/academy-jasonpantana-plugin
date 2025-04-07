@@ -10,7 +10,7 @@ define('JP_PLUGIN_ROOT_DIR_URL', plugin_dir_url(__FILE__));
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/utils.php';
 // custom rest endpoint
-require_once __DIR__ . '/userbyemail.php';
+require_once __DIR__ . '/rest/routes.php';
 
 /*╭───────────────────────────╮*/
 /*│    [   Course Grid   ]    │*/
