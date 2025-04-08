@@ -222,7 +222,6 @@ class Lolole {
         );
     }
 
-
     /**
      * @param string $title 
      * @param int $programId 
@@ -314,6 +313,12 @@ class Lolole {
                             </button>
                         </div>
 
+                        <div>
+                            <h3 class="section__subtitle">
+                                Most Recent
+                            </h3>
+                        </div>
+
                         <div class="right">
                             <a href="<?= get_the_permalink($programId); ?>" class="view-all-button">View All</a>
                         </div>
@@ -361,43 +366,3 @@ class Lolole {
     <?php
     }
 }
-
-// this feels hacky but Im experimenting with it
-// inject some stuff after just the resources
-
-add_action('jp_after_lessons_section', function ($lolole, $title, $programId, $collection) {
-    if ($title !== 'Resources') return;
-    $collection = \learndash_get_lesson_list($programId, ['num' => 25]);
-    $resourceCard = new \JP\ResourceCard;
-    ?>
-    <div class="lolole-slider embla">
-        <div class="lolole__controls">
-            <div class="embla__buttons">
-                <button class="embla__button--prev embla__button">
-                    <?= dumpSvg('chevron-left'); ?>
-                </button>
-                <button class="embla__button--next embla__button">
-                    <?= dumpSvg('chevron-right'); ?>
-                </button>
-            </div>
-            <div class="right">
-                <a href="<?= get_the_permalink($programId); ?>" class="view-all-button">View All</a>
-            </div>
-
-        </div>
-        <div class="embla__viewport">
-            <div class="embla__container">
-                <?php foreach ($collection as $item) { ?>
-
-                    <?php $resourceCard->render($item); ?>
-
-                <?php } ?>
-                <?php if (count($collection) > 3) { ?>
-                    <?php $lolole->lastSlide($programId); ?>
-                <?php } ?>
-            </div>
-        </div>
-    </div>
-<?php
-
-}, 10, 4);
