@@ -136,7 +136,7 @@ class Lolole {
         $link = get_term_link($cat);
 
     ?>
-        <div class="aim-card icon-card embla__slide" style="--color: <?= $color; ?>; --slide-size:max(16.6%, 75px);">
+        <div class="aim-card icon-card embla__slide" style="--color: <?= $color; ?>; --slide-size:max(16.6%, 100px);">
             <div class="icon-card__contents">
                 <a href="<?= $link; ?>" class="icon-card__thumb">
                     <?= $icon; ?>
