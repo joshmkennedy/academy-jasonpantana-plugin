@@ -19,10 +19,10 @@ function adjustFields(form: HTMLFormElement) {
         linkFieldValue(
           form.querySelector("input[name='user_email']") as HTMLInputElement,
           field as HTMLInputElement,
-					[
-						(str)=>str.replaceAll("+", "-"),
-						(str)=>str.replaceAll(".", "-"),
-					]
+          [
+            (str) => str.replaceAll("+", "-"),
+            (str) => str.replaceAll(".", "-"),
+          ],
         );
         break;
       }
@@ -45,7 +45,8 @@ function adjustFields(form: HTMLFormElement) {
       }
 
       case "phone": {
-        setAutocomplete(field, "tel");
+        setAutocomplete(field, "tel tel-area-code phone");
+				field.setAttribute("inputmode", "tel");
         moveAfter(field, form.querySelector("input[name='user_email']"));
         break;
       }
@@ -64,7 +65,9 @@ function linkFieldValue(
 ) {
   if (!field || !referenceField) return;
   field.addEventListener("input", () => {
-    referenceField.value = filters ? filters.reduce((acc, fn) => fn(acc), field.value) : field.value;
+    referenceField.value = filters
+      ? filters.reduce((acc, fn) => fn(acc), field.value)
+      : field.value;
   });
 }
 
