@@ -76,7 +76,7 @@ function adjustFields(form) {
       case "user_login":
         {
           // hideField(field);
-          linkFieldValue(form.querySelector("input[name='user_email']"), field, [str => str.replaceAll("+", "-"), str => str.replaceAll(".", "-"), str => encodeURIComponent(str)]);
+          linkFieldValue(form.querySelector("input[name='user_email']"), field, [str => str.replaceAll("+", "-"), str => str.replaceAll(".", "-")]);
           break;
         }
       case "user_email":

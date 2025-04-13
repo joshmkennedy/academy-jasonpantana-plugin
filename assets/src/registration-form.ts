@@ -22,7 +22,6 @@ function adjustFields(form: HTMLFormElement) {
 					[
 						(str)=>str.replaceAll("+", "-"),
 						(str)=>str.replaceAll(".", "-"),
-						(str)=>encodeURIComponent(str),
 					]
         );
         break;
