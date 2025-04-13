@@ -75,7 +75,7 @@ function adjustFields(form) {
     switch (field.getAttribute("name")) {
       case "user_login":
         {
-          // hideField(field);
+          hideField(field);
           linkFieldValue(form.querySelector("input[name='user_email']"), field, [str => str.replaceAll("+", "-"), str => str.replaceAll(".", "-")]);
           break;
         }

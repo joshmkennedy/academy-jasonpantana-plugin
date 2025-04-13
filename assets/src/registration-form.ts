@@ -15,7 +15,7 @@ function adjustFields(form: HTMLFormElement) {
   form.querySelectorAll<HTMLElement>(INPUT_SELECTOR).forEach((field) => {
     switch (field.getAttribute("name")) {
       case "user_login": {
-        // hideField(field);
+        hideField(field);
         linkFieldValue(
           form.querySelector("input[name='user_email']") as HTMLInputElement,
           field as HTMLInputElement,
