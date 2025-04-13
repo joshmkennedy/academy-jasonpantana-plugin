@@ -74,7 +74,6 @@ function setAutocomplete(field: HTMLElement, type: string) {
 }
 
 function hideField(field: HTMLElement) {
-  field.setAttribute("type", "hidden");
   field
     .closest<HTMLElement>(".ld-form__field-outer-wrapper")
     ?.style.setProperty("display", "none");

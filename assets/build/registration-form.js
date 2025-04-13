@@ -119,7 +119,6 @@ function setAutocomplete(field, type) {
   field.setAttribute("autocomplete", type);
 }
 function hideField(field) {
-  field.setAttribute("type", "hidden");
   field.closest(".ld-form__field-outer-wrapper")?.style.setProperty("display", "none");
 }
 // this function assumes the learndash form markup
