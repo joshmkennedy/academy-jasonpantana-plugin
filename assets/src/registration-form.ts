@@ -45,8 +45,8 @@ function adjustFields(form: HTMLFormElement) {
       }
 
       case "phone": {
-        setAutocomplete(field, "tel tel-area-code phone");
-				field.setAttribute("inputmode", "tel");
+        setAutocomplete(field, "tel tel-area-code mobile-tel phone");
+        field.setAttribute("inputmode", "tel");
         moveAfter(field, form.querySelector("input[name='user_email']"));
         break;
       }
