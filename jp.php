@@ -155,6 +155,8 @@ add_filter('wp_mail_from_name', function (string $from_name) {
 // PUBLIC TEMPLATES AND PAGES
 require_once __DIR__ . '/pages/profile.php';
 require_once __DIR__ . '/pages/lesson-category.php';
+require_once __DIR__ . '/pages/registration-form.php';
 //ADMIN
 require_once __DIR__ . '/admin/vimeo-settings.php';
 require_once __DIR__ . '/admin/lesson-admin-columns.php';
+

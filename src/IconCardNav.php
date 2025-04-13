@@ -36,8 +36,8 @@ class IconCardNav {
                 <div class="embla__viewport">
                     <div class="embla__container">
                         <?php foreach ($this->collection as $item) {
-                            $link = $this->propertyAccessor->getItemLink($item);
-                            $icon = $this->propertyAccessor->getItemIcon($item);
+                            $link  = $this->propertyAccessor->getItemLink($item);
+                            $icon  = $this->propertyAccessor->getItemIcon($item);
                             $color = $this->propertyAccessor->getItemColor($item);
                             $title = $this->propertyAccessor->getItemTitle($item);
                         ?>
@@ -46,7 +46,7 @@ class IconCardNav {
                                     <a href="<?= $link; ?>" class="icon-card__thumb" title="<?= $title; ?>">
                                         <?= $icon; ?>
                                     </a>
-                                    <a href="<?= $link; ?>" style="font-size:10px;" class="icon-card__title" >
+                                    <a href="<?= $link; ?>" style="font-size:10px;" class="icon-card__title">
                                         <?= $item->name; ?>
                                     </a>
 

@@ -7,6 +7,7 @@ module.exports = {
     profile: { import: "./assets/src/profile.ts" },
     ["aim-template"]: { import: "./assets/src/aim-template.ts" },
     ["icon-card-nav"]: { import: "./assets/src/icon-card-nav.ts" },
+    ["registration-form"]: { import: "./assets/src/registration-form.ts" },
   },
   module: {
     ...defaults.module,
