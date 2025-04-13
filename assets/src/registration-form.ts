@@ -8,7 +8,7 @@ const INPUT_SELECTOR = ".ld-form__field";
 function jpRegistrationForm() {
   const form = document.getElementById(FORM_ID) as HTMLFormElement;
   if (!form) return;
-  // adjustFields(form);
+  adjustFields(form);
 }
 
 function adjustFields(form: HTMLFormElement) {
