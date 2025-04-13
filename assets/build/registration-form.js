@@ -76,7 +76,7 @@ function adjustFields(form) {
       case "user_login":
         {
           hideField(field);
-          linkFieldValue(form.querySelector("input[name='user_email']"), field);
+          linkFieldValue(form.querySelector("input[name='user_email']"), field, [str => str.replaceAll("+", "-"), str => encodeURIComponent(str)]);
           break;
         }
       case "user_email":
@@ -109,10 +109,10 @@ function adjustFields(form) {
     }
   });
 }
-function linkFieldValue(field, referenceField) {
+function linkFieldValue(field, referenceField, filters) {
   if (!field || !referenceField) return;
   field.addEventListener("input", () => {
-    referenceField.value = field.value;
+    referenceField.value = filters ? filters.reduce((acc, fn) => fn(acc), field.value) : field.value;
   });
 }
 function setAutocomplete(field, type) {

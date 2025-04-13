@@ -17,8 +17,12 @@ function adjustFields(form: HTMLFormElement) {
       case "user_login": {
         hideField(field);
         linkFieldValue(
-					form.querySelector("input[name='user_email']") as HTMLInputElement,
+          form.querySelector("input[name='user_email']") as HTMLInputElement,
           field as HTMLInputElement,
+					[
+						(str)=>str.replaceAll("+", "-"),
+						(str)=>encodeURIComponent(str),
+					]
         );
         break;
       }
@@ -56,10 +60,11 @@ function adjustFields(form: HTMLFormElement) {
 function linkFieldValue(
   field: HTMLInputElement,
   referenceField: HTMLInputElement,
+  filters?: ((str: string) => string)[],
 ) {
   if (!field || !referenceField) return;
   field.addEventListener("input", () => {
-    referenceField.value = field.value;
+    referenceField.value = filters ? filters.reduce((acc, fn) => fn(acc), field.value) : field.value;
   });
 }
 
