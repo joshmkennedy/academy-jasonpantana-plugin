@@ -15,5 +15,8 @@
 		"psr-4": {
 			"JP\\": "src/"
 		}
+	},
+	"require": {
+		"stripe/stripe-php": "^17.1"
 	}
 }

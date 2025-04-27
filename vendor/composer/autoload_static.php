@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInitf339dce50ee2d2794cb61283b56a31f4
 {
     public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Stripe\\' => 7,
+        ),
         'J' => 
         array (
             'JP\\' => 3,
@@ -14,6 +18,10 @@ class ComposerStaticInitf339dce50ee2d2794cb61283b56a31f4
     );
 
     public static $prefixDirsPsr4 = array (
+        'Stripe\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
+        ),
         'JP\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',

@@ -36,7 +36,7 @@ class CustomAdminColumn {
      */
     public function add_column(array $columns): array {
         if ($this->position === -1) {
-            $this->position = count($columns);
+            $this->position = \count($columns);
         }
 
         $i = 0;
