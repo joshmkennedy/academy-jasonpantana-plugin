@@ -6,6 +6,18 @@ if (!function_exists('isPaidGroup')) {
         return in_array($id, $paidGroups);
     }
 }
+
+if (!function_exists('stripeProductGroupMap')) {
+    function stripeProductGroupMap(string $prodId): int | null {
+        $config = [
+            'prod_RchwOcDcDez2DU' => 1822,// Ai Marketing Academy - Annual Plan
+            'prod_RcR1KVgHZX0F70' => 1699, // Ai Marketing Academy - Monthly Plan
+        ];
+        if (!isset($config[$prodId])) return null;
+        return $config[$prodId];
+    }
+}
+
 if (!function_exists("getCurrentURL")) {
     function getCurrentURL(): string {
         $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") .
@@ -80,5 +92,16 @@ if (!function_exists("enqueueAsset")) {
 if (!function_exists("getAimVimeoToken")) {
     function getAimVimeoToken():string | false {
         return get_option('jp_vimeo_api_key');
+    }
+}
+
+if (!function_exists('array_find')) {
+    function array_find(array $haystack, callable $callback): mixed {
+        foreach ($haystack as $needle) {
+            if ($callback($needle)) {
+                return $needle;
+            }
+        }
+        return null;
     }
 }

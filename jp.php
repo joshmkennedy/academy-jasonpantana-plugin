@@ -157,6 +157,6 @@ require_once __DIR__ . '/pages/profile.php';
 require_once __DIR__ . '/pages/lesson-category.php';
 require_once __DIR__ . '/pages/registration-form.php';
 //ADMIN
-require_once __DIR__ . '/admin/vimeo-settings.php';
+require_once __DIR__ . '/admin/jp-settings.php';
 require_once __DIR__ . '/admin/lesson-admin-columns.php';
 
