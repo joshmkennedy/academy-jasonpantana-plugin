@@ -13,11 +13,17 @@
 		min-width: 70px;
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: start;
 
 		.icon-card__thumb {
 			width: 30px;
 			padding: 10px;
+
+			img {
+				object-fit: contain;
+				height: 100%;
+				width: 100%;
+			}
 		}
 	}
 
