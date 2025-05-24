@@ -432,13 +432,13 @@ svg path[fill] {
 /*!**********************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./assets/src/walkthrough-banner/walkthrough-banner.css ***!
   \**********************************************************************************************************************************************************************************************************/
-:is(.e-con-inner, .elementor-widget-shortcode):has(.walkthrough-banner__banner) {
+:is(.e-con-inner, .elementor-widget):has(.walkthrough-banner__banner) {
 	position: static;
 }
 
 .walkthrough-banner__banner {
 	position: absolute;
-	top: -10px;
+	top: 10px;
 	right: 10px;
 	max-width: 350px;
 	border-radius: 8px;
@@ -446,37 +446,52 @@ svg path[fill] {
 	box-shadow: 0 0 0 1px var(--brand-c-primary), 0 8px 16px rgba(0, 0, 0, .1);
 	z-index: 100;
 	display: flex;
-	padding: 1rem 2rem;
+	padding: 4px 4px;
+	padding-inline: 8px;
+	align-items: center;
+	gap: 8px;
 	transition: all .2s ease-in-out 1s;
 
 	@starting-style {
 		opacity: 0;
 		transform: translateX(50px);
 	}
-	
+
 
 	h2.walkthrough-banner__heading {
 		font-size: 1.25rem;
 		margin-block: 0;
 	}
 
-	p.walkthrough-banner__text {
+	.walkthrough-banner__cta {
+		all: unset;
+		pointer-events: all;
+		cursor: pointer;
 		margin-block: 0;
+		font-weight: 600;
+		text-decoration-thickness: 2px !important;
+		font-size: .875rem;
+		text-decoration: underline;
+		text-decoration-color: var(--brand-c-primary);
+
+		&:hover {
+			text-decoration-color: var(--brand-c-tertiary);
+		}
 	}
 }
 
 .walkthrough-banner__banner .walkthrough-banner__content {
 	display: flex;
+	flex: 1;
 	flex-direction: column;
 	align-items: start;
 	gap: .5rem;
 }
 
-.walkthrough-banner__banner .walkthrough-banner__close {
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding: 8px;
+.walkthrough-banner__banner .walkthrough-banner__close,
+.walkthrough-banner__popup .walkthrough-popup__close {
+	padding: 2px;
+	order: 2;
 	border: none;
 	background: none;
 	color: var(--slate-500);
@@ -501,6 +516,30 @@ svg path[fill] {
 	padding: 8px 16px;
 }
 
+.walkthrough-banner__popup .walkthrough-popup__close {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.walkthrough-banner__popup {
+	max-width: min(90%, 900px);
+	width: 100%;
+	padding: 0;
+	border-radius: 8px;
+	border: none;
+	background:black;
+	iframe {
+		margin: 0;
+		padding: 0;
+	}
+	&::backdrop {
+		background: black;
+		opacity: .5;
+		-webkit-backdrop-filter: blur(10px);
+		        backdrop-filter: blur(10px);
+	}
+}
 
 /*!****************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./assets/src/profile.css ***!
