@@ -34,11 +34,11 @@ class Lolole {
                 collectionCardCB: fn($args) => $this->resourceCard($args),
             ); ?>
 
-            <?php $this->renderLessonsSection(
+            <?php/* $this->renderLessonsSection(
                 title: 'Essentials',
                 programId: 1294,
                 cardCB: fn($lesson, $programId) => $this->essentialCard($lesson, $programId),
-            ); ?>
+						);*/ ?>
         </div>
     <?php
         return ob_get_clean();
