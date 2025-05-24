@@ -69,6 +69,7 @@ class Lolole {
      * @return void
      */
     private function sessionCard(\WP_Post $post, int $programId): void {
+				return;
         $title = get_the_title($post->ID);
         $link = get_the_permalink($post->ID);
         $comingSoon = get_field('coming_soon', $post->ID);

@@ -52,7 +52,6 @@ class VimeoUtils {
         if (!$fallback) {
             $fallback = getAimAssetUrl("fallbackvidthum.avif");
         }
-				return $fallback;
         if (get_transient("jp_vimeo_thumb_$id")) {
             return get_transient("jp_vimeo_thumb_$id");
         }
