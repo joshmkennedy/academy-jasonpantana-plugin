@@ -9,49 +9,49 @@ $catService = new \JP\LessonCategoryService;
  * @var \JP\IconCardNav $categoryNavigation a slider of resource category icon cards
  **/
 $categoryNavigation = new \JP\IconCardNav(
-	//resources only for now
-	collection: $catService->getAll(fn($arg) => !\JP\LessonCategoryService::isSessionTypeCategory($arg)),
-	// property accessor for terms
-	propertyAccessor: new \JP\LessonCategoryNavCardAccessor,
+    //resources only for now
+    collection: $catService->getAll(fn($arg) => !\JP\LessonCategoryService::isSessionTypeCategory($arg)),
+    // property accessor for terms
+    propertyAccessor: new \JP\LessonCategoryNavCardAccessor,
 );
 $categoryNavigation->enqueueAssets();
 ?>
 
 <div class="lesson-cat-archive aim-template">
-	<!-- HEADER -->
-	<div class="aim-template-header" style="--bg-image: url(<?= getAimAssetUrl('green-gradient.png'); ?>);">
-		<div class="aim-template-header__content">
+    <!-- HEADER -->
+    <div class="aim-template-header" style="--bg-image: url(<?= getAimAssetUrl('green-gradient.png'); ?>);">
+        <div class="aim-template-header__content">
 
-			<div class="title">
-				<span class="mark">
-					<? if(function_exists("get_taxonomy_image")):echo get_taxonomy_image($queried->term_id, true); ?>
-				</span>
-				<span class="title-with-mark">
-					<h1><?php the_archive_title(); ?></h1>
-				</span>
-				<span class="archive-type">Resources</span>
-			</div>
-		</div>
-		<?php include $tutil->useTemplate('utils/circutry-graphic'); ?>
-	</div>
-	<!-- CONTENT -->
-	<div class="aim-template-content">
-		<div class="aim-template-content__page">
-			<p class="catnavigation-label">Categories</p>
-			<?php $categoryNavigation->render(); ?>
+            <div class="title">
+                <span class="mark">
+                    <?= \get_taxonomy_image($queried->term_id, true); ?>
+                </span>
+                <span class="title-with-mark">
+                    <h1><?php the_archive_title(); ?></h1>
+                </span>
+                <span class="archive-type">Resources</span>
+            </div>
+        </div>
+        <?php include $tutil->useTemplate('utils/circutry-graphic'); ?>
+    </div>
+    <!-- CONTENT -->
+    <div class="aim-template-content">
+        <div class="aim-template-content__page">
+            <p class="catnavigation-label">Categories</p>
+            <?php $categoryNavigation->render(); ?>
 
-			<?php if (have_posts()): ?>
-				<div class="lesson-grid">
-					<?php while (have_posts()): the_post(); ?>
-						<?php $card->render(get_post()); ?>
-					<?php endwhile; ?>
-				</div>
-			<?php endif; ?>
+            <?php if (have_posts()): ?>
+                <div class="lesson-grid">
+                    <?php while (have_posts()): the_post(); ?>
+                        <?php $card->render(get_post()); ?>
+                    <?php endwhile; ?>
+                </div>
+            <?php endif; ?>
 
 
-			<?php include $tutil->useTemplate('utils/pagination'); ?>
-		</div>
-	</div>
+            <?php include $tutil->useTemplate('utils/pagination'); ?>
+        </div>
+    </div>
 </div>
 
 <?php
