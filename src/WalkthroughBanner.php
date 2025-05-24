@@ -21,7 +21,7 @@ class WalkthroughBanner {
 		$atts = shortcode_atts([
 			'embed' => 'https://player.vimeo.com/video/1087246747?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
 			'heading' => 'Take a tour',
-			'content' => 'Take a tour of AI Marketing Academy',
+			'content' => 'Take a tour of Ai Marketing Academy',
 			'button_text' => 'Watch Video',
 		], $atts);
 		ob_start();
