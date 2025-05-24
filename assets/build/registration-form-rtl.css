@@ -1,1 +1,67 @@
-body,body:after,body:before,html{box-sizing:border-box;*,:after,:before{box-sizing:inherit}}:root{--white-fade:linear-gradient(90deg,#fff 30%,hsla(0,0%,100%,0));--blue-green-gradient:linear-gradient(90deg,#30dba6,#1c4c8a);--slate-800:#3c414a;--slate-200:#e4e8ee;--slate-100:#eceff3;--slate-300:#cbd5e0;--slate-500:#617487;--blue-800:#0c2b54;--blue-700:#1c4c8a;--blue-300:#4c85ce;--brand-c-primary:#31dba5;--brand-c-transition-green:#2a858a;--brand-c-secondary:#1c4c8a;--brand-c-secondary-shade-1:#153a6a;--brand-c-tertiary:#e0a458;--brand-c-tertiary-shade-1:#e19f40;--brand-c-dark:#2d323b;--brand-c-neutral:#d9d9d9;--brand-c-light:#f9f9f9;--brand-f-copy:"Archivo",sans-serif;--brand-f-heading:"Space Grotesk",sans-serif}svg{height:auto;width:100%}svg g,svg path[fill]{fill:currentColor}
+/*!*************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./assets/src/base.css ***!
+  \*************************************************************************************************************************************************************************/
+body,
+html,
+body::after,
+body::before {
+  box-sizing: border-box;
+
+  *,
+  *::after,
+  *::before {
+    box-sizing: inherit;
+  }
+}
+
+:root {
+  --white-fade: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 30%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  --blue-green-gradient: linear-gradient(
+    90deg,
+    rgba(48, 219, 166, 1) 0%,
+    rgba(28, 76, 138, 1) 100%
+  );
+
+  --slate-800: rgba(60, 65, 74, 1);
+  --slate-200: rgba(228, 232, 238, 1);
+  --slate-100: rgba(236, 239, 243, 1);
+  --slate-300: rgba(203, 213, 224, 1);
+  --slate-500: #617487;
+  --blue-800: rgba(12, 43, 84, 1);
+  --blue-700: rgba(28, 76, 138, 1);
+  --blue-300: rgba(76, 133, 206, 1);
+
+  --brand-c-primary: #31dba5;
+  --brand-c-transition-green: #2a858a;
+  --brand-c-secondary: #1c4c8a;
+  --brand-c-secondary-shade-1: #153a6a;
+  /* slightly darker */
+  --brand-c-tertiary: #e0a458;
+  --brand-c-tertiary-shade-1: #e19f40;
+
+  --brand-c-dark: #2d323b;
+  --brand-c-neutral: #d9d9d9;
+  --brand-c-light: #f9f9f9;
+
+  --brand-f-copy: "Archivo", sans-serif;
+  --brand-f-heading: "Space Grotesk", sans-serif;
+}
+
+svg {
+  width: 100%;
+  height: auto;
+}
+
+svg g {
+  fill: currentColor;
+}
+
+svg path[fill] {
+  fill: currentColor;
+}
+

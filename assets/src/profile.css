@@ -240,3 +240,7 @@
 		padding-inline:12px;
 	}
 }
+
+.elementor-4138 .elementor-element.elementor-element-f75f01f:not(.elementor-motion-effects-element-type-background), .elementor-4138 .elementor-element.elementor-element-f75f01f > .elementor-motion-effects-container > .elementor-motion-effects-layer{
+	background-image:url(../green-gradient.png) !important;
+}
