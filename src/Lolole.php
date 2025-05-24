@@ -16,6 +16,7 @@ class Lolole {
     }
 
     public function render(): string {
+			return;
         ob_start();
 ?>
         <div class="lolole-wrapper">
@@ -131,7 +132,6 @@ class Lolole {
     }
 
     private function resourceCategoryCard(\WP_Term $cat): void {
-			return;
         $color = $this->lessonCategoryService->color($cat);
         $icon = $this->lessonCategoryService->icon($cat);
         $link = get_term_link($cat);
