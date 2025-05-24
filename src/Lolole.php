@@ -19,11 +19,11 @@ class Lolole {
         ob_start();
 ?>
         <div class="lolole-wrapper">
-            <?php /*$this->renderLessonsSection(
+            <?php $this->renderLessonsSection(
                 title: 'Sessions',
                 programId: 55,
                 cardCB: fn($args, $programId) => $this->sessionCard($args, $programId),
-						); */?>
+						);?>
 
             <?php $this->renderLessonCategorySection(
                 title: 'Resources',
@@ -34,11 +34,11 @@ class Lolole {
                 collectionCardCB: fn($args) => $this->resourceCard($args),
             ); ?>
 
-            <?php/* $this->renderLessonsSection(
+            <?php $this->renderLessonsSection(
                 title: 'Essentials',
                 programId: 1294,
                 cardCB: fn($lesson, $programId) => $this->essentialCard($lesson, $programId),
-						);*/ ?>
+						); ?>
         </div>
     <?php
         return ob_get_clean();
