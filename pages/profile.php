@@ -19,10 +19,10 @@ add_action('wp_enqueue_scripts', function () {
 //     return $lolole->render();
 // });
 //
-// add_shortcode('aim_walkthrough_banner', function ($atts) {
-// 	$walktrhoughBanner = new \JP\WalkthroughBanner();
-// 	return $walktrhoughBanner->render($atts);
-// });
+add_shortcode('aim_walkthrough_banner', function ($atts) {
+	$walktrhoughBanner = new \JP\WalkthroughBanner();
+	return $walktrhoughBanner->render($atts);
+});
 add_action("wp_ajax_dissmiss_walkthrough_banner_perm", function () {
 	$walktrhoughBanner = new \JP\WalkthroughBanner();
 	$walktrhoughBanner->handleUserDismiss();
