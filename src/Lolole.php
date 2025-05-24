@@ -16,7 +16,7 @@ class Lolole {
     }
 
     public function render(): string {
-			return;
+				return "";
         ob_start();
 ?>
         <div class="lolole-wrapper">
