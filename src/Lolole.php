@@ -240,6 +240,9 @@ class Lolole {
                 fn($arg) => !$this->lessonCategoryService->isSessionTypeCategory($arg) && $arg
             );
         }
+				if(!$categories){
+					echo "ooops an error";	
+				}
         if (!$collection) {
             //$collection = \learndash_get_lesson_list($programId, ['num' => 25, 'order' => 'DESC', 'orderby' => 'date']);
             $collection = get_posts([
@@ -256,7 +259,7 @@ class Lolole {
                 ]
             ]);
         }
-
+				
 
         $post = get_post($programId);
     ?>
