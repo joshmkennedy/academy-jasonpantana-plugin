@@ -19,11 +19,11 @@ class Lolole {
         ob_start();
 ?>
         <div class="lolole-wrapper">
-            <?php $this->renderLessonsSection(
+            <?php /*$this->renderLessonsSection(
                 title: 'Sessions',
                 programId: 55,
                 cardCB: fn($args, $programId) => $this->sessionCard($args, $programId),
-            ); ?>
+						); */?>
 
             <?php $this->renderLessonCategorySection(
                 title: 'Resources',
@@ -69,7 +69,6 @@ class Lolole {
      * @return void
      */
     private function sessionCard(\WP_Post $post, int $programId): void {
-				return;
         $title = get_the_title($post->ID);
         $link = get_the_permalink($post->ID);
         $comingSoon = get_field('coming_soon', $post->ID);
