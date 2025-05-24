@@ -60,6 +60,7 @@ class LessonCategoryService {
     }
 
     public function icon(\WP_Term|false $category): string {
+			return '';
         if (!$category || !function_exists('get_taxonomy_image'))
             return '';
         return \get_taxonomy_image($category->term_id, true);
