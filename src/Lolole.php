@@ -296,6 +296,7 @@ class Lolole {
                     <div class="embla__viewport">
                         <div class="embla__container" <?php if ($slideWidth): ?>style="--slide-size:<?= $slideWidth; ?>;" <?php endif; ?>>
                             <?php foreach ($categories as $item) { ?>
+<?php echo "hi"; ?>
                                 <?= $categoryCardCB($item, $programId); ?>
                             <?php } ?>
                             <?php if (count($categories) > 3) { ?>
