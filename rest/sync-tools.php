@@ -39,6 +39,7 @@ class JPSyncTools {
 		$body = json_decode($request->get_body());
 
 		$tools = $body->tools;
+		if (!is_array($tools)) return new WP_REST_Response('Invalid tools', 400);
 		foreach ($tools as $tool) {
 			$toolID = 0;
 			if ($prevTool = self::toolByToolURL($tool->url)) {
@@ -70,6 +71,8 @@ class JPSyncTools {
 					$err_group[$tool->title] = "Could not insert toolurl";
 					continue;
 				}
+
+				if(!$tool->url) continue;
 
 				$html = JP\OpenGraph::fetch_content_with_browser_headers($tool->url);
 				if (is_wp_error($html)) {
