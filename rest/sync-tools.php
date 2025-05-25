@@ -41,6 +41,7 @@ class JPSyncTools {
 		$tools = $body->tools;
 		if (!is_array($tools)) return new WP_REST_Response('Invalid tools', 400);
 		foreach ($tools as $tool) {
+			$tool = (object)$tool;
 			$toolID = 0;
 			if ($prevTool = self::toolByToolURL($tool->url)) {
 				$res = wp_update_post([
