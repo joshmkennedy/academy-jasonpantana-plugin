@@ -122,6 +122,7 @@ class JPSyncTools {
 		$categories = json_decode($request->get_body());
 
 		foreach ((array)$categories as $categoryName => $category) {
+			$category = (array)$category;
 
 			error_log(print_r($category, true));
 
@@ -130,8 +131,8 @@ class JPSyncTools {
 			if (term_exists($slug, self::TAXONOMY)) {
 				$term = get_term_by('slug', $slug, self::TAXONOMY);
 				$res = wp_update_term($term->term_id, self::TAXONOMY, [
-					'name' => $category->name,
-					'description' => $category->description,
+					'name' => $category['name'],
+					'description' => $category['description'],
 				]);
 				if (is_wp_error($res)) {
 					$err_group[$categoryName] = $res->get_error_message();
@@ -139,8 +140,8 @@ class JPSyncTools {
 			} else {
 
 				$res = wp_insert_term($slug, self::TAXONOMY, [
-					'name' => $category->name,
-					'description' => $category->description,
+					'name' => $category['name'],
+					'description' => $category['description'],
 				]);
 				if (is_wp_error($res)) {
 					$err_group[$categoryName] = $res->get_error_message();
