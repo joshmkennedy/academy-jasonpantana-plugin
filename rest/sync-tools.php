@@ -32,6 +32,7 @@ class JPSyncTools {
 	const TAXONOMY = 'aim-tool-category';
 	const POST_TYPE = 'aim-tool';
 	const META_KEY = 'aim_tool_url';
+	const META_KEY_ICON = 'aim_tool_icon';
 	public static function toolsHandler(WP_REST_Request $request): WP_REST_Response {
 		$err_group = [];
 
@@ -69,6 +70,19 @@ class JPSyncTools {
 					$err_group[$tool->title] = "Could not insert toolurl";
 					continue;
 				}
+
+				$html = JP\OpenGraph::fetch_content_with_browser_headers($tool->url);
+				if (is_wp_error($html)) {
+					$err_group[$tool->title] = $html->get_error_message();
+					continue;
+				}
+				if (!$html) {
+					$err_group[$tool->title] = "Could not fetch tool content for getting icon";
+					continue;
+				}
+
+				$og = JP\OpenGraph::parse($html);
+				update_post_meta($toolID, self::META_KEY_ICON, $og->icon);
 			}
 
 			$cats = array_map(function ($cat) {

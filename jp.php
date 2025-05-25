@@ -16,6 +16,7 @@ require_once __DIR__ . '/rest/routes.php';
 /*│    [   Course Grid   ]    │*/
 /*╰───────────────────────────╯*/
 
+try{
 // GRID STYLES
 add_action('wp_enqueue_scripts', function () {
     // version is filetime 
@@ -160,3 +161,6 @@ require_once __DIR__ . '/pages/registration-form.php';
 require_once __DIR__ . '/admin/jp-settings.php';
 require_once __DIR__ . '/admin/lesson-admin-columns.php';
 
+}catch(Exception $e){
+    error_log($e->getMessage());
+}

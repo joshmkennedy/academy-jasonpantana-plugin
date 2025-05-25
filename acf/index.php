@@ -25,13 +25,31 @@ add_action('acf/include_fields', function () {
 				'allow_in_bindings' => 0,
 				'placeholder' => '',
 			),
+			array(
+				'key' => 'field_aim-tool-icon',
+				'label' => 'Tool Icon',
+				'name' => 'aim_tool_icon',
+				'aria-label' => '',
+				'type' => 'url',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'allow_in_bindings' => 0,
+				'placeholder' => '',
+			),
 		),
 		'location' => array(
 			array(
 				array(
 					'param' => 'post_type',
 					'operator' => '==',
-					'value' => 'aim-too',
+					'value' => 'aim-tool',
 				),
 			),
 		),

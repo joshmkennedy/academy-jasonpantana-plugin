@@ -1,7 +1,6 @@
 <?php
 add_action('wp_enqueue_scripts', function () {
     // profile and staging
-    // TODO: delete staging
     if (!isurl('/profile') && !isurl('/profile-copy'))
         return;
 
