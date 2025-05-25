@@ -35,7 +35,7 @@ class JPSyncTools {
 	const META_KEY_ICON = 'aim_tool_icon';
 	public static function toolsHandler(WP_REST_Request $request): WP_REST_Response {
 		$err_group = [];
-
+		$img_err_group = [];
 		$body = json_decode($request->get_body());
 
 		$tools = $body->tools;
@@ -120,12 +120,11 @@ class JPSyncTools {
 
 	public static function categoriesHandler(WP_REST_Request $request): WP_REST_Response {
 		$err_group = [];
-		$categories = json_decode($request->get_body());
+		$body = json_decode($request->get_body());
+		$categories = $body->categories;
 
 		foreach ((array)$categories as $categoryName => $category) {
 			$category = (array)$category;
-
-			error_log(print_r($category, true));
 
 			$slug = sanitize_title($categoryName);
 
