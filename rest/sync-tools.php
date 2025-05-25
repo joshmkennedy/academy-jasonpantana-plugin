@@ -72,7 +72,7 @@ class JPSyncTools {
 					continue;
 				}
 
-				if(!$tool->url) continue;
+				if (!$tool->url) continue;
 
 				$html = JP\OpenGraph::fetch_content_with_browser_headers($tool->url);
 				if (is_wp_error($html)) {
@@ -122,6 +122,8 @@ class JPSyncTools {
 		$categories = json_decode($request->get_body());
 
 		foreach ((array)$categories as $categoryName => $category) {
+
+			error_log(print_r($category, true));
 
 			$slug = sanitize_title($categoryName);
 
