@@ -60,7 +60,6 @@ if (!function_exists("isurl")) {
             preg_replace('/\?.*/', '', getCurrentURL())
         );
         $withFront = trailingslashit(site_url($path));
-        error_log(print_r("$actual == $withFront", true));
         return $actual === $withFront;
     }
 }
