@@ -139,7 +139,7 @@ class JPSyncTools {
 				}
 			} else {
 
-				$res = wp_insert_term($slug, self::TAXONOMY, [
+				$res = wp_insert_term([$category['name']], self::TAXONOMY, [
 					'name' => $category['name'],
 					'description' => $category['description'],
 				]);
