@@ -175,3 +175,15 @@ register_meta(
 		'sanitize_callback' => 'wp_strip_all_tags' // The name of the sanitization function
 	)
 );
+
+register_meta(
+	'post',
+	'aim_tool_icon', // Your meta key
+	array(
+		'show_in_rest'      => true, // Required
+		'single'            => true, // Required
+		'type'              => 'string',
+		'sanitize_callback' => 'wp_strip_all_tags' // The name of the sanitization function
+	)
+);
+
