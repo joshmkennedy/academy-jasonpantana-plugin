@@ -29,7 +29,7 @@ class Lolole {
                 title: 'Resources',
                 programId: 1273,
                 categories: $this->resourceCatgories(),
-                slideWidth: 'max(16.6%, 75px)',
+                slideWidth: '166px',
                 categoryCardCB: fn($args) => $this->resourceCategoryCard($args),
                 collectionCardCB: fn($args) => $this->resourceCard($args),
             ); ?>
@@ -60,9 +60,7 @@ class Lolole {
      * Session Card
      * ------------
      * Will default to just showing title with the featured image and date default color can slate
-     * if cat set then will add the cat icon
-     * in the cat color
-     * add the color to the frame
+     * if cat set then will add the cat icon in the cat color add the color to the frame
      * after title will add the date plus the cat
      *
      * @param WP_Post $post
@@ -136,7 +134,7 @@ class Lolole {
         $link = get_term_link($cat);
 
     ?>
-        <div class="aim-card icon-card embla__slide" style="--color: <?= $color; ?>; --slide-size:max(16.6%, 100px);">
+        <div class="aim-card icon-card embla__slide" style="--color: <?= $color; ?>; --slide-size:166px;">
             <div class="icon-card__contents">
                 <a href="<?= $link; ?>" class="icon-card__thumb">
                     <?= $icon; ?>
