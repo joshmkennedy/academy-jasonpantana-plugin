@@ -109,20 +109,15 @@ class JPSyncTools {
                 }
             }
 
-            $cats = array_map(function ($cat) {
+            $cats = array_filter(array_map(function ($cat) {
                 $term = get_term_by('slug', $cat, self::TAXONOMY);
                 if (!$term) {
-                    $term = wp_insert_term($cat, self::TAXONOMY, [
-                        'name' => $cat,
-                        'description' => $cat,
-                    ]);
-                    if (is_wp_error($term)) {
-                        return 0;
-                    }
-                    return $term->term_id;
+                    return false;
                 }
                 return get_term_by('slug', $cat, self::TAXONOMY)?->term_id;
-            }, (array)$tool->categories);
+            }, (array)$tool->categories), function ($cat) {
+                return $cat !== false;
+            });
 
             $res = wp_set_post_terms($toolID, $cats, self::TAXONOMY);
             if (is_wp_error($res)) {
@@ -236,7 +231,7 @@ class JPSyncTools {
         $urlParts = parse_url($url);
         $rootUrl = $urlParts['scheme'] . '://' . $urlParts['host'];
         error_log($rootUrl . ": is the root url of $url");
-        $og = JP\OpenGraph::parse($html,$rootUrl);
+        $og = JP\OpenGraph::parse($html, $rootUrl);
 
         if (!$og) {
             return new WP_Error("Could not parse $url's markup tool content for getting icon");
