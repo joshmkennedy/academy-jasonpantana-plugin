@@ -1,5 +1,4 @@
 <?php
-
 namespace JP;
 
 use WP_Post;
@@ -11,12 +10,16 @@ class LessonCategoryService {
 
     /**
      * @param WP_Post $post
+     * @param bool $parentsOnly
      * @return WP_Term[]|false
      */
-    public function getAllFor(WP_Post $post): array|false {
+    public function getAllFor(WP_Post $post, bool $parentsOnly = true): array|false {
         $cats = get_the_terms($post->ID, 'ld_lesson_category');
         if (!$cats || count($cats) <= 0)
             return false;
+        if ($parentsOnly) {
+            $cats = array_filter($cats, fn($arg) => LessonCategoryService::isRoot($arg));
+        }
         return $cats;
     }
 
@@ -25,11 +28,16 @@ class LessonCategoryService {
      * @return array<WP_Term> 
      */
     public function getAll(?callable $filterFn): array {
-        $terms = get_terms(['taxonomy' => 'ld_lesson_category']);
+        $terms = get_terms(['taxonomy' => 'ld_lesson_category', 'parent'=>0]);
         if ($filterFn) {
             return array_filter($terms, $filterFn);
         }
         return $terms;
+    }
+
+    public function getChildCategories(\WP_Term|false $term): array|false {
+        if (!$term) return false;
+        return get_terms(['taxonomy' => 'ld_lesson_category', 'parent'=>$term->term_id]);
     }
 
     /**
@@ -48,6 +56,13 @@ class LessonCategoryService {
         $sessionTypes = array_filter($cats, fn($arg) => LessonCategoryService::isSessionTypeCategory($arg));
         if (count($sessionTypes) <= 0) return false;
         return $sessionTypes[0];
+    }
+
+    public function sessionSubType(\WP_Term|false $sessionType): \WP_Term|false {
+        if(!$sessionType || !LessonCategoryService::isSessionTypeCategory($sessionType)) return false;
+        $childCategories = $this->getChildCategories($sessionType);
+        if (!$childCategories || count($childCategories) <= 0) return false;
+        return $childCategories[0];
     }
 
     public function resourceType(\WP_Post $post): \WP_Term|false {
@@ -83,5 +98,9 @@ class LessonCategoryService {
         if (!$category)
             return '';
         return $category->name;
+    }
+
+    public static function isRoot(\WP_Term|false $category): bool {
+        return $category && $category->parent === 0;
     }
 }

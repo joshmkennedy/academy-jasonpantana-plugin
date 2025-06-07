@@ -23,7 +23,7 @@ class Lolole {
                 title: 'Sessions',
                 programId: 55,
                 cardCB: fn($args, $programId) => $this->sessionCard($args, $programId),
-						);?>
+            ); ?>
 
             <?php $this->renderLessonCategorySection(
                 title: 'Resources',
@@ -38,7 +38,7 @@ class Lolole {
                 title: 'Essentials',
                 programId: 1294,
                 cardCB: fn($lesson, $programId) => $this->essentialCard($lesson, $programId),
-						); ?>
+            ); ?>
         </div>
     <?php
         return ob_get_clean();
@@ -238,9 +238,9 @@ class Lolole {
                 fn($arg) => !$this->lessonCategoryService->isSessionTypeCategory($arg) && $arg
             );
         }
-				if(!$categories){
-					echo "ooops an error";	
-				}
+        if (!$categories) {
+            echo "ooops an error";
+        }
         if (!$collection) {
             //$collection = \learndash_get_lesson_list($programId, ['num' => 25, 'order' => 'DESC', 'orderby' => 'date']);
             $collection = get_posts([
@@ -257,7 +257,7 @@ class Lolole {
                 ]
             ]);
         }
-				
+
 
         $post = get_post($programId);
     ?>
@@ -294,10 +294,10 @@ class Lolole {
                     <div class="embla__viewport">
                         <div class="embla__container" <?php if ($slideWidth): ?>style="--slide-size:<?= $slideWidth; ?>;" <?php endif; ?>>
                             <?php foreach ($categories as $item) { ?>
-																<?php  $categoryCardCB($item, $programId); ?>
+                                <?php $categoryCardCB($item, $programId); ?>
                             <?php } ?>
                             <?php if (count($categories) > 3) { ?>
-																<?php /*$this->lastSlide($programId);*/ ?>
+                                <?php /*$this->lastSlide($programId);*/ ?>
                             <?php } ?>
                         </div>
                     </div>
@@ -364,6 +364,6 @@ class Lolole {
                 </h4>
             </div>
         </div>
-    <?php
+<?php
     }
 }
