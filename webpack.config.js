@@ -4,6 +4,7 @@ module.exports = {
   ...defaults,
   entry: {
     ...defaults.entry(),
+		global: { import: "./assets/src/global.ts" },
     profile: { import: "./assets/src/profile.ts" },
     ["aim-template"]: { import: "./assets/src/aim-template.ts" },
     ["icon-card-nav"]: { import: "./assets/src/icon-card-nav.ts" },

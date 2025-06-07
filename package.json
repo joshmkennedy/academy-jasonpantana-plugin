@@ -16,6 +16,7 @@
 	},
 	"dependencies": {
 		"embla-carousel": "^8.5.2",
-		"js-cookie": "^3.0.5"
+		"js-cookie": "^3.0.5",
+		"tippy.js": "^6.3.7"
 	}
 }

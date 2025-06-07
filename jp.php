@@ -21,6 +21,8 @@ try {
 	add_action('wp_enqueue_scripts', function () {
 		// version is filetime 
 		wp_enqueue_style('jp-style', getAimAssetUrl('styles.css'), [], filemtime(getAimAssetPath('styles.css')));
+
+        enqueueAsset('global');
 	});
 
 	// ADD EXCERPT USED IN GRID CARDS

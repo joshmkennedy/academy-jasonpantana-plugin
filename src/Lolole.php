@@ -75,7 +75,12 @@ class Lolole {
             $date = \get_field("session_date", $post->ID) ?: $date;
         }
 
-        $sessionType = $this->lessonCategoryService->sessionType($post);
+        $sessionTypeConfig = $this->lessonCategoryService->sessionType($post);
+        error_log("sessionTypeConfig: " . print_r($sessionTypeConfig, true));
+        $sessionType = $sessionTypeConfig['type'];
+
+        $sessionSubType = $sessionTypeConfig['subtype'];
+        $subTypeLabel = trim($sessionSubType ? $this->lessonCategoryService->singlularLabel($sessionSubType) : "");
 
         $icon = $this->lessonCategoryService->icon($sessionType);
 
@@ -100,6 +105,13 @@ class Lolole {
                         <?= $icon; ?>
                     </div>
                 </div>
+                <div class="session-card__top-right">
+                    <div 
+                        class="session-card__session-subtype-label" 
+                            data-tippy-content="<?= $sessionSubType ? $this->lessonCategoryService->description($sessionSubType) : ""; ?>"
+                        ><?= $subTypeLabel; ?></div>
+                </div>
+
             </div>
 
             <div class="session-card__header">
