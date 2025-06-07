@@ -63,12 +63,18 @@
 			display: none;
 		}
 
-		background: hsl(from var(--slate-200) h s l / 50%);
+		font-weight:600;
+		color: var(--brand-c-primary);
+		background: hsl(from var(--blue-700) h s l / 30%);
 		padding: 0.25em 0.75em;
 		border-radius: 1em;
 		align-items: start;
-		font-size: 0.75rem;
-		display: inline-flex;
+		font-size: 12px;
+		line-height:1;
+		display: flex;
+		justify-content: center;
+
+		backdrop-filter: blur(8px);
 	}
 
 	.session-card__header {

@@ -81,6 +81,7 @@ class Lolole {
 
         $sessionSubType = $sessionTypeConfig['subtype'];
         $subTypeLabel = trim($sessionSubType ? $this->lessonCategoryService->singlularLabel($sessionSubType) : "");
+        $sessionSubTypeDescription = $sessionSubType ? $this->lessonCategoryService->description($sessionSubType) : "";
 
         $icon = $this->lessonCategoryService->icon($sessionType);
 
@@ -106,10 +107,11 @@ class Lolole {
                     </div>
                 </div>
                 <div class="session-card__top-right">
-                    <div 
-                        class="session-card__session-subtype-label" 
-                            data-tippy-content="<?= $sessionSubType ? $this->lessonCategoryService->description($sessionSubType) : ""; ?>"
-                        ><?= $subTypeLabel; ?></div>
+                    <div
+                        class="session-card__session-subtype-label"
+                        <?= $sessionSubTypeDescription
+                            ? sprintf("data-tippy-content='%s'", $sessionSubTypeDescription)
+                            : ""; ?>"><?= $subTypeLabel; ?></div>
                 </div>
 
             </div>
