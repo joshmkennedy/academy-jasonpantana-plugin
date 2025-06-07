@@ -1,6 +1,5 @@
 
 import {initCarousel} from "./carousel"
-import "./base.css"
 import "./card/card.css"
 import "./card/icon-card.css"
 import "./icon-card-nav.css"

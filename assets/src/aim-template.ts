@@ -1,4 +1,3 @@
-import "./base.css";
 import "./pagination.css";
 
 import "./aim-template.css";

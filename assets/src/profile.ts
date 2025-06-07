@@ -1,4 +1,3 @@
-import "./base.css";
 
 import "./card/card.css";
 import "./card/icon-card.css";

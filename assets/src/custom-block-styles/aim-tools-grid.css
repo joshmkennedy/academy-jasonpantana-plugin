@@ -1,0 +1,52 @@
+:is(.aim-tools__grid, #important) ul {
+
+  &>li.aim-tool {
+    height: 100%;
+
+  }
+
+  .aim-tool>div {
+    border-radius: 4px !important;
+    height: 100%;
+    --border-color: var(--slate-300);
+    border: 2px solid var(--border-color) !important;
+    align-items:stretch;
+
+    &:has(a:hover) {
+      --border-color: var(--brand-c-primary);
+    }
+
+    /* contents */
+    .wp-block-group {
+      margin-bottom: 0;
+      flex:1;
+      width:100%;
+   }
+
+    figure {
+      min-width: 35px;
+      width: 35px;
+      height: 35px;
+      aspect-ratio: 1;
+    }
+
+    .wp-block-group__inner-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      height:100%;
+      padding-block-end: 0.2rem;
+    }
+
+    h3 {
+      padding-block-start: 0.10rem;
+      min-height: calc(50px - 0.5rem);
+      margin:0;
+      font-size: 16px;
+      flex:1;
+      height: 100%;
+      color: var(--brand-c-secondary);
+    }
+  }
+
+}
