@@ -92,7 +92,10 @@ class LessonCategoryService {
     public function icon(\WP_Term|false $category): string {
         if (!$category || !function_exists('get_taxonomy_image'))
             return '';
-        return \get_taxonomy_image($category->term_id, true);
+        $icon = \get_taxonomy_image($category->term_id, true);
+        $fallbackText = "Please Upload Image First!";
+        if (!$icon || $icon == $fallbackText) return '<span style="font-size:.5em!important">AIM</span>';
+        return $icon;
     }
 
     public function color(\WP_Term|false $category): string {

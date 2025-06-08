@@ -24,7 +24,7 @@ $categoryNavigation->enqueueAssets();
 
             <div class="title">
                 <span class="mark">
-                    <?= \get_taxonomy_image($queried->term_id, true); ?>
+                    <?= $catService->icon(get_term($queried->term_id)); ?>
                 </span>
                 <span class="title-with-mark">
                     <h1><?php the_archive_title(); ?></h1>
