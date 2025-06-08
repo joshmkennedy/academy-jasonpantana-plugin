@@ -4,7 +4,7 @@
         .corner-graphic {
             z-index: 0;
             position: absolute;
-            top: 60%;
+            bottom: -40%;
             right: -1%;
         }
 
@@ -16,14 +16,13 @@
         @media(max-width:767px) {
             .corner-graphic {
                 max-width: 200px;
-                /* top: 20%; */
+                bottom: 0%;
             }
         }
 
         @media(max-width:600px) {
             .corner-graphic {
                 max-width: 200px;
-                /* top: 35%; */
             }
         }
 
