@@ -91,3 +91,14 @@
 	border-radius: 16px;
 	padding: 32px 20px 38px;
 }
+
+/* CONTENT WIDTH's OVERRIDES  */
+/* NOTE: Specific templates will have a wider content widths */
+.single-sfwd-courses .aim-template-content__page {
+	max-width: var(--global-content-width);
+}
+
+.content-width{
+	max-width: var(--global-content-narrow-width);
+	margin: 0 auto;
+}

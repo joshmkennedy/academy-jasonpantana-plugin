@@ -1,7 +1,8 @@
 .aim-template-header__content {
-	.mark :is(img,svg) {
+	.mark :is(img, svg) {
 		width: 0.95em;
 	}
+
 	.title {
 		display: flex;
 		flex-direction: column;
@@ -13,7 +14,8 @@
 			gap: 0.5em;
 			align-items: center;
 		}
-		.mark{
+
+		.mark {
 			display: flex;
 			align-items: center;
 			fill: white;
@@ -30,4 +32,8 @@
 			color: var(--slate-200);
 		}
 	}
+}
+
+.aim-course-single .mark svg {
+	width: 1.3em;
 }
