@@ -4,7 +4,7 @@
         .corner-graphic {
             z-index: 0;
             position: absolute;
-            bottom: -40%;
+            bottom: -50%;
             right: -1%;
         }
 
