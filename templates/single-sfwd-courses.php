@@ -20,9 +20,6 @@ $title = str_replace("AiM", "",  get_the_title());
                     <h1><?= $title; ?></h1>
                 </span>
             </div>
-            <div class="" style="text-align:center; max-width:var(--global-content-narrow-width);">
-                <? the_excerpt(); ?>
-            </div>
         </div>
         <?php include $tutil->useTemplate('utils/circutry-graphic'); ?>
     </div>
