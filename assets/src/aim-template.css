@@ -64,7 +64,7 @@
 	}
 }
 
-.catnavigation-label{
+.catnavigation-label {
 	text-align: center;
 	text-transform: uppercase;
 	font-size: 16px;
@@ -94,7 +94,11 @@
 
 /* CONTENT WIDTH's OVERRIDES  */
 /* NOTE: Specific templates will have a wider content widths */
-.aim-course-single .aim-template-content__page {
+:is(.aim-course-single, .lesson-cat-archive) .aim-template-content__page {
 	max-width: var(--global-content-width);
 }
 
+.content-narrow-width {
+	max-width: var(--global-content-narrow-width);
+	margin: 0 auto;
+}
