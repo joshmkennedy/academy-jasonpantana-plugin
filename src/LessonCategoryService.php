@@ -18,9 +18,12 @@ class LessonCategoryService {
         $cats = get_the_terms($post->ID, 'ld_lesson_category');
         if (!$cats || count($cats) <= 0)
             return false;
-
-        if ($parentsOnly && count($cats) > 0) {
+        if ($parentsOnly && is_array($cats) && count($cats) > 0) {
             $cats = array_values(array_filter($cats, fn($arg) => $arg->parent === 0));
+        }
+
+        if (!$cats || count($cats) <= 0) {
+            return false;
         }
 
         return $cats;

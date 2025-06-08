@@ -27,6 +27,20 @@ class JPTemplate {
         return false;
     }
 
+    /**
+     * Checks if the current page is on a single post for specific post type
+     * TODO: extend for doing taxonomies and terms of certain taxonomy
+     *
+     * @param array<string, string> $config 
+     * @return bool 
+     */
+    public function onSingle(array $config): bool {
+        if (isset($config['post_type'])) {
+            return \is_singular($config['post_type']);
+        }
+        return false;
+    }
+
     public function useTemplate(string $slug): string|null {
         $templatePath = $this->templateDirPath . '/' . $slug . '.php';
         if (file_exists($templatePath)) {

@@ -43,7 +43,8 @@ try {
 
 
 	add_action('learndash-lesson-row-title-before', function ($lesson_id) {
-		$cats = get_the_terms($lesson_id, 'ld_lesson_category');
+        $LessonCategoryService = new \JP\LessonCategoryService;
+		$cats = $LessonCategoryService->getAllFor(get_post($lesson_id));
 		if ($cats && is_array($cats) && count($cats)) {
 ?>
 			<div class="ld-item-category">
@@ -158,6 +159,7 @@ try {
 	// PUBLIC TEMPLATES AND PAGES
 	require_once __DIR__ . '/pages/profile.php';
 	require_once __DIR__ . '/pages/lesson-category.php';
+	require_once __DIR__ . '/pages/lesson-single.php';
 	require_once __DIR__ . '/pages/registration-form.php';
 	//ADMIN
 	require_once __DIR__ . '/admin/jp-settings.php';

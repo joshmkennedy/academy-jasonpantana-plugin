@@ -1,3 +1,4 @@
+/* function */
 .sfwd-courses-template-default .content-container {
 	max-width: var(--global-content-width) !important;
 
@@ -69,9 +70,11 @@
 			height: 1.5rem;
 			padding: 0.25rem;
 			background: #cbd5e077;
+
 			svg {
-				height:auto;
+				height: auto;
 				fill: currentColor;
+
 				path {
 					fill: currentColor;
 				}
@@ -147,4 +150,136 @@
 /*helpers*/
 .grotesk {
 	font-family: "Space Grotesk", sans-serif;
+}
+
+.ld-course-list-items .ld_course_grid .thumbnail.course a.btn-primary {
+	background: var(--brand-c-secondary);
+
+	&:hover {
+		background: var(--brand-c-secondary-shade-1);
+	}
+}
+
+:is(#override, .ribbon) {
+	background: var(--brand-c-secondary);
+
+	&:before {
+		border-top-color: var(--brand-c-secondary-shade-1);
+		border-right-color: var(--brand-c-secondary-shade-1);
+	}
+}
+
+:is(#override, .ribbon.enrolled) {
+	background: var(--brand-c-secondary);
+
+	&:before {
+		border-top-color: var(--brand-c-secondary-shade-1);
+		border-right-color: var(--brand-c-secondary-shade-1);
+	}
+}
+
+@media(max-width:767px) {
+	:is(#override, .ld-course-list-items.row) {
+		justify-content: center;
+	}
+}
+
+:is(#override, .ld_course_grid)>article {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+:is(#override, .ld_course_grid) .caption {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+:is(#override, .single-sfwd-courses, .aim-template) .ld-course-status {
+	display: none;
+}
+
+:is(#override, .entry.single-entry) {
+	box-shadow: none;
+}
+
+/* Removes the Mark as Viewed Button */
+:is(#override, .type-sfwd-lessons, .aim-template) .sfwd-mark-complete {
+	display: none;
+}
+
+/* rearrange the buttons */
+:is(#override, .type-sfwd-lessons, .aim-template) .ld-content-actions {
+
+	@media(max-width:638px) {
+		flex-direction: row;
+		flex-wrap: wrap;
+
+		.ld-content-action {
+			order: unset;
+			padding: 10px;
+		}
+
+		.ld-content-action:has(.sfwd-mark-complete) {
+			order: 2;
+			/*ensures last*/
+			min-width: 100%;
+			width: 100%;
+		}
+
+		.ld-empty {
+			display: none;
+		}
+	}
+
+}
+
+:is(#override, .type-sfwd-lessons, .aim-template) .ld-status-progress {
+	display: none;
+}
+
+:is(#override, .type-sfwd-lessons, .aim-template) .learndash-shortcode-wrap {
+	margin-bottom: 0;
+}
+
+:is(#override, .type-sfwd-lessons, .aim-template) .learndash-shortcode-wrap+.ld-tabs {
+	margin-top: 0;
+}
+
+:is(#override, .type-sfwd-lessons, .aim-template) .learndash-shortcode-wrap .ld-breadcrumbs {
+	padding-inline: 0;
+}
+
+p:empty {
+	display: none;
+}
+
+/* LOGIN PAGES */
+.elementor-element:has(> .elementor-widget-container .elementor-shortcode > .uo_loginForm) {
+	min-width: 100%;
+	padding: 0 10%;
+}
+
+/* Navigation & Main Header*/
+@media(max-width:767px) {
+	.kadence-sticky-header .brand.has-logo-image img {
+		padding-block: 6px;
+	}
+}
+
+/* BUTTONS */
+.button.button-style-gradient--primary {
+	background-color: var(--brand-c-primary);
+	text-shadow: 0px 3px 4px rgba(0, 0, 0, 0.14);
+	color: white;
+	background-image: radial-gradient(at top left, var(--brand-c-primary) 0%, var(--brand-c-transition-green) 100%);
+	transition-duration: 0.2s;
+	padding: 24px 47px 24px 47px;
+}
+
+.button.button-style-gradient--primary:hover {
+	background-color: transparent;
+	background-image: radial-gradient(at top left, var(--brand-c-primary) 0%, var(--brand-c-transition-green) 83%);
 }

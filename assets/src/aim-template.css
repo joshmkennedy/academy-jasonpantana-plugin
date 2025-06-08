@@ -85,7 +85,7 @@
 
 .aim-template-content__page {
 	position: relative;
-	max-width: var(--content-width);
+	max-width: var(--global-content-narrow-width);
 	margin: -62px auto 0;
 	background: white;
 	border-radius: 16px;
