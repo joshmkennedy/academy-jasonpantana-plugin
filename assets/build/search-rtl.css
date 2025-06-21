@@ -1,0 +1,90 @@
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./assets/src/searchform.css ***!
+  \*******************************************************************************************************************************************************************************/
+.aim-search-template {
+  .search-form {
+    max-width: var(--global-content-narrow-width);
+    margin: 0 auto;
+    --background-opacity: 0.2;
+    --background-base: var(--blue-800);
+    --text-base: white;
+    --text-opacity: .9;
+    --border-opacity: .3;
+
+    &:has(input[type="search"]:focus) {
+      --text-base: var(--brand-c-primary);
+      --text-opacity: 1;
+      --border-opacity: 1;
+      --background-opacity: 0.6;
+    }
+
+    input[type="search"] {
+      background: hsl(from var(--background-base) h s l / var(--background-opacity));
+      color: hsl(from var(--text-base) h s l / var(--text-opacity));
+      -webkit-backdrop-filter: blur(10px);
+              backdrop-filter: blur(10px);
+      box-shadow: 0 0 0 4px hsl(from var(--background-base) h s l / var(--background-opacity));
+      border-width: 2px;
+
+      border-color: currentColor;
+      border-color: hsl(from currentColor h s l / var(--border-opacity));
+
+      &:focus {
+        background-image: none;
+      }
+
+      &::-moz-placeholder {
+        --text-opacity: 0.3;
+        color: hsl(from var(--text-base) h s l / var(--text-opacity));
+      }
+
+      &::placeholder {
+        --text-opacity: 0.3;
+        color: hsl(from var(--text-base) h s l / var(--text-opacity));
+      }
+    }
+
+    input[type=submit]+div {
+      border-radius: 4px;
+    }
+
+    input[type=submit]:hover+div {
+      background: hsl(from var(--brand-c-primary) h s l / .5);
+      --text-base: var(--brand-c-secondary);
+    }
+
+    :is(#override, svg) {
+      fill: var(--text-base);
+    }
+
+
+    /* clears the ‘X’ from Internet Explorer */
+    input[type=search]::-ms-clear {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+
+    input[type=search]::-ms-reveal {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+
+    /* clears the ‘X’ from Chrome */
+    input[type="search"]::-webkit-search-decoration,
+    input[type="search"]::-webkit-search-cancel-button,
+    input[type="search"]::-webkit-search-results-button,
+    input[type="search"]::-webkit-search-results-decoration {
+      display: none;
+    }
+  }
+}
+
+/*!***************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./assets/src/search.css ***!
+  \***************************************************************************************************************************************************************************/
+.aim-search-template {
+
+}
+

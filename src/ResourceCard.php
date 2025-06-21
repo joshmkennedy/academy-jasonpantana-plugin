@@ -4,7 +4,7 @@ namespace JP;
 
 use WP_Post;
 
-class ResourceCard {
+class ResourceCard implements CardInterface {
     private LessonCategoryService $lessonCategoryService;
     public function __construct() {
         $this->lessonCategoryService = new LessonCategoryService();

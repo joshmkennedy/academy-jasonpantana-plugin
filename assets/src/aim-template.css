@@ -94,7 +94,7 @@
 
 /* CONTENT WIDTH's OVERRIDES  */
 /* NOTE: Specific templates will have a wider content widths */
-:is(.aim-course-single, .lesson-cat-archive) .aim-template-content__page {
+:is(.aim-course-single, .lesson-cat-archive, .aim-wide-template) .aim-template-content__page {
 	max-width: var(--global-content-width);
 }
 
