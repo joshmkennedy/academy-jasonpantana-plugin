@@ -45,8 +45,7 @@ class Lolole {
     }
 
     private function essentialCard(\WP_Post $post, int $programId): void {
-        $card = new \JP\Card\VideoCourseCard;
-        $card->render($post);
+        (new \JP\Card\VideoCourseCard($post))->render();
     }
 
     /**
@@ -60,8 +59,7 @@ class Lolole {
      * @return void
      */
     private function sessionCard(\WP_Post $post, int $programId): void {
-        $card = new \JP\Card\SessionCard;
-        $card->render($post);
+        (new \JP\Card\SessionCard($post))->render();
     }
 
     private function resourceCategoryCard(\WP_Term $cat): void {
@@ -281,9 +279,9 @@ class Lolole {
     }
 
     private function resourceCard(\WP_Post $post): void {
-        $resourceCard = new \JP\Card\ResourceCard;
-        $resourceCard->render($post);
+        (new \JP\Card\ResourceCard($post))->render();
     }
+
     public function lastSlide(int $programId): void {
         $link = get_the_permalink($programId);
 

@@ -1,7 +1,6 @@
 <?php
 get_header();
 $tutil = new \JP\JPTemplate;
-$card = new \JP\Card\ResourceCard;
 $queried = get_queried_object();
 $catService = new \JP\LessonCategoryService;
 
@@ -43,7 +42,7 @@ $categoryNavigation->enqueueAssets();
             <?php if (have_posts()): ?>
                 <div class="lesson-grid">
                     <?php while (have_posts()): the_post(); ?>
-                        <?php $card->render(get_post()); ?>
+                        <?php (new \JP\Card\ResourceCard(get_post()))->render(); ?>
                     <?php endwhile; ?>
                 </div>
             <?php endif; ?>

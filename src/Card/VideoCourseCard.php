@@ -2,26 +2,22 @@
 
 namespace JP\Card;
 
-use JP\LessonCategoryService;
-use JP\LessonService;
+use JP\Lesson\BaseLesson;
 
 /** @package JP\Card */
 class VideoCourseCard implements CardInterface {
-    private LessonCategoryService $lessonCategoryService;
-    private LessonService $lessonService;
-    public function __construct() {
-        $this->lessonCategoryService = new LessonCategoryService();
-        $this->lessonService = new LessonService();
+    private BaseLesson $lesson;
+    public function __construct(private \WP_Post $post) {
+        $this->lesson = new BaseLesson($this->post);
     }
 
-    public function render(\WP_Post $post): void {
-        $programId = learndash_get_course_id($post->ID);
-        $thumbUrl = $this->lessonService->getThumbUrl($post, $programId, 'full');
+    public function render(): void {
+        $thumbUrl = $this->lesson->image();
     ?>
-        <a href="<?= get_the_permalink($post->ID); ?>" class="embla__slide aim-card essentials-card " style="--bg-image: url('<?= $thumbUrl; ?>');">
-            <h4 class="card-title" title="<?= get_the_title($post->ID); ?>">
+        <a href="<?= $this->lesson->link(); ?>" class="embla__slide aim-card essentials-card " style="--bg-image: url('<?= $thumbUrl; ?>');">
+            <h4 class="card-title" title="<?= $this->lesson->title(); ?>">
                 <span class="icon"><?= dumpSvg('play-circle'); ?></span>
-                <span><?= get_the_title($post->ID); ?></span>
+                <span><?= $this->lesson->title(); ?></span>
             </h4>
         </a>
     <?php

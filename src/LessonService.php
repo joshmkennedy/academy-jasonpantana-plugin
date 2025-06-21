@@ -1,8 +1,11 @@
 <?php
+
 namespace JP;
 
 class LessonService {
+    private LessonCategoryService $lessonCategoryService;
     public function __construct() {
+        $this->lessonCategoryService = new LessonCategoryService;
     }
 
     public function getThumbUrl(\WP_Post|null $post, ?int $parentId = null, string $size = 'full'): string {

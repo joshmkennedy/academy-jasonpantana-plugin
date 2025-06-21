@@ -2,19 +2,17 @@
 
 namespace JP\Card;
 
-use JP\LessonCategoryService;
 use WP_Post;
+use JP\Lesson\BaseLesson;
 
 class ResourceCard implements CardInterface {
-    private LessonCategoryService $lessonCategoryService;
-    public function __construct() {
-        $this->lessonCategoryService = new LessonCategoryService();
+    private BaseLesson $lesson;
+    public function __construct(private \WP_Post $post) {
+        $this->lesson = new BaseLesson($post);
     }
 
-    public function render(WP_Post $post): void {
-
-        $cats = $this->lessonCategoryService->getAllFor($post);
-        $excerpt = $post->post_excerpt;
+    public function render(): void {
+        $cats = $this->lesson->categories();
 ?>
         <div class="aim-card resource-card ">
             <div class="card-contents">
@@ -25,9 +23,9 @@ class ResourceCard implements CardInterface {
                     ?>
                             <div class="meta-item">
                                 <span class="meta-item-icon">
-                                    <?= $this->lessonCategoryService->icon($cat); ?>
+                                    <?= $cat['icon']; ?>
                                 </span>
-                                <span class="meta-item-label"><?= $this->lessonCategoryService->pluralLabel($cat); ?></span>
+                                <span class="meta-item-label"><?= $cat['plural']; ?></span>
                             </div>
                     <?php
                         }
@@ -35,14 +33,14 @@ class ResourceCard implements CardInterface {
                     ?>
                 </div>
                 <h4 class="card-title">
-                    <a href="<?= get_the_permalink($post->ID); ?>">
-                        <?= get_the_title($post->ID); ?>
+                    <a href="<?= $this->lesson->link(); ?>">
+                        <?= $this->lesson->title(); ?>
                     </a>
                 </h4>
-                <p class="excerpt"><?= $excerpt; ?></p>
+                <p class="excerpt"><?= $this->lesson->excerpt(); ?></p>
 
-                <a href="<?= get_the_permalink($post->ID); ?>" class="link">
-                    View <?= ($cats && $cats[0]) ? $this->lessonCategoryService->singlularLabel($cats[0]) : 'Resource'; ?>
+                <a href="<?= $this->lesson->link(); ?>" class="link">
+                    View <?= ($cats && $cats[0]) ? $cats[0]['singular'] : 'Resource'; ?>
                 </a>
             </div>
         </div>

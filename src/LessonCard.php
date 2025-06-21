@@ -10,10 +10,10 @@ class LessonCard {
     public CardInterface $cardRenderer;
     public function __construct(public \WP_Post $post) {
         $this->cardRenderer = match (true) {
-            $this->isResource($post) => $this->cardRenderer = new ResourceCard,
-            $this->isSession($post) => $this->cardRenderer = new SessionCard,
-            $this->isEssential($post) => $this->cardRenderer = new VideoCourseCard,
-            default => $this->cardRenderer = new ResourceCard(),
+            $this->isResource($post) => $this->cardRenderer = new ResourceCard($post),
+            $this->isSession($post) => $this->cardRenderer = new SessionCard($post),
+            $this->isEssential($post) => $this->cardRenderer = new VideoCourseCard($post),
+            default => $this->cardRenderer = new ResourceCard($post),
         };
     }
 
@@ -23,7 +23,7 @@ class LessonCard {
             "isSession" => $this->isSession($this->post),
             "isResource" => $this->isResource($this->post),
         ], true));
-        $this->cardRenderer->render($this->post);
+        $this->cardRenderer->render();
     }
 
     public function isResource(\WP_Post $post): bool {
