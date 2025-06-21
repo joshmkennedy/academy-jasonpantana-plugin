@@ -29,7 +29,7 @@ $queried = get_queried_object();
             <?php if (have_posts()): ?>
                 <div class="lesson-grid">
                     <?php while (have_posts()): the_post(); ?>
-                        <?php $card = new \JP\LessonCard(get_post());
+                        <?php $card = new \JP\SearchCard(get_post());
                         $card->render(); ?>
                     <?php endwhile; ?>
                 </div>

@@ -1,4 +1,43 @@
 @import "./searchform.css";
+
 .aim-search-template {
+	div:has(> .searchcard-header__wrapper) {
+		/* height: 100%; */
+		display: flex;
+		flex-direction: column;
+
+		.aim-card {
+			flex: 1;
+		}
+
+		.search-essential-card {
+			.card-title {
+				margin-bottom: .5rem;
+			}
+		}
+	}
+
+	.searchcard-header__wrapper {
+		margin-block-end: -6px;
+		border-radius: 4px 4px 0 0;
+		overflow: hidden;
+
+		a {
+			display: block;
+			font-size: 14px;
+			padding-inline: 12px;
+			background: var(--slate-200);
+			padding-block: 8px;
+			padding-block-end: 8px;
+			color: var(--slate-800);
+			text-decoration: none;
+			font-weight: 700;
+
+			&:hover {
+				background: var(--slate-300);
+				color: var(--blue-700);
+			}
+		}
+	}
 
 }

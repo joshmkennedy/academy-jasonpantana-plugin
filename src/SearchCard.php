@@ -2,18 +2,18 @@
 
 namespace JP;
 use JP\Card\CardInterface;
-use JP\Card\ResourceCard;
-use JP\Card\SessionCard;
-use JP\Card\VideoCourseCard;
+use JP\Card\SearchResourcCard;
+use JP\Card\SearchSessionCard;
+use JP\Card\SearchVideoCourseCard;
 
-class LessonCard {
+class SearchCard {
     public CardInterface $cardRenderer;
     public function __construct(public \WP_Post $post) {
         $this->cardRenderer = match (true) {
-            $this->isResource($post) => $this->cardRenderer = new ResourceCard($post),
-            $this->isSession($post) => $this->cardRenderer = new SessionCard($post),
-            $this->isEssential($post) => $this->cardRenderer = new VideoCourseCard($post),
-            default => $this->cardRenderer = new ResourceCard($post),
+            $this->isResource($post) => $this->cardRenderer = new SearchResourcCard($post),
+            $this->isSession($post) => $this->cardRenderer = new SearchSessionCard($post),
+            $this->isEssential($post) => $this->cardRenderer = new SearchVideoCourseCard($post),
+            default => $this->cardRenderer = new SearchResourcCard($post),
         };
     }
 
