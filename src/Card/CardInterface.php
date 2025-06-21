@@ -1,5 +1,5 @@
 <?php
-namespace JP;
+namespace JP\Card;
 
 interface CardInterface {
     public function __construct();

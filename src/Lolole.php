@@ -45,15 +45,8 @@ class Lolole {
     }
 
     private function essentialCard(\WP_Post $post, int $programId): void {
-        $thumbUrl = $this->lessonService->getThumbUrl($post, $programId, 'full');
-    ?>
-        <a href="<?= get_the_permalink($post->ID); ?>" class="embla__slide aim-card essentials-card " style="--bg-image: url('<?= $thumbUrl; ?>');">
-            <h4 class="card-title" title="<?= get_the_title($post->ID); ?>">
-                <span class="icon"><?= dumpSvg('play-circle'); ?></span>
-                <span><?= get_the_title($post->ID); ?></span>
-            </h4>
-        </a>
-    <?php
+        $card = new \JP\Card\VideoCourseCard;
+        $card->render($post);
     }
 
     /**
@@ -67,79 +60,8 @@ class Lolole {
      * @return void
      */
     private function sessionCard(\WP_Post $post, int $programId): void {
-        $title = get_the_title($post->ID);
-        $link = get_the_permalink($post->ID);
-        $comingSoon = get_field('coming_soon', $post->ID);
-        $date = get_the_date('F', $post->ID);
-        if (function_exists('get_field')) {
-            $date = \get_field("session_date", $post->ID) ?: $date;
-        }
-
-        $sessionTypeConfig = $this->lessonCategoryService->sessionType($post);
-        error_log("sessionTypeConfig: " . print_r($sessionTypeConfig, true));
-        $sessionType = $sessionTypeConfig['type'];
-
-        $sessionSubType = $sessionTypeConfig['subtype'];
-        $subTypeLabel = trim($sessionSubType ? $this->lessonCategoryService->singlularLabel($sessionSubType) : "");
-        $sessionSubTypeDescription = $sessionSubType ? $this->lessonCategoryService->description($sessionSubType) : "";
-
-        $icon = $this->lessonCategoryService->icon($sessionType);
-
-        $color = $this->lessonCategoryService->color($sessionType);
-
-        if ($comingSoon && $sessionType) {
-            // hard coded for now
-            $thumbUrl = getAimAssetUrl($sessionType->slug . '-coming-soon.webp');
-        } else {
-            $thumbUrl = $this->lessonService->getThumbUrl($post, $programId, 'full');
-        }
-    ?>
-
-        <div class="embla__slide aim-card session-card " style="--type-color: <?= $color; ?>;">
-            <div class="session-card__image">
-                <a href="<?= $link; ?>" class="session-card__thumb">
-                    <img src="<?= $thumbUrl; ?>" alt="<?= $title; ?>" />
-                </a>
-
-                <div class="session-card__top-left">
-                    <div class="session-card__session-type-icon">
-                        <?= $icon; ?>
-                    </div>
-                </div>
-                <div class="session-card__top-right">
-                    <div
-                        class="session-card__session-subtype-label"
-                        <?= $sessionSubTypeDescription
-                            ? sprintf("data-tippy-content='%s'", $sessionSubTypeDescription)
-                            : ""; ?>"><?= $subTypeLabel; ?></div>
-                </div>
-
-            </div>
-
-            <div class="session-card__header">
-
-                <?php if (has_block('core/embed', $post)): ?>
-                    <div class="sessionAction">
-                        <a href="<?= $link; ?>" class="sessionAction__button sessionAction__button--play">
-                            <?= dumpSvg('play-circle'); ?>
-                        </a>
-                    </div>
-                <?php endif; ?>
-                <?php if ($comingSoon): ?>
-                    <div class="session-card__session-coming-soon">
-                        coming soon
-                    </div>
-                <?php endif; ?>
-                <h4 class="card-title">
-                    <a href="<?= $link; ?>"><?= get_the_title($post->ID); ?></a>
-                </h4>
-                <p class="session-card__type">
-                    <span class="session-card__date"><?= $date; ?></span>
-                    <span class="session-card__type-label"><?= $sessionType ? $this->lessonCategoryService->singlularLabel($sessionType) : ''; ?></span>
-                </p>
-            </div>
-        </div>
-    <?php
+        $card = new \JP\Card\SessionCard;
+        $card->render($post);
     }
 
     private function resourceCategoryCard(\WP_Term $cat): void {
@@ -359,7 +281,7 @@ class Lolole {
     }
 
     private function resourceCard(\WP_Post $post): void {
-        $resourceCard = new \JP\ResourceCard;
+        $resourceCard = new \JP\Card\ResourceCard;
         $resourceCard->render($post);
     }
     public function lastSlide(int $programId): void {

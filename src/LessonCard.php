@@ -1,8 +1,12 @@
 <?php
 
 namespace JP;
+use JP\Card\CardInterface;
+use JP\Card\ResourceCard;
+use JP\Card\SessionCard;
+use JP\Card\VideoCourseCard;
 
-class SearchCard {
+class LessonCard {
     public CardInterface $cardRenderer;
     public function __construct(public \WP_Post $post) {
         $this->cardRenderer = match (true) {
@@ -35,7 +39,7 @@ class SearchCard {
         if ($post->post_type === "sfwd-lessons") {
             $programId = learndash_get_course_id($post->ID);
             $program = get_post($programId);
-            if ($program && $program->post_name === "resources") {
+            if ($program && $program->post_name === "sessions") {
                 return true;
             }
         }

@@ -78,16 +78,6 @@
 		position: relative;
 		overflow: hidden;
 
-		&::after {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: -100%;
-			width: 100%;
-			height: 100%;
-			background: linear-gradient(to right, transparent 0%, hsl(from var(--slate-100) h s l / 30%) 50%, transparent 100%);
-			animation: shimmer 5.5s infinite;
-		}
 	}
 
 	.session-card__header {
@@ -148,8 +138,28 @@
 	}
 }
 
+.shimmer::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to right, transparent 0%, hsl(from var(--slate-100) h s l / 30%) 50%, transparent 100%);
+	animation: shimmer 5.5s infinite;
+}
+
+
 @keyframes shimmer {
-	0% { left: -100%; }
-	20% { left: 100%; }
-	100% { left: 100%; }
+	0% {
+		left: -100%;
+	}
+
+	20% {
+		left: 100%;
+	}
+
+	100% {
+		left: 100%;
+	}
 }

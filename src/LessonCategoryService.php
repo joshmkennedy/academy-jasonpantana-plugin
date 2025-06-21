@@ -65,7 +65,6 @@ class LessonCategoryService {
 
         $sessionTypes = array_filter($cats, fn($arg) => LessonCategoryService::isSessionTypeCategory($arg));
         if (count($sessionTypes) <= 0) return false;
-        error_log("sessionTypes: " . print_r($sessionTypes, true));
         $parent = array_find($sessionTypes, fn($arg) => $arg->parent === 0);
         if (!$parent) {
             error_log("no parent when finding the session type. Parent categories are required:\n" . print_r($sessionTypes, true));

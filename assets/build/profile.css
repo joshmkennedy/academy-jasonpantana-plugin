@@ -2,91 +2,95 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./assets/src/card/card.css ***!
   \******************************************************************************************************************************************************************************/
 .aim-card {
-	display: block;
-	flex: 1;
-	flex-shrink: 0;
-	flex-basis: 320px;
-	border: 2px solid var(--slate-300);
-	border-radius: 4px;
-	padding: 12px;
-	text-decoration: none;
-	background: hsl(from var(--slate-100) h 10% 98%);
-	color: inherit;
+  svg {
+    width: 1em;
+  }
 
-	&:hover {
-		color: inherit;
-	}
+  display: block;
+  flex: 1;
+  flex-shrink: 0;
+  flex-basis: 320px;
+  border: 2px solid var(--slate-300);
+  border-radius: 4px;
+  padding: 12px;
+  text-decoration: none;
+  background: hsl(from var(--slate-100) h 10% 98%);
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+  }
 }
 
 .aim-card p {
-	font-size: 0.8rem;
-	margin-block: 0;
-	margin-bottom: 0.25rem;
+  font-size: 0.8rem;
+  margin-block: 0;
+  margin-bottom: 0.25rem;
 }
 
 .aim-card .card-contents {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .aim-card .card-title {
-	display: flex;
-	gap: 0.25em;
-	color: var(--blue-800);
-	font-size: 16px;
-	text-decoration: none !important;
+  display: flex;
+  gap: 0.25em;
+  color: var(--blue-800);
+  font-size: 16px;
+  text-decoration: none !important;
 }
 
 .aim-card .card-title {
-	margin-top: 0;
+  margin-top: 0;
 }
 
 .aim-card:hover .card-title {
-	color: var(--blue-700);
+  color: var(--blue-700);
 }
 
 .aim-card {
-	.meta {
-		display: flex;
-		gap: 0.25rem;
-	}
+  .meta {
+    display: flex;
+    gap: 0.25rem;
+  }
 
-	.meta-item {
-		display: flex;
-		font-weight: 500;
-		align-items: center;
-		gap: 0.5rem;
-		font-size: 0.75rem;
-		text-transform: uppercase;
-		background: var(--slate-200);
-		padding: 0.125rem 0.5rem 0.125rem 0.125rem;
-		border-radius: 0.25rem;
+  .meta-item {
+    display: flex;
+    font-weight: 500;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    background: var(--slate-200);
+    padding: 0.125rem 0.5rem 0.125rem 0.125rem;
+    border-radius: 0.25rem;
 
-		color: var(--blue-700);
-	}
+    color: var(--blue-700);
+  }
 
-	.meta-item-icon {
-		fill: var(--blue-300);
-		border-radius: 0.25rem;
-		display: inline-flex;
-		width: 1.5rem;
-		height: 1.5rem;
-		padding: 0.25rem;
-		background: var(--slate-300);
+  .meta-item-icon {
+    fill: var(--blue-300);
+    border-radius: 0.25rem;
+    display: inline-flex;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.25rem;
+    background: var(--slate-300);
 
-		svg {
-			width: 100%;
-			height:auto;
-		}
-	}
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
 
-	.meta-item-label {
-		font-size: 12px;
-		line-height: 0;
-		white-space: nowrap;
-	}
+  .meta-item-label {
+    font-size: 12px;
+    line-height: 0;
+    white-space: nowrap;
+  }
 }
 
 /*!***********************************************************************************************************************************************************************************!*\
@@ -252,16 +256,6 @@
 		position: relative;
 		overflow: hidden;
 
-		&::after {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: -100%;
-			width: 100%;
-			height: 100%;
-			background: linear-gradient(to right, transparent 0%, hsl(from var(--slate-100) h s l / 30%) 50%, transparent 100%);
-			animation: shimmer 5.5s infinite;
-		}
 	}
 
 	.session-card__header {
@@ -322,10 +316,30 @@
 	}
 }
 
+.shimmer::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to right, transparent 0%, hsl(from var(--slate-100) h s l / 30%) 50%, transparent 100%);
+	animation: shimmer 5.5s infinite;
+}
+
+
 @keyframes shimmer {
-	0% { left: -100%; }
-	20% { left: 100%; }
-	100% { left: 100%; }
+	0% {
+		left: -100%;
+	}
+
+	20% {
+		left: 100%;
+	}
+
+	100% {
+		left: 100%;
+	}
 }
 
 /*!*****************************************************************************************************************************************************************************************!*\
@@ -825,7 +839,7 @@
   /* margin-left: calc(var(--slide-spacing) * -1); */
 }
 
-.embla__slide {
+.embla__container .embla__slide {
   transform: translate3d(0, 0, 0);
   flex: 0 0 var(--slide-size);
   min-width: 0;

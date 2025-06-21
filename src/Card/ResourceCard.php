@@ -1,7 +1,8 @@
 <?php
 
-namespace JP;
+namespace JP\Card;
 
+use JP\LessonCategoryService;
 use WP_Post;
 
 class ResourceCard implements CardInterface {

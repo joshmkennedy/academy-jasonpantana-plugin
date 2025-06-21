@@ -1,7 +1,7 @@
 <?php
 get_header();
 $tutil = new \JP\JPTemplate;
-$card = new \JP\ResourceCard;
+$card = new \JP\Card\ResourceCard;
 $queried = get_queried_object();
 $catService = new \JP\LessonCategoryService;
 
