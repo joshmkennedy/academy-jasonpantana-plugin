@@ -1,1 +1,1 @@
-import "./search/search";
+import "./search/search-page";

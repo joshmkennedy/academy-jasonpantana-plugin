@@ -1,66 +1,85 @@
+* {
+  box-sizing: border-box;
+   }
 .icon-card-nav {
-	position: relative;
-	padding: 0px;
-	display: flex;
-	margin-inline: auto;
-	width: fit-content;
-	margin-bottom: 2em;
 
-	.icon-card {
-		flex-shrink: 2 !important;
-		flex-basis: 0 !important;
-		aspect-ratio: 1;
-		min-width: 70px;
-		display: flex;
-		align-items: center;
-		justify-content: start;
+  position: relative;
+  padding: 0px;
+  display: flex;
+  margin-inline: auto;
+  width: fit-content;
+  margin-bottom: 2em;
 
-		.icon-card__thumb {
-			width: 30px;
-			padding: 10px;
+  .icon-card {
+    aspect-ratio: unset;
+    max-height: 140px;
+    max-width: 100px;
 
-			img {
-				object-fit: contain;
-				height: 100%;
-				width: 100%;
-			}
-		}
-	}
+    /*    padding:0; */
+    /* 	flex-shrink: 2 !important; */
+    /* 	flex-basis: 0 !important; */
+    /* 	aspect-ratio: 1; */
+    /* 	min-width: 70px; */
+    /* 	display: flex; */
+    /* 	align-items: center; */
+    /* 	justify-content: start; */
+    /**/
+    .icon-card__contents {
+      max-height:100%;
+    }
+    .icon-card__thumb {
+      padding: 8px;
+      max-height:70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex:1;
 
-	.embla__viewport {
-		margin-inline: 33px;
-	}
+      img {
+        object-fit: contain;
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .icon-card__title {
+      flex-shrink:0;
+    }
+  }
 
-	.embla__button {
-		&:disabled {
-			visibility: hidden;
-		}
+  .embla__viewport {
+    margin-inline: 33px;
+  }
 
-		height: 73px;
-		box-shadow: none !important;
-		position: absolute;
-		font-size: 0.5rem;
-		min-width: 40px;
-		max-width: 40px;
-		width: 40px;
-		padding: 5px;
-		background: none;
+  .embla__button {
+    &:disabled {
+      visibility: hidden;
+    }
 
-		&:hover {
-			background: var(--slate-100);
-			fill: var(--brand-c-primary, rgba(48, 219, 166, 1));
-		}
+    height: 73px;
+    box-shadow: none !important;
+    position: absolute;
+    font-size: 0.5rem;
+    min-width: 40px;
+    max-width: 40px;
+    width: 40px;
+    padding: 5px;
+    background: none;
 
-		svg {
-			width: 1em;
-		}
-	}
+    &:hover {
+      background: var(--slate-100);
+      fill: var(--brand-c-primary, rgba(48, 219, 166, 1));
+    }
 
-	.embla__button--prev {
-		right: calc(100% - 30px);
-	}
+    svg {
+      width: 1em;
+    }
+  }
 
-	.embla__button--next {
-		left: calc(100% - 30px);
-	}
+  .embla__button--prev {
+    right: calc(100% - 30px);
+  }
+
+  .embla__button--next {
+    left: calc(100% - 30px);
+  }
 }

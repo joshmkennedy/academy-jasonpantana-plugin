@@ -10,7 +10,7 @@ use WP_Term;
 class Lolole {
     private LessonCategoryService $lessonCategoryService;
     private LessonService $lessonService;
-        
+
     use SearchTriggerTrait;
 
     public function __construct() {
@@ -26,13 +26,65 @@ class Lolole {
 
         <div class="lolole-wrapper">
             <?php $this->renderLessonsSection(
-                title: 'Sessions',
+                title: 'Lectures',
                 programId: 55,
+                collection: get_posts([
+                    'post_type' => 'sfwd-lessons',
+                    'posts_per_page' => -1,
+                    'order' => 'DESC',
+                    'orderby' => 'date',
+                    'post_status' => 'publish',
+                    'meta_query' => [
+                        [
+                            'key' => 'course_id',
+                            'value' => 55,
+                        ],
+                    ],
+                    'tax_query' => [
+                        [
+                            'taxonomy' => 'ld_lesson_category',
+                            'field' => 'slug',
+                            'terms' => [
+                                'session-lecture',
+                            ],
+                        ],
+                    ]
+                ]),
+                cardCB: fn($args, $programId) => $this->sessionCard($args, $programId),
+                description: get_term_by("slug", "session-lecture", "ld_lesson_category")->description,
+            ); ?>
+
+            <?php $this->renderLessonsSection(
+                title: 'Labs',
+                description: get_term_by("slug", "session-lab", 'ld_lesson_category')->description,
+                programId: 55,
+                collection: get_posts([
+                    'post_type' => 'sfwd-lessons',
+                    'posts_per_page' => -1,
+                    'order' => 'DESC',
+                    'orderby' => 'date',
+                    'post_status' => 'publish',
+                    'meta_query' => [
+                        [
+                            'key' => 'course_id',
+                            'value' => 55,
+                        ],
+                    ],
+                    'tax_query' => [
+                        [
+                            'taxonomy' => 'ld_lesson_category',
+                            'field' => 'slug',
+                            'terms' => [
+                                'session-lab',
+                            ],
+                        ],
+                    ]
+                ]),
                 cardCB: fn($args, $programId) => $this->sessionCard($args, $programId),
             ); ?>
 
             <?php $this->renderLessonCategorySection(
-                title: 'Resources',
+                title: 'Library',
                 programId: 1273,
                 categories: $this->resourceCatgories(),
                 slideWidth: '166px',
@@ -93,10 +145,13 @@ class Lolole {
      * @param callable $cardCB 
      * @param ?array<WP_Post> $collection 
      * @param ?string $slideWidth sets the --slide-size css variable
+     * @param ?string $description
+     *
      * @return void 
      */
-    private function renderLessonsSection(string $title, int $programId,  callable $cardCB, ?array $collection = null, ?string $slideWidth = null): void {
+    private function renderLessonsSection(string $title, int $programId,  callable $cardCB, ?array $collection = null, ?string $description = null, ?string $slideWidth = null): void {
         if (!$collection) {
+            error_log("no collection: " . $title);
             /** @var array<\WP_Post> $collection */
             $collection = \learndash_get_lesson_list($programId, ['num' => 25]);
         }
@@ -114,7 +169,9 @@ class Lolole {
 
                 </div>
 
-                <?php if ($post->post_excerpt): ?>
+                <?php if ($description): ?>
+                    <p class="section-description"><?= $description; ?></p>
+                <?php elseif ($post->post_excerpt): ?>
                     <p class="section-description"><?= $post->post_excerpt; ?></p>
                 <?php endif; ?>
             </header>
