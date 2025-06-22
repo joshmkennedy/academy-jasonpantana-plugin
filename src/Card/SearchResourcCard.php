@@ -20,7 +20,13 @@ class SearchResourcCard implements CardInterface {
             $programId = learndash_get_course_id($this->post->ID);
             $type = get_post($programId)->post_title;
             $typelink = get_permalink($programId);
+        } else {
+            $type = get_post_type_object($type)->labels->singular_name;
+            if (!$typelink) {
+                $typelink = get_page_link(get_page_by_path("/profile"));
+            }
         }
+
 ?>
         <div>
             <?php $this->renderHeader($type, $typelink); ?>
@@ -50,7 +56,7 @@ class SearchResourcCard implements CardInterface {
                     <p class="excerpt"><?= $this->lesson->excerpt(); ?></p>
 
                     <a href="<?= $this->lesson->link(); ?>" class="link">
-                        View <?= ($cats && $cats[0]) ? $cats[0]['singular'] : 'Resource'; ?>
+                        View <?= ($cats && $cats[0]) ? $cats[0]['singular'] : $type; ?>
                     </a>
                 </div>
             </div>

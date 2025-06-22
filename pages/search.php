@@ -9,3 +9,14 @@ add_filter('template_include', function ($template) {
     }
     return $template;
 }, 10, 1);
+
+add_filter("pre_get_posts", function (\WP_Query $query) {
+    if (!$query->is_search || !$query->is_main_query() || $query->is_admin)
+        return $query;
+
+    $query->set('post_type', [
+        'sfwd-lessons',
+        'sfwd-courses',
+    ]);
+    return $query;
+});

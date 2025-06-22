@@ -26,19 +26,7 @@ $queried = get_queried_object();
         <div class="aim-template-content__page">
             <!-- lessons -->
 
-            <?php if (have_posts()): ?>
-                <div class="lesson-grid">
-                    <?php while (have_posts()): the_post(); ?>
-                        <?php $card = new \JP\SearchCard(get_post());
-                        $card->render(); ?>
-                    <?php endwhile; ?>
-                </div>
-            <?php else: ?>
-                <div class="no-results">
-                    <h2>No results found</h2>
-                    <p>Try searching for something else</p>
-                </div>
-            <?php endif; ?>
+            <?php include $tutil->useTemplate('utils/search-results-grid'); ?>
 
             <?php include $tutil->useTemplate('utils/pagination'); ?>
         </div>
