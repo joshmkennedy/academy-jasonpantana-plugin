@@ -20,108 +20,112 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./assets/src/aim-template.css ***!
   \*********************************************************************************************************************************************************************************/
 #inner-wrap:has(> .aim-template) {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .aim-template {
-	width: 100%;
-	flex: 1;
-	display: flex;
-	flex-direction: column;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 
-	--content-width: 1140px;
+  --content-width: 1140px;
 }
 
 /* TEMPLATE FOR AIM TEMPLATES*/
 .aim-template-header {
-	position: relative;
-	overflow: hidden;
-	/* Gradient bg  */
-	background-image: var(--bg-image);
-	background-position: center right;
-	background-repeat: no-repeat;
-	background-size: cover;
+  position: relative;
+  overflow: hidden;
+  /* Gradient bg  */
+  background-image: var(--bg-image);
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: cover;
 
-	padding: 62px 40px 100px;
+  padding: 62px 40px 100px;
 
-	@media (max-width: 767px) {
-		padding: 42px 20px 90px;
-	}
+  @media (max-width: 767px) {
+    padding: 42px 20px 90px;
+  }
 
-	@media (max-width: 600px) {
-		.corner-graphic {
-			max-width: 175px;
-			/* top: 0; */
-		}
-	}
+  @media (max-width: 600px) {
+    .corner-graphic {
+      max-width: 175px;
+      /* top: 0; */
+    }
+  }
 
-	color: white;
+  color: white;
 }
 
 .aim-template-header__content {
-	position: relative;
-	z-index: 2;
-	max-width: var(--content-width);
-	margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  max-width: var(--content-width);
+  margin: 0 auto;
 
-	.title {
-		font-family: "Space Grotesk", Sans-serif;
-		font-size: 38px;
+  .title {
+    font-family: "Space Grotesk", Sans-serif;
+    font-size: 38px;
 
-		@media (max-width: 767px) {
-			font-size: 32px;
-		}
-	}
+    @media (max-width: 767px) {
+      font-size: 32px;
+    }
+  }
 
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6,
-	p {
-		color: inherit;
-	}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    color: inherit;
+  }
 }
 
 .catnavigation-label {
-	text-align: center;
-	text-transform: uppercase;
-	font-size: 16px;
-	font-weight: 600;
-	margin-bottom: 0rem;
-	color: var(--slate-500);
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 0rem;
+  color: var(--slate-500);
 }
 
 .aim-template-content {
-	background-color: var(--slate-200);
-	padding: 0px 40px 40px;
-	flex: 1;
+  background-color: var(--slate-200);
+  padding: 0px 40px 40px;
+  flex: 1;
 
-	@media (max-width: 767px) {
-		padding: 0px 0px 20px;
-	}
+  @media (max-width: 767px) {
+    padding: 0px 0px 20px;
+  }
 }
 
 .aim-template-content__page {
-	position: relative;
-	max-width: var(--global-content-narrow-width);
-	margin: -62px auto 0;
-	background: white;
-	border-radius: 16px;
-	padding: 32px 20px 38px;
+  position: relative;
+  max-width: var(--global-content-narrow-width);
+  margin: -62px auto 0;
+  background: white;
+  border-radius: 16px;
+  padding: 32px 20px 38px;
+}
+
+.aim-template:has(.search-banner) .aim-template-content__page {
+  margin-bottom: 20px;
 }
 
 /* CONTENT WIDTH's OVERRIDES  */
 /* NOTE: Specific templates will have a wider content widths */
 :is(.aim-course-single, .lesson-cat-archive, .aim-wide-template) .aim-template-content__page {
-	max-width: var(--global-content-width);
+  max-width: var(--global-content-width);
 }
 
 .content-narrow-width {
-	max-width: var(--global-content-narrow-width);
-	margin: 0 auto;
+  max-width: var(--global-content-narrow-width);
+  margin: 0 auto;
 }
 
 /*!************************************************************************************************************************************************************************************!*\

@@ -5,6 +5,7 @@ $tutil = new \JP\JPTemplate;
 $logo = file_get_contents(getAimAssetPath('aim.svg'));
 $title = str_replace("AiM", "",  get_the_title());
 
+$searchBanner = new \JP\Search\SearchBanner;
 
 ?>
 
@@ -32,7 +33,10 @@ $title = str_replace("AiM", "",  get_the_title());
                     <?php the_content(); ?>
                 <?php endwhile; ?>
             <?php endif; ?>
+        </div>
 
+        <div style="max-width:var(--global-content-width); margin:0 auto;">
+            <?= $searchBanner->render(); ?>
         </div>
     </div>
 </div>

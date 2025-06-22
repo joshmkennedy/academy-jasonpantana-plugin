@@ -3,6 +3,7 @@ get_header();
 $tutil = new \JP\JPTemplate;
 $queried = get_queried_object();
 $catService = new \JP\LessonCategoryService;
+$searchBanner = new \JP\Search\SearchBanner;
 
 /**
  * @var \JP\IconCardNav $categoryNavigation a slider of resource category icon cards
@@ -50,7 +51,12 @@ $categoryNavigation->enqueueAssets();
 
             <?php include $tutil->useTemplate('utils/pagination'); ?>
         </div>
+        <div style="max-width:var(--global-content-width); margin:0 auto;">
+            <?= $searchBanner->render(); ?>
+        </div>
     </div>
+
+
 </div>
 
 <?php
