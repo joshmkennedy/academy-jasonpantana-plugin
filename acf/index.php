@@ -115,6 +115,11 @@ add_action('acf/include_fields', function () {
                     'operator' => '==',
                     'value' => 'ld_lesson_category',
                 ),
+                array(
+                    'param' => 'taxonomy',
+                    'operator' => '==',
+                    'value' => 'ai-skill-level',
+                ),
             ),
         ),
         'menu_order' => 0,
