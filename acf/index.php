@@ -115,6 +115,8 @@ add_action('acf/include_fields', function () {
                     'operator' => '==',
                     'value' => 'ld_lesson_category',
                 ),
+            ),
+            array(
                 array(
                     'param' => 'taxonomy',
                     'operator' => '==',
