@@ -18,11 +18,11 @@ class SearchSessionCard implements CardInterface {
         $link = $this->lesson->link();
         $comingSoon = $this->lesson->isComingSoon();
 
-        $sessionTypeConfig = $this->lesson->sessionTypeConfig();
-        $sessionType = $sessionTypeConfig['type'];
-        $sessionSubType = $sessionTypeConfig['subtype'];
-        $subTypeLabel = $sessionSubType ? $sessionSubType['singular'] : '';
-        $sessionSubTypeDescription = $sessionSubType ? $sessionSubType['description'] : "";
+        $sessionType = $this->lesson->sessionType();
+
+        $skillLevel = $this->lesson->skillLevel();
+        $skillLeveLabel = $skillLevel ? $skillLevel['singular'] : '';
+        $skillLevelDescription = $skillLevel ? $skillLevel['description'] : "";
 
         $icon = $sessionType['icon'];
 
@@ -50,9 +50,9 @@ class SearchSessionCard implements CardInterface {
                     <div class="session-card__top-right">
                         <div
                             class="session-card__session-subtype-label shimmer"
-                            <?= $sessionSubTypeDescription
-                                ? sprintf("data-tippy-content='%s'", $sessionSubTypeDescription)
-                                : ""; ?>"><?= $subTypeLabel; ?></div>
+                            <?= $skillLevelDescription
+                                ? sprintf("data-tippy-content='%s'", $skillLevelDescription)
+                                : ""; ?>"><?= $skillLeveLabel; ?></div>
                     </div>
 
                 </div>

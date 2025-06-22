@@ -69,7 +69,6 @@ if (!function_exists("enqueueAsset")) {
         $assetPath = "build/$slug";
 
         $configPath = getAimAssetPath("$slug.asset.php");
-        do_action("qm/debug", ["configPath", $configPath]);
         if ($configPath) {
             $config = include($configPath);
         } else {

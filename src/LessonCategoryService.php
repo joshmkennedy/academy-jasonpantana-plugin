@@ -57,9 +57,9 @@ class LessonCategoryService {
     /**
      * Sessions have a parent category and some times a sub cateogry
      * @param WP_Post $post
-     * @return array<{type:WP_Term, subtype:WP_Term|false}>|false
+     * @return \WP_Term|false
      */
-    public function sessionType(\WP_Post $post): array|false {
+    public function sessionType(\WP_Post $post): \WP_Term|false {
         $cats = $this->getAllFor($post, false);
         if (!$cats) return false;
 
@@ -70,11 +70,21 @@ class LessonCategoryService {
             error_log("no parent when finding the session type. Parent categories are required:\n" . print_r($sessionTypes, true));
             return false;
         }
-        $subtype = array_find($sessionTypes, fn($term) => $term->parent === $parent->term_id);
-        return [
-            'type' => $parent,
-            'subtype' => $subtype,
-        ];
+
+        return $parent;
+    }
+
+    /**
+     * Get ai-skill-level terms for a post
+     * @param WP_Post $post
+     * @return WP_Term[]|false
+     */
+    public function getSkillLevels(\WP_Post $post): array|false {
+        $terms = get_the_terms($post->ID, 'ai-skill-level');
+        if (!$terms || count($terms) <= 0) {
+            return false;
+        }
+        return $terms;
     }
 
     public function resourceType(\WP_Post $post): \WP_Term|false {

@@ -290,36 +290,35 @@ add_action('init', function () {
     ));
 });
 
-add_action( 'init', function() {
-	register_taxonomy( 'ai-skill-level', array(
-	0 => 'sfwd-lessons',
-), array(
-	'labels' => array(
-		'name' => 'Ai Skill Levels',
-		'singular_name' => 'Ai Skill Level',
-		'menu_name' => 'Ai Skill Levels',
-		'all_items' => 'All Ai Skill Levels',
-		'edit_item' => 'Edit Ai Skill Level',
-		'view_item' => 'View Ai Skill Level',
-		'update_item' => 'Update Ai Skill Level',
-		'add_new_item' => 'Add New Ai Skill Level',
-		'new_item_name' => 'New Ai Skill Level Name',
-		'search_items' => 'Search Ai Skill Levels',
-		'not_found' => 'No ai skill levels found',
-		'no_terms' => 'No ai skill levels',
-		'items_list_navigation' => 'Ai Skill Levels list navigation',
-		'items_list' => 'Ai Skill Levels list',
-		'back_to_items' => '← Go to ai skill levels',
-		'item_link' => 'Ai Skill Level Link',
-		'item_link_description' => 'A link to a ai skill level',
-	),
-	'public' => true,
-	'hierarchical' => true,
-	'show_in_menu' => true,
-	'show_in_rest' => true,
-	'rewrite' => array(
-		'hierarchical' => true,
-	),
-) );
-} );
-
+add_action('init', function () {
+    register_taxonomy('ai-skill-level', array(
+        0 => 'sfwd-lessons',
+    ), array(
+        'labels' => array(
+            'name' => 'Ai Skill Levels',
+            'singular_name' => 'Ai Skill Level',
+            'menu_name' => 'Ai Skill Levels',
+            'all_items' => 'All Ai Skill Levels',
+            'edit_item' => 'Edit Ai Skill Level',
+            'view_item' => 'View Ai Skill Level',
+            'update_item' => 'Update Ai Skill Level',
+            'add_new_item' => 'Add New Ai Skill Level',
+            'new_item_name' => 'New Ai Skill Level Name',
+            'search_items' => 'Search Ai Skill Levels',
+            'not_found' => 'No ai skill levels found',
+            'no_terms' => 'No ai skill levels',
+            'items_list_navigation' => 'Ai Skill Levels list navigation',
+            'items_list' => 'Ai Skill Levels list',
+            'back_to_items' => '← Go to ai skill levels',
+            'item_link' => 'Ai Skill Level Link',
+            'item_link_description' => 'A link to a ai skill level',
+        ),
+        'public' => true,
+        'hierarchical' => true,
+        'show_in_menu' => true,
+        'show_in_rest' => true,
+        'rewrite' => array(
+            'hierarchical' => true,
+        ),
+    ));
+});

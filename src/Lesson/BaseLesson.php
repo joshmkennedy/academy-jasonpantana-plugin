@@ -38,6 +38,19 @@ class BaseLesson {
         return array_map([$this, 'formatCategory'], $categories);
     }
 
+    public function skillLevel() {
+        $skillLevels = $this->categoryService->getSkillLevels($this->post);
+        if (!$skillLevels) return false;
+
+        $skillLevel = array_find($skillLevels, fn($arg) => $arg->parent === 0);
+        if (!$skillLevel) {
+            error_log("no parent when finding the skill level. Parent categories are required:\n" . print_r($skillLevels, true));
+            return false;
+        }
+
+        return $this->formatCategory($skillLevel);
+    }
+
     /**
      * @param array<\WP_Term>|false $categories
      * @return array<array{singular:string, plural:string, archiveLink:string, icon:string, slug:string }>|false
@@ -45,6 +58,7 @@ class BaseLesson {
 
     public function formatCategory(\WP_Term $term): array {
         return [
+            'description' => $term->description,
             'slug' => $term->slug,
             'singular' => $this->categoryService->singlularLabel($term),
             'plural' => $this->categoryService->pluralLabel($term),
