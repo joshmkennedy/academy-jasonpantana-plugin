@@ -1,5 +1,7 @@
 .aim-search-template {
   .search-form {
+    --accent-color:var(--search-form-accent, var(--brand-c-primary));
+
     max-width: var(--global-content-narrow-width);
     margin: 0 auto;
     --background-opacity: 0.2;
@@ -9,7 +11,7 @@
     --border-opacity: .3;
 
     &:has(input[type="search"]:focus) {
-      --text-base: var(--brand-c-primary);
+      --text-base: var(--accent-color);
       --text-opacity: 1;
       --border-opacity: 1;
       --background-opacity: 0.6;
@@ -40,7 +42,7 @@
     }
 
     input[type=submit]:hover+div {
-      background: hsl(from var(--brand-c-primary) h s l / .5);
+      background: hsl(from var(--accent-color) h s l / .5);
       --text-base: var(--brand-c-secondary);
     }
 

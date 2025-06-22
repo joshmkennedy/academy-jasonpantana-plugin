@@ -5,6 +5,7 @@ import "./card/session-card.css";
 import "./card/essentials-card.css";
 import "./card/resource-card.css";
 
+import "./search/search-page";
 import "./walkthrough-banner";
 
 import "./profile.css";
