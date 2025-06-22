@@ -196,7 +196,7 @@ class Lolole {
                             <?= $cardCB($item, $programId); ?>
                         <?php } ?>
                         <?php if (count($collection) > 3) { ?>
-                            <?php $this->lastSlide($programId); ?>
+                            <?php /*$this->lastSlide($programId);*/ ?>
                         <?php } ?>
                     </div>
                 </div>
@@ -328,7 +328,7 @@ class Lolole {
                                 <?= $collectionCardCB($item, $programId); ?>
                             <?php } ?>
                             <?php if (count($collection) > 3) { ?>
-                                <?php $this->lastSlide($programId); ?>
+                                <?php /*$this->lastSlide($programId);*/ ?>
                             <?php } ?>
                         </div>
                     </div>
