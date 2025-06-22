@@ -58,7 +58,7 @@
 		}
 	}
 
-	.session-card__session-subtype-label {
+	.session-card__session-skill-level-label {
 		&:empty {
 			display: none;
 		}

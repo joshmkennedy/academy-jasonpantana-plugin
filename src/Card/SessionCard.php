@@ -42,7 +42,7 @@ class SessionCard implements CardInterface {
                 <div class="session-card__top-right">
                     <?php if ($skillLevel): ?>
                     <div
-                        class="session-card__session-subtype-label shimmer"
+                        class="session-card__session-skill-level-label shimmer"
                         <?= $skillLevelDescription
                             ? sprintf("data-tippy-content='%s'", $skillLevelDescription)
                             : ""; ?>">

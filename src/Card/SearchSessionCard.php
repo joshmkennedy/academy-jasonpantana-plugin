@@ -49,7 +49,7 @@ class SearchSessionCard implements CardInterface {
                     </div>
                     <div class="session-card__top-right">
                         <div
-                            class="session-card__session-subtype-label shimmer"
+                            class="session-card__session-skill-level-label shimmer"
                             <?= $skillLevelDescription
                                 ? sprintf("data-tippy-content='%s'", $skillLevelDescription)
                                 : ""; ?>"><?= $skillLeveLabel; ?></div>
