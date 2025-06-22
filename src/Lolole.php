@@ -22,7 +22,6 @@ class Lolole {
     public function render(): string {
         ob_start();
 ?>
-        <?php $this->renderSearchTriggerWithText(); ?>
 
         <div class="lolole-wrapper">
             <?php $this->renderLessonsSection(
