@@ -1,9 +1,9 @@
 .icon-card {
   aspect-ratio: 1;
-	border-color: var(--color);
+	/* border-color: var(--color); */
 	display: flex;
 	flex-direction: column;
-  background-color:var(--brand-c-secondary);
+  background-color:var(--brand-c-primary);
   background-image: url(../../green-gradient.png);
   background-size: cover;
   padding:0px;
