@@ -11,7 +11,6 @@ class Lolole {
     private LessonCategoryService $lessonCategoryService;
     private LessonService $lessonService;
 
-    use SearchTriggerTrait;
 
     public function __construct() {
         // hardcoded for now but one day we could use dependency injection
