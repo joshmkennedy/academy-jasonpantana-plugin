@@ -23,7 +23,7 @@ function add_required_signup_modal() {
 ?>
     <dialog id="free-lesson-signup" class="free-lesson-signup__popup">
         <div class="free-lesson-signup__content">
-            <h2 class="free-lesson-signup__heading">
+            <h2 class="free-lesson-signup__heading" data-title="<?= $title; ?>">
                 <?= $title; ?>
             </h2>
             <p>Get instant access to this free lesson</p>

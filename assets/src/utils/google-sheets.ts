@@ -2,7 +2,7 @@ const CONFIG = {
   SHEET_ENDPOINT: 'https://script.google.com/macros/s/AKfycbwsFi5jd_JExJvGy9gf0CrC7emsQFfniRv_TvjBRig83fgs36IBsBIauY4Ak8h3zGGS/exec',
 }
 
-export default function submitToSheet(data: { firstName: string, lastName: string, email: string, url: string }) {
+export default function submitToSheet(data: { firstName: string, lastName: string, email: string, url: string, title: string }) {
   console.log(data)
   const form = document.createElement('form');
   form.method = 'POST';
@@ -30,9 +30,15 @@ export default function submitToSheet(data: { firstName: string, lastName: strin
   url.name = 'url';
   url.value = data.url;
 
+  const title = document.createElement('input');
+  title.type = 'text';
+  title.name = 'title';
+  title.value = data.title;
+
   form.appendChild(firstName);
   form.appendChild(lastName);
   form.appendChild(email);
+  form.appendChild(title);
   form.appendChild(url);
 
   form.style.display = 'none';

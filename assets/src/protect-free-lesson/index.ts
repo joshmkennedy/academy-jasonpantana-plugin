@@ -31,6 +31,7 @@ function init() {
       firstName: formData.get("first_name")?.toString() ?? "",
       lastName: formData.get("last_name")?.toString() ?? "",
       url: window.location.href,
+      title: modal.querySelector<HTMLElement>("[data-title]")?.getAttribute("data-title") ?? "",
     });
     Cookie.set(COOKIE_NAME, "true", { expires: 365 });
     modal?.remove();
