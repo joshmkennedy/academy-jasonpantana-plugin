@@ -11,7 +11,7 @@ add_filter('template_include', function ($template) {
 // PROTECT THEM
 add_action('template_redirect', function () {
     $post = get_post();
-    if ($post && ($post->post_type === 'sfwd-lessons')) {
+    if ($post && ($post->post_type === 'sfwd-lessons') && !learndash_is_sample($post->ID)) {
         $userId = get_current_user_id();
         $groups = array_filter(\learndash_get_users_group_ids($userId), fn($id) => isPaidGroup($id));
         if (!count($groups)) {

@@ -193,3 +193,4 @@ register_meta(
 	)
 );
 
+require __DIR__ . '/admin/protect-lesson.php';
