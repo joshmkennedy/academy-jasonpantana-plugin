@@ -1,1 +1,27 @@
-.free-lesson-signup__popup{background:#fff;border:none;border-radius:8px;max-width:min(90%,600px);padding:30px 20px;text-align:center;width:100%;form{display:flex;flex-direction:column;gap:1rem}&::backdrop{-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);background:#00000088}}
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./assets/src/protect-free-lesson/index.css ***!
+  \**********************************************************************************************************************************************************************************************/
+.free-lesson-signup__popup {
+  max-width: min(90%, 600px);
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  background:white;
+  padding:30px 20px;
+  text-align:center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &::backdrop {
+    background: #00000088;
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+  }
+}
+
+
+/*# sourceMappingURL=protect-free-lesson.css.map*/
