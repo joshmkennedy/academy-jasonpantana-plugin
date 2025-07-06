@@ -12,9 +12,26 @@ add_action('wp_enqueue_scripts', function () {
 
 // List of List of Lessons shortcode
 add_shortcode('aim_profile_lololes', function () {
-    $lolole = new \JP\Lolole();
+    ob_start();
+    $mainSection = new \JP\Profile\MainSection();
+    $mainSection->render();
 
-    return $lolole->render();
+    return ob_get_clean();
+});
+
+add_shortcode('aim_profile_lololes__main', function () {
+    ob_start();
+    $mainSection = new \JP\Profile\MainSection();
+    $mainSection->render();
+
+    return ob_get_clean();
+});
+add_shortcode('aim_profile_lololes__secondary', function () {
+    ob_start();
+    $secondarySection = new \JP\Profile\SecondarySection();
+    $secondarySection->render();
+
+    return ob_get_clean();
 });
 
 add_shortcode('aim_walkthrough_banner', function ($atts) {
@@ -27,7 +44,7 @@ add_action("wp_ajax_dissmiss_walkthrough_banner_perm", function () {
     $walktrhoughBanner->handleUserDismiss();
 });
 
-add_shortcode('aim_search_banner', function (){
+add_shortcode('aim_search_banner', function () {
     $searchBanner = new \JP\Search\SearchBanner();
     return $searchBanner->render();
 });

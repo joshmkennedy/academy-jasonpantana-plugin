@@ -7,11 +7,11 @@
 	flex: 1;
 	flex-shrink: 0;
 	flex-basis: 320px;
-	border: 2px solid var(--slate-300);
+	border: 2px solid var(--aim-card-border, var(--slate-300));
 	border-radius: 4px;
 	padding: 12px;
 	text-decoration: none;
-	background: hsl(from var(--slate-100) h 10% 98%);
+	background: var(--aim-card-bg, hsl(from var(--slate-100) h 10% 98%));
 	color: inherit;
 
 	&:hover {
