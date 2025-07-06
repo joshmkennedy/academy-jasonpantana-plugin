@@ -295,13 +295,12 @@
 	[data-element_type="container"]:has(>[data-element_type="widget"] .lolole-wrapper.alt-wrapper) {
 		background-color: var(--slate-300) !important;
 
-		.lolole-wrapper.alt-wrapper {
+		.lolole-wrapper.alt-wrapper, .lolole-wrapper::after, .lolole-wrapper::before {
 			--section-title-gradient: linear-gradient(60deg, #33527D 20%, #5B626B 100%);
 			--section-header-border-color: var(--slate-400);
 			--secondary-btn-color: var(--slate-400);
 			--control-hover-color: var(--slate-500);
 			--button-border-shadow: hsl(from var(--slate-400) h s 90% / 50%);
-			/* hsl(from var(--slate-100) h 10% 98%)  */
 			--aim-card-bg: hsl(from var(--slate-400) h s l / 30%);
 			--aim-card-border: var(--slate-400);
 			--carousel-slider-bg: var(--slate-300);
