@@ -14,13 +14,13 @@ class SecondarySection extends Lolole {
         <div class="lolole-wrapper alt-wrapper">
             <?php
             $this->renderTagCloudSection(
-                title: 'Tools',
+                title: 'Tools to Test',
                 term: get_term_by("slug", "tools", "ld_lesson_category"),
                 cardCB: fn($args) => $this->toolTag($args),
             );
 
             $this->renderLessonsSection(
-                title: 'Essentials',
+                title: 'Intro to AI',
                 programId: 1294,
                 cardCB: fn($lesson, $programId) => $this->essentialCard($lesson, $programId),
             );
