@@ -32,7 +32,7 @@ function initBanner() {
       userPermDismiss();
     } else {
       Cookie.set(USER_HAS_DISMISSED_BEFORE, 'true', { expires: 365 });
-			// temporary set cookie to not show banner
+      // temporary set cookie to not show banner
       Cookie.set(DONT_SHOW_BANNER, 'true', { expires: 2 });
     }
 
@@ -66,3 +66,43 @@ function userPermDismiss() {
     method: "POST",
   })
 }
+window.addEventListener('DOMContentLoaded', function () {
+  if (window.showFBanner !== true) return;
+  if (Cookie.get('dismissed_fb_group')) return;
+  function banner() {
+    const banner = document.createElement('div');
+    banner.classList.add('jp-fb-banner');
+    banner.innerHTML = `
+            <div class="jp-fb-banner__inner">
+                <div class="flex-row">
+                    <div>
+                        <p>Join the Ai Marketing Academy exclusive Facebook Group: AiM Lounge</p>
+                    </div>
+                    <div>
+                      <a href="https://www.facebook.com/share/g/177Rt9UsfB/">Connect</a>
+                      <button id="close-fb-banner">Dismiss</button>
+                    </div>
+                </div>
+            </div>
+        `
+    return banner;
+  }
+  const header = document.querySelector('[data-section="kadence_customizer_header_main"]')
+  if (!header) return;
+  header.insertAdjacentElement('beforebegin', banner())
+  const closeButton = document.getElementById('close-fb-banner')
+  const link = document.querySelector('.jp-fb-banner a')
+
+  function dismiss() {
+    document.querySelector('.jp-fb-banner')?.classList.add('hide')
+    // add cookie for 2 yrs
+    Cookie.set('dismissed_fb_group', 'true', { expires: 100000 })
+  }
+  if (!closeButton) return;
+  closeButton.addEventListener('click', dismiss);
+
+  if (!link) return;
+  link.addEventListener('click', dismiss);
+
+});
+

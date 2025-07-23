@@ -48,3 +48,65 @@ add_shortcode('aim_search_banner', function () {
     $searchBanner = new \JP\Search\SearchBanner();
     return $searchBanner->render();
 });
+
+add_action("wp_head", function () {
+    if (!is_page('profile')) return;
+    if (get_user_meta(get_current_user_id(), 'dismissed_fb_group', true)) return;
+?>
+    <style>
+        .jp-fb-banner {
+            background-color: var(--brand-c-primary);
+            padding: 10px;
+            padding-inline: 20px;
+        }
+
+        .jp-fb-banner .flex-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .jp-fb-banner__inner {
+            max-width: var(----global-content-width);
+            margin: 0 auto;
+        }
+
+        .jp-fb-banner__inner p {
+            font-weight: bold;
+            margin: 0 !important;
+        }
+
+        .jp-fb-banner__inner a {
+            display: inline-block;
+            background: var(--brand-c-dark);
+            color: white;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        .jp-fb-banner.hide {
+            display: none;
+        }
+
+        #close-fb-banner {
+            background: none;
+            border: none;
+            font-size: 12px;
+            color: var(--brand-c-dark);
+            cursor: pointer;
+
+            &:hover {
+                color: white;
+            }
+        }
+    </style>
+    <script>
+        window.showFBanner = true
+    </script>
+<?php });
