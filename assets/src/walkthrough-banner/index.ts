@@ -79,7 +79,7 @@ window.addEventListener('DOMContentLoaded', function () {
                         <p>Join the Ai Marketing Academy exclusive Facebook Group: AiM Lounge</p>
                     </div>
                     <div>
-                      <a href="https://www.facebook.com/share/g/177Rt9UsfB/">Connect</a>
+                      <a href="https://www.facebook.com/share/g/177Rt9UsfB/" target="_blank">JOIN</a>
                       <button id="close-fb-banner">Dismiss</button>
                     </div>
                 </div>
@@ -89,17 +89,29 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   const header = document.querySelector('[data-section="kadence_customizer_header_main"]')
   if (!header) return;
-  header.insertAdjacentElement('beforebegin', banner())
-  const closeButton = document.getElementById('close-fb-banner')
-  const link = document.querySelector('.jp-fb-banner a')
-
+  const _b = banner() as HTMLDivElement
+  header.insertAdjacentElement('beforebegin', _b)
   function dismiss() {
     document.querySelector('.jp-fb-banner')?.classList.add('hide')
     // add cookie for 2 yrs
     Cookie.set('dismissed_fb_group', 'true', { expires: 100000 })
   }
+  _b.addEventListener('click', (e) => {
+    const el = e.target as HTMLElement
+    if (el.tagName === 'A') return
+    el.querySelector('a')?.click()
+  })
+  const closeButton = document.getElementById('close-fb-banner')
+  const link = document.querySelector('.jp-fb-banner a')
+
+
+
+
   if (!closeButton) return;
-  closeButton.addEventListener('click', dismiss);
+  closeButton.addEventListener('click', (e) => {
+    e.stopPropagation()
+    dismiss()
+  });
 
   if (!link) return;
   link.addEventListener('click', dismiss);
