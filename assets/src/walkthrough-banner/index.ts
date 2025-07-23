@@ -90,11 +90,15 @@ window.addEventListener('DOMContentLoaded', function () {
   const header = document.querySelector('[data-section="kadence_customizer_header_main"]')
   if (!header) return;
   const _b = banner() as HTMLDivElement
+  const height = header.getBoundingClientRect().height
   header.insertAdjacentElement('beforebegin', _b)
   function dismiss() {
     document.querySelector('.jp-fb-banner')?.classList.add('hide')
     // add cookie for 2 yrs
     Cookie.set('dismissed_fb_group', 'true', { expires: 100000 })
+    const wrapper = header?.closest<HTMLElement>('.site-header-upper-wrap')
+    if (!wrapper) return
+    wrapper.style.height = `${height}px`
   }
   _b.addEventListener('click', (e) => {
     const el = e.target as HTMLElement
