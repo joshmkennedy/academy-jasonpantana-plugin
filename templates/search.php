@@ -7,7 +7,7 @@ $queried = get_queried_object();
 
 <div class="aim-search-template aim-template aim-wide-template">
     <!-- HEADER -->
-    <div class="aim-template-header" style="--bg-image: url(<?= getAimAssetUrl('green-gradient.png'); ?>);">
+    <div class="aim-template-header" style="--bg-image: url(<?= getAimAssetUrl('green-gradient.webp'); ?>);">
         <div class="aim-template-header__content">
 
             <div class="title">

@@ -41,6 +41,14 @@ class JPTemplate {
         return false;
     }
 
+    /**
+     * @param int|string|int[]|string[] $identifier page ID, title, slug, or array of such to check against
+     * @return bool 
+     */
+    public function onPage(mixed $identifier): bool {
+        return \is_page($identifier);
+    }
+
     public function useTemplate(string $slug): string|null {
         $templatePath = $this->templateDirPath . '/' . $slug . '.php';
         if (file_exists($templatePath)) {

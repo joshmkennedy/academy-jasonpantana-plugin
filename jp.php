@@ -174,6 +174,7 @@ try {
     require_once __DIR__ . '/pages/course-single.php';
     require_once __DIR__ . '/pages/registration-form.php';
     require_once __DIR__ . '/pages/search.php';
+    require_once __DIR__ . '/pages/login.php';
     //ADMIN
     require_once __DIR__ . '/admin/jp-settings.php';
     require_once __DIR__ . '/admin/lesson-admin-columns.php';

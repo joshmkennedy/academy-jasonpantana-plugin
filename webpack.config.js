@@ -11,6 +11,7 @@ module.exports = {
     ["icon-card-nav"]: { import: "./assets/src/icon-card-nav.ts" },
     ["registration-form"]: { import: "./assets/src/registration-form.ts" },
     ["protect-free-lesson"]: { import: "./assets/src/protect-free-lesson/index.ts" },
+    ["auth-form"]: { import: "./assets/src/auth-form/auth-form.ts" },
   },
   module: {
     ...defaults.module,

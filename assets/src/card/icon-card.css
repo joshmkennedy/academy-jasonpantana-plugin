@@ -4,7 +4,7 @@
 	display: flex;
 	flex-direction: column;
   background-color:var(--brand-c-primary);
-  background-image: url(../../green-gradient.png);
+  background-image: url(../../green-gradient.webp);
   background-size: cover;
   padding:0px;
 	.icon-card__contents {

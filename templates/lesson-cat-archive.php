@@ -19,7 +19,7 @@ $categoryNavigation->enqueueAssets();
 
 <div class="lesson-cat-archive aim-template">
     <!-- HEADER -->
-    <div class="aim-template-header" style="--bg-image: url(<?= getAimAssetUrl('green-gradient.png'); ?>);">
+    <div class="aim-template-header" style="--bg-image: url(<?= getAimAssetUrl('green-gradient.webp'); ?>);">
         <div class="aim-template-header__content">
 
             <div class="title">

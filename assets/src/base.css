@@ -20,6 +20,8 @@ body::before {
 			rgba(48, 219, 166, 1) 0%,
 			rgba(28, 76, 138, 1) 100%);
 
+	--green-blue-gradient: linear-gradient(90deg, #247E94 0%, #288D91 100%);
+
 	--slate-800: rgba(60, 65, 74, 1);
 	--slate-200: rgba(228, 232, 238, 1);
 	--slate-100: rgba(236, 239, 243, 1);
@@ -58,4 +60,3 @@ svg g {
 svg path[fill] {
 	fill: currentColor;
 }
-
