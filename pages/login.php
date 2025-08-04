@@ -2,10 +2,6 @@
 
 
 add_filter('template_include', function ($template) {
-    $elementorMeta = get_post_meta(get_the_ID(), '_elementor_edit_mode', true);
-    if ((bool)$elementorMeta) {
-        return $template;
-    }
     $slugs = [
         "login",
         "reset-password",
