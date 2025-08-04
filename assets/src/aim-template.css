@@ -128,6 +128,7 @@
 	background: var(--gradient-image),
 	var(--green-blue-gradient);
 	background-position:90% 35%;
+	background-size:cover;
 
 	.aim-template-content__page {
 		max-width: 460px;
