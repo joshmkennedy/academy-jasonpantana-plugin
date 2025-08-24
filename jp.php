@@ -1,9 +1,19 @@
 <?php
 
 /**
- * Plugin Name:  Ai Marketing Academy
- * Version:      1.2.3
+ * Plugin Name:     Ai Marketing Academy
+ * Version:         1.2.3
+ * Plugin URI:      PLUGIN SITE HERE
+ * Description:     PLUGIN DESCRIPTION HERE
+ * Author:          YOUR NAME HERE
+ * Author URI:      YOUR SITE HERE
+ * Text Domain:     vimeo-transcript-search
+ *
+ * @package         JP
+ *
  **/
+
+
 define('JP_PLUGIN_ROOT_DIR_PATH', plugin_dir_path(__FILE__));
 define('JP_PLUGIN_ROOT_DIR_URL', plugin_dir_url(__FILE__));
 
