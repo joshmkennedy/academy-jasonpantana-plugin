@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name:  Ai Marketing Academy
- * Version:      1.2.2
+ * Version:      1.2.3
  **/
 define('JP_PLUGIN_ROOT_DIR_PATH', plugin_dir_path(__FILE__));
 define('JP_PLUGIN_ROOT_DIR_URL', plugin_dir_url(__FILE__));

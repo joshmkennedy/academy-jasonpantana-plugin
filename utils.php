@@ -20,6 +20,7 @@ if (!function_exists('stripeProductGroupMap')) {
 
 if (!function_exists("getCurrentURL")) {
     function getCurrentURL(): string {
+        if (defined( 'WP_CLI' ) && \WP_CLI ) return "";
         $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") .
             "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
