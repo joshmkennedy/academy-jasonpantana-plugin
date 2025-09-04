@@ -10,7 +10,7 @@ if (!function_exists('isPaidGroup')) {
 if (!function_exists('stripeProductGroupMap')) {
     function stripeProductGroupMap(string $prodId): int | null {
         $config = [
-            'prod_RchwOcDcDez2DU' => 1822,// Ai Marketing Academy - Annual Plan
+            'prod_RchwOcDcDez2DU' => 1822, // Ai Marketing Academy - Annual Plan
             'prod_RcR1KVgHZX0F70' => 1699, // Ai Marketing Academy - Monthly Plan
         ];
         if (!isset($config[$prodId])) return null;
@@ -20,7 +20,7 @@ if (!function_exists('stripeProductGroupMap')) {
 
 if (!function_exists("getCurrentURL")) {
     function getCurrentURL(): string {
-        if (defined( 'WP_CLI' ) && \WP_CLI ) return "";
+        if (defined('WP_CLI') && \WP_CLI) return "";
         $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") .
             "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
@@ -89,7 +89,7 @@ if (!function_exists("enqueueAsset")) {
 }
 
 if (!function_exists("getAimVimeoToken")) {
-    function getAimVimeoToken():string | false {
+    function getAimVimeoToken(): string | false {
         return get_option('jp_vimeo_api_key');
     }
 }
@@ -102,5 +102,29 @@ if (!function_exists('array_find')) {
             }
         }
         return null;
+    }
+}
+if (!function_exists('getRegistrationURL')) {
+    function getRegistrationURL(int $userId, string $fallbackURL): string {
+        if (!$userId) return $fallbackURL;
+
+        $groupId = get_user_meta($userId, "initial_registered_ld_group", true);
+        if (!$groupId) return $fallbackURL;
+
+        return site_url("registration/?ld-registered=true&ld_register_id=$groupId");
+    }
+}
+
+if (!function_exists('protect_paid_content')) {
+    function protect_paid_content($isCustom = false) {
+        $post = get_post();
+        if (($isCustom && !is_login()) || $post && ($post->post_type === 'sfwd-lessons') && !learndash_is_sample($post->ID)) {
+            $userId = get_current_user_id();
+            $groups = array_filter(\learndash_get_users_group_ids($userId), fn($id) => isPaidGroup($id));
+            if (!count($groups)) {
+                wp_redirect(wp_login_url(redirect:getCurrentURL()));
+                exit;
+            }
+        }
     }
 }

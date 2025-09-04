@@ -1,4 +1,4 @@
-import Vimeo from "@vimeo/player";
+import { loadVimeoPlugins } from "./vimeo-plugins/vimeo-plugin";
 
 window.addEventListener("DOMContentLoaded", () => {
 
@@ -14,16 +14,15 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // PROTOTYPE VIMEO SKIP TO CLIP
 window.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
-  if (!params.has("skip-to-clip-video")) return;
-  const videoId = params.get("skip-to-clip-video");
-  if (!videoId) return;
-  const video = document.querySelector<HTMLIFrameElement>(`iframe[src*='${videoId}']`);
-  if (!video) return;
-  const player = new Vimeo(video);
-  player.on("loaded",()=>{
-    const secondsToSkip = parseInt(params.get("ts") ?? "");
-    if (!secondsToSkip) return;
-    player.setCurrentTime(secondsToSkip);
-  });
+  const VimeoPlugins = loadVimeoPlugins();
+  for (const pluginConfig of VimeoPlugins) {
+    const configs = Object.entries(pluginConfig);
+    if(configs.length === 0) continue;
+    const [pluginName, plugin] = configs[0];
+    if(plugin.shouldUse?.()){
+      console.log(`Using ${pluginName} plugin`);
+      plugin.init();
+      break;
+    }
+  }
 });
