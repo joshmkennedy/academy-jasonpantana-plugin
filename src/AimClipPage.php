@@ -5,8 +5,10 @@ namespace JP;
 
 class AimClipPage {
     public $clipQueryVars = [
-        'aim-clip',
-        'aim-100-days',
+        // 'aim-clip',
+        // 'aim-100-days',
+        'aim-learning-path',
+        'week-index'
     ];
     private VimeoApi $vimeoApi;
     public function __construct() {
@@ -16,11 +18,26 @@ class AimClipPage {
         return array_merge($vars, $this->clipQueryVars);
     }
 
+    public function getSelectedVideo() {
+        global $getAimClipListWeekData;
+        if (!$getAimClipListWeekData) return [];
+        $id = get_query_var('aim-learning-path');
+        $week = get_query_var('week-index');
+        $weekData = $getAimClipListWeekData((int)$id, (int)$week);
+        $data = $weekData->getVimeoPluginData();
+        $video = $data['selectedVideo'];
+        $videos = collect($data['videos']);
+        $video = $videos->first(function ($v) use ($video) {
+            return $v['vimeoId'] === $video;
+        }) ?: $videos->first();
+        return $video;
+    }
+
     public function getVimeoInfo() {
         $vimeoId = $this->getVimeoId();
         if ($vimeoId) {
             if ($cached = get_transient("vts_vimeo_info_$vimeoId")) {
-               return $cached;
+                return $cached;
             }
             $info = $this->vimeoApi->getVideoInfo($vimeoId, ['name', 'uri', 'pictures' => [0 => 'base_link'], 'player_embed_url']);
             set_transient("vts_vimeo_info_$vimeoId", $info, \YEAR_IN_SECONDS);

@@ -7,6 +7,9 @@ export interface VimeoPluginInterface {
 
 declare global {
   interface Window {
+    aimVimeoPluginData: {
+      [key: string]: any;
+    }
     aimVimeoPlugins: {
       [key: string]: VimeoPluginInterface;
     }[];

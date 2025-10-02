@@ -15,6 +15,13 @@ class MainSection extends Lolole {
     public function render(): void {
 ?>
 
+        <div class="profile-user-notices">
+            <?php $this->renderNotices([
+                // banner for the assessment to sign up for the 100 days.
+                fn() => (new \JP\Aim100daysModal())->renderNotice(),
+            ]); ?>
+        </div>
+
         <div class="lolole-wrapper ">
             <?php $this->renderLessonsSection(
                 title: 'Lectures',
@@ -87,6 +94,25 @@ class MainSection extends Lolole {
             ?>
 
         </div>
+        <?php
+    }
+
+    public function renderNotices(array $banners): void {
+        $max = 2;
+        foreach ($banners as $bannerCB) {
+            if($max <= 0) break;
+
+            $content = call_user_func($bannerCB);
+            error_log("banner content: " . $content);
+            if(!$content) continue;
+            $max--
+        ?>
+            <div class="profile-user-notice">
+                <div class="contents">
+                    <?= $content; ?>
+                </div>
+            </div>
 <?php
+        }
     }
 }
