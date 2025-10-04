@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name:     Ai Marketing Academy
- * Version:         1.2.3
+ * Version:         1.2.4
  * Plugin URI:      PLUGIN SITE HERE
  * Description:     PLUGIN DESCRIPTION HERE
  * Author:          YOUR NAME HERE
