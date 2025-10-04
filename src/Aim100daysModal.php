@@ -7,8 +7,8 @@ class Aim100daysModal {
         global $aimFormDisplay;
         if (!$aimFormDisplay || !wp_get_current_user()) return;
 
-        error_log("aim form display: " . print_r($aimFormDisplay::userHasActiveList(wp_get_current_user()->ID), true));
-        if ($aimFormDisplay::userHasActiveList(wp_get_current_user()->ID) || !$this->allowTesting()) return;
+        // if ($aimFormDisplay::userHasActiveList(wp_get_current_user()->ID) || !$this->allowTesting()) return;
+        if(!user_can(wp_get_current_user(), 'manage_options')) return;
 
         ob_start();
 ?>
@@ -29,9 +29,6 @@ class Aim100daysModal {
      **/
     public function allowTesting(): bool {
         $status = !user_can(wp_get_current_user(), 'manage_options') || !isset($_GET['test']);
-        error_log("allow testing: " . $status ? "true" : "false");
-        error_log("user can manage options: " . user_can(wp_get_current_user(), 'manage_options'));
-        error_log("test param: " . isset($_GET['test']));
         return $status;
     }
 
