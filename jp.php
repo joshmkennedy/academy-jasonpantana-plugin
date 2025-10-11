@@ -21,6 +21,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/utils.php';
 // custom rest endpoint
 require_once __DIR__ . '/rest/routes.php';
+use JP\User\SecondaryMenu;
 
 /*╭───────────────────────────╮*/
 /*│    [   Course Grid   ]    │*/
@@ -126,6 +127,8 @@ try {
                 <a href="<?= $link; ?>" target="_self" class="button header-button button-size-custom button-style-filled button-style-gradient--primary" style="padding-block:16px;">
                     <?= $buttonText; ?>
                 </a>
+
+                <?php SecondaryMenu::render(); ?>
             </div>
         </div>
 
@@ -178,6 +181,7 @@ try {
     require_once __DIR__ . '/pages/search.php';
     require_once __DIR__ . '/pages/login.php';
     require_once __DIR__ . '/pages/aim-clip-page.php';
+    require_once __DIR__ . '/pages/learning-path-settings.php';
     //ADMIN
     require_once __DIR__ . '/admin/jp-settings.php';
     require_once __DIR__ . '/admin/lesson-admin-columns.php';

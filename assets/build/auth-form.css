@@ -1,1 +1,29 @@
-:is(.uo_loginForm){p:has(>label){align-items:stretch;display:flex;flex-direction:column}input[type=submit]{background-color:var(--brand-c-primary);background-image:radial-gradient(at top left,var(--brand-c-primary) 0,var(--brand-c-transition-green) 100%);background-position:0 0;background-repeat:no-repeat;background-size:cover;color:#fff;padding:12px 47px;text-shadow:0 3px 4px rgba(0,0,0,.14);transition:background-position 1.3s ease-in-out;&:hover{background-image:radial-gradient(at top left,var(--brand-c-primary) 0,var(--brand-c-secondary-shade-1) 100%)}}}
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./assets/src/auth-form/auth-form.css ***!
+  \****************************************************************************************************************************************************************************************/
+:is(.uo_loginForm) {
+
+  p:has(>label) {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  input[type=submit] {
+    background-color: var(--brand-c-primary);
+    text-shadow: 0px 3px 4px rgba(0, 0, 0, 0.14);
+    color: white;
+      background-image: radial-gradient(at top left, var(--brand-c-primary) 0%, var(--brand-c-transition-green) 100% );
+    background-size: cover;
+    background-position: left top;
+    background-repeat:no-repeat;
+    padding: 12px 47px 12px 47px;
+    transition: background-position 1.3s ease-in-out;
+    &:hover{
+      background-image: radial-gradient(at top left, var(--brand-c-primary) 0%, var(--brand-c-secondary-shade-1) 100%);
+    }
+  }
+}
+
+
+/*# sourceMappingURL=auth-form.css.map*/

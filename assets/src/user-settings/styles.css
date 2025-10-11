@@ -1,0 +1,14 @@
+.aim-user-settings__layout {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  @media (min-width: 768px) {
+    gap: 5vw;
+    flex-direction: row;
+  }
+}
+
+.aim-user-settings__section-title {
+  font-size: 1.5rem;
+}

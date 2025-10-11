@@ -12,6 +12,7 @@ module.exports = {
     ["registration-form"]: { import: "./assets/src/registration-form.ts" },
     ["protect-free-lesson"]: { import: "./assets/src/protect-free-lesson/index.ts" },
     ["auth-form"]: { import: "./assets/src/auth-form/auth-form.ts" },
+		["user-settings"]: { import: "./assets/src/user-settings/index.ts" },
   },
   module: {
     ...defaults.module,

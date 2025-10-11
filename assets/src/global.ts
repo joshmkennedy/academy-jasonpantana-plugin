@@ -8,3 +8,5 @@ import "./tippy";
 import "./search/search-modal";
 
 import "./utils/google-sheets";
+
+import "./drop-down-menu";
