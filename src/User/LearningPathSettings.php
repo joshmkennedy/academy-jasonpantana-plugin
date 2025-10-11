@@ -2,6 +2,8 @@
 
 namespace JP\User;
 
+use JP\SafeMethodCaller;
+
 class LearningPathSettings {
     public $clipQueryVars = [
         'aim-learning-path-settings',
@@ -10,7 +12,7 @@ class LearningPathSettings {
     private $usermeta;
     public function __construct() {
         global $aimClipListUserMeta;
-        $this->usermeta = $aimClipListUserMeta;
+        $this->usermeta = new SafeMethodCaller($aimClipListUserMeta, 'AimClipListUserMeta');
     }
 
     public function addVars(array $vars) {
@@ -41,8 +43,10 @@ class LearningPathSettings {
         return $this->usermeta->getReceivedEmailsForList($userId, $listId);
     }
 
-    public function getActiveList(){
+    public function getActiveList() {
         $userId = get_current_user_id();
+        return $this->usermeta->getLastActiveSubscription($userId);
+
     }
 
     public function getLists() {
@@ -50,3 +54,4 @@ class LearningPathSettings {
         return $this->usermeta->getSubscribedLists($userId);
     }
 }
+

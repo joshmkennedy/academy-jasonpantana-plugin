@@ -62,6 +62,38 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ "./assets/src/user-settings/styles.css");
 
+window.addEventListener("DOMContentLoaded", function () {
+  const allDuhDamnButtons = document.querySelectorAll("[data-action='unsubscribe']");
+  allDuhDamnButtons.forEach(button => {
+    button.addEventListener("click", async function (e) {
+      e.preventDefault();
+      const listId = button.dataset.listId;
+      if (!listId) {
+        console.error("no list id, it no work. 😭😭😭😭😭😭.");
+        return;
+      }
+      await unsubscribe(listId);
+    });
+  });
+});
+async function unsubscribe(listId) {
+  const res = await fetch(`/wp-json/vts/v1/learning-path/opt-out-user?cliplist_id=${listId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-WP-Nonce": window.vtsPublic.nonce
+    }
+  });
+  const data = await res.json();
+  if (data.status === "success") {
+    console.log("success");
+    window.location.href = "/profile";
+  } else {
+    if (true) {
+      window.alert("Shoot it didnt work I guess you're stuck learning 🤓");
+    }
+  }
+}
 })();
 
 /******/ })()

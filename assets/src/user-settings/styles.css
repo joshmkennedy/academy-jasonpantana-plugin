@@ -6,9 +6,52 @@
   @media (min-width: 768px) {
     gap: 5vw;
     flex-direction: row;
+    justify-content: space-between;
   }
 }
 
 .aim-user-settings__section-title {
   font-size: 1.5rem;
+}
+
+.aim-user-settings__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-block: 1rem;
+}
+
+.aim-user-settings__list-item-link {
+  text-decoration: none;
+  color: var(--brand-c-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+
+  .list-item-icon {
+    display: none;
+  }
+
+  &:hover {
+    color: var(--brand-c-secondary);
+    background-color: var(--brand-c-light);
+
+    .list-item-icon {
+      display: block;
+    }
+  }
+}
+
+.btn--secondary {
+  background-color: var(--slate-100);
+  color: var(--slate-800);
+  font-size:.8em;
+}
+
+.aim-user-settings__layout__right{
+  max-width:250px;
+  p:first-of-type{
+    margin-top:0;
+  }
 }

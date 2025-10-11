@@ -34,7 +34,9 @@ class Aim100daysModal {
 
     private function renderModal() {
         $formId = get_option('aim_form_100days_id') ?: 21185;
+        error_log("🔴 form id: $formId");
         if (!$formId) return;
+
         ob_start();
 
     ?>

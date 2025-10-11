@@ -45,17 +45,14 @@ class SecondaryMenu {
 
 // TODO: this is bad.
 add_filter('jp_secondary_menu_items', function ($items, $userId) {
-    global $aimClipListUserMeta;
+    $lps = new LearningPathSettings();
 
-    if (isset($aimClipListUserMeta)) {
-        $clipLists = $aimClipListUserMeta->getSubscribedLists($userId);
-        if ($clipLists && is_array($clipLists) && count($clipLists) > 0) {
-            $items[] = [
-                'label' => 'Learning Paths',
-                'icon' => 'gear',
-                'link' => aimSubscribedPathsLink()
-            ];
-        }
+    if ($lps->getActiveList()) {
+        $items[] = [
+            'label' => 'Learning Paths',
+            'icon' => 'gear',
+            'link' => aimSubscribedPathsLink()
+        ];
     }
 
     return $items;
