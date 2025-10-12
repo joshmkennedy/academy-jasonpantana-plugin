@@ -18,6 +18,17 @@ class AimClipPage {
         return array_merge($vars, $this->clipQueryVars);
     }
 
+    public function getWeekIntro(){
+        global $getAimClipListWeekData;
+        if (!$getAimClipListWeekData) return "";
+
+        $id = get_query_var('aim-learning-path');
+        $week = get_query_var('week-index');
+        $weekData = $getAimClipListWeekData((int)$id, (int)$week);
+        $data = $weekData->getVimeoPluginData();
+        return $data['intro'] ?: "";
+    }
+
     public function getSelectedVideo() {
         global $getAimClipListWeekData;
         if (!$getAimClipListWeekData) return [];
