@@ -47,5 +47,11 @@ export default class LoadLastPlayedTime {
     this.player!.on("pause", (data)=>{
       localStorage.setItem(this.vimeoId!, data.seconds.toString());
     })
+    this.player!.on("ended", (data)=>{
+      localStorage.setItem(this.vimeoId!, data.seconds.toString());
+    })
+    this.player!.on("timeupdate", (data)=>{
+      localStorage.setItem(this.vimeoId!, data.seconds.toString());
+    })
   }
 }
