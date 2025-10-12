@@ -4,17 +4,19 @@ namespace JP;
 
 class Aim100daysModal {
     public function renderNotice() {
-        global $aimFormDisplay;
-        if (!$aimFormDisplay || !wp_get_current_user()) return;
+        $lps = new User\LearningPathSettings();
+        if (!$lps || !wp_get_current_user()) return;
 
         // if ($aimFormDisplay::userHasActiveList(wp_get_current_user()->ID) || !$this->allowTesting()) return;
-        if(!user_can(wp_get_current_user(), 'manage_options')) return;
+        if(!feature_flag('starting_plans')) return;
+        // TODO: this will need to change as we add more lists or something
+        if($lps->getActiveList()) return;
 
         ob_start();
 ?>
         <div class="jp-profile-content">
             <p class="heading">Not sure where to start?</p>
-            <p>Sign up for currated content, delivered right to your inbox designed to get you up to speed and to meet you where you are!</p>
+            <p>Get currated content, delivered right to your inbox designed to get you up to speed and to meet you where you are!</p>
         </div>
         <div>
             <button class="notice-action" data-action="open-aim-100-days">Find your startng point</button>
@@ -34,7 +36,6 @@ class Aim100daysModal {
 
     private function renderModal() {
         $formId = get_option('aim_form_100days_id') ?: 21185;
-        error_log("🔴 form id: $formId");
         if (!$formId) return;
 
         ob_start();

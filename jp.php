@@ -183,6 +183,9 @@ try {
     require_once __DIR__ . '/pages/aim-clip-page.php';
     require_once __DIR__ . '/pages/learning-path-settings.php';
     //ADMIN
+    require_once __DIR__ . '/admin/jp-admin-menu.php';
+    require_once __DIR__ . '/admin/feature-flag.php';
+    require_once __DIR__ . '/admin/feature-flags-admin-page.php';
     require_once __DIR__ . '/admin/jp-settings.php';
     require_once __DIR__ . '/admin/lesson-admin-columns.php';
 } catch (Exception $e) {

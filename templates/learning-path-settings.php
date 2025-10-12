@@ -25,7 +25,7 @@ $emailsRecieved = $listId ? $learningPathSettings->getReceivedEmailsForList($lis
                 Back to Profile
             </a>
             <div class="title">
-                <span style="font-size:.5em;">Subscribed Learning Path</span>
+                <span style="font-size:.5em;">Subscribed Starting Plan</span>
                 <h1>
                     Settings
                 </h1>
@@ -40,6 +40,11 @@ $emailsRecieved = $listId ? $learningPathSettings->getReceivedEmailsForList($lis
                 <div class="aim-user-settings__layout">
                     <div class="aim-user-settings__layout__left">
                         <h2 class="aim-user-settings__section-title">Weekly Videos Recieved</h2>
+
+                        <?php if (count($emailsRecieved) === 0): ?>
+                            <p style="color: var(--slate-800); margin-block: .25em">All recieved content will be saved here so you can access it later.</p>
+                            <p style="color: var(--slate-500); margin-block: .25em">You havent recieved any weekly content yet.</p>
+                        <?php endif; ?>
                         <ul class="aim-user-settings__list">
                             <?php foreach ($emailsRecieved as $email): ?>
                                 <li class="aim-user-settings__list-item">

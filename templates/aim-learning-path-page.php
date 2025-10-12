@@ -11,8 +11,15 @@ $selectedVideo = $aimClipPage->getSelectedVideo();
     <!-- HEADER -->
     <div class="aim-template-header" style="--bg-image: url(<?= getAimAssetUrl('green-gradient.webp'); ?>);">
         <div class="aim-template-header__content">
+            <a href="/profile" class="aim-template-header__content__back-link" style="color:white; text-decoration:none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="max-width:1em;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to Profile
+            </a>
             <div class="title">
-                <span>This weeks Learning Path Content</span>
+                <span>This weeks selected Content</span>
                 <h1>
                     <!-- TODO: Week {week_index} -->
                     Week 1

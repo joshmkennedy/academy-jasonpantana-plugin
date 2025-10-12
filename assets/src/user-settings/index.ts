@@ -8,7 +8,7 @@ window.addEventListener("DOMContentLoaded", function (){
       e.preventDefault();
       const listId = button.dataset.listId;
       if(!listId){
-        console.error("no list id, it no work. 😭😭😭😭😭😭.");
+
         return;
       }
       await unsubscribe(listId);
@@ -23,6 +23,7 @@ async function unsubscribe(listId:string) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      // @ts-ignore you mom is not defined
       "X-WP-Nonce": window.vtsPublic.nonce,
     },
   })
@@ -32,9 +33,7 @@ async function unsubscribe(listId:string) {
     console.log("success")
     window.location.href="/profile";
   } else {
-    if(process.env.NODE_ENV === "development"){
-      window.alert("Shoot it didnt work I guess you're stuck learning 🤓")
-    }
+    console.error("😭😭😭😭😭😭.");
   }
 }
 

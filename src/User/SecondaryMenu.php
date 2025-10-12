@@ -45,11 +45,12 @@ class SecondaryMenu {
 
 // TODO: this is bad.
 add_filter('jp_secondary_menu_items', function ($items, $userId) {
+    if (!feature_flag('starting_plans')) return $items;
     $lps = new LearningPathSettings();
 
     if ($lps->getActiveList()) {
         $items[] = [
-            'label' => 'Learning Paths',
+            'label' => 'Starting Plans',
             'icon' => 'gear',
             'link' => aimSubscribedPathsLink()
         ];

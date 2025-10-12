@@ -103,12 +103,11 @@ class MainSection extends Lolole {
             if($max <= 0) break;
 
             $content = call_user_func($bannerCB);
-            error_log("banner content: " . $content);
             if(!$content) continue;
             $max--
         ?>
-            <div class="profile-user-notice">
-                <div class="contents">
+            <div class="profile-user-notice shimmer">
+                <div class="contents shimmer">
                     <?= $content; ?>
                 </div>
             </div>
