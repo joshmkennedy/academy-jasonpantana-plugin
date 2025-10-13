@@ -15,13 +15,22 @@ function init() {
     modal?.remove();
   }
 
-  if(!modal) return;
+
+  modal?.addEventListener("close", (event) => {
+    console.log("close");
+    event.preventDefault(); // Uncomment to prevent closing on Esc
+    event.stopPropagation(); // Uncomment to prevent closing on Esc
+    modal.showModal();
+  });
+
+  if (!modal) return;
 
   const form = modal?.querySelector<HTMLFormElement>("#free-lesson-signup__form");
-  if (!form){
+  if (!form) {
     console.log("no form");
     return;
   }
+
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
