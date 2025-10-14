@@ -1,4 +1,23 @@
-.free-lesson-signup__popup {
+#free-lesson-signup{
+  display:grid;
+  place-items:center;
+  .free-lesson-signup__overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    background:rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+  }
+}
+
+.free-lesson-signup__container {
+  z-index:1;
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
   max-width: min(90%, 600px);
   width: 100%;
   border-radius: 8px;
