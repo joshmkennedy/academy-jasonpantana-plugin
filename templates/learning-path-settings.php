@@ -62,7 +62,7 @@ $emailsRecieved = $listId ? $learningPathSettings->getReceivedEmailsForList($lis
 
                     <div class="aim-user-settings__layout__right">
                         <p>Subscribed on <?= $subscribedOn; ?></p>
-                        <button class="btn btn--secondary" data-action="unsubscribe" data-list-id="<?= $listId; ?>">Unsubscribe</button>
+                        <button class="btn btn--secondary" data-action="unsubscribe" data-list-id="<?= $listId; ?>">Stop this Plan</button>
                     </div>
                 </div>
             <?php else: ?>
