@@ -21,21 +21,21 @@ $weekIntro = $aimClipPage->getWeekIntro();
                 Back to Profile
             </a>
             <div class="title">
-                <span>This weeks selected Content</span>
+                <span>This Week’s AiM Lessons</span>
                 <h1>
                     <!-- TODO: Week {week_index} -->
                     Week 1
                 </h1>
             </div>
-            <p class="header-description">
-                <?= $weekIntro; ?>
-            </p>
         </div>
         <?php include $tutil->useTemplate('utils/circutry-graphic'); ?>
     </div>
     <!-- CONTENT -->
     <div class="aim-template-content">
         <div class="aim-template-content__page">
+            <p class="header-description">
+                <?= $weekIntro; ?>
+            </p>
 
             <div class="aim-template-content__page__video-container aim-clip-player">
                 <div class="wp-block-embed" data-aim-clip="<?= isset($selectedVideo['vimeoId']) ? $selectedVideo['vimeoId'] : ''; ?>">
