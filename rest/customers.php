@@ -49,7 +49,7 @@ function jp_customers(WP_REST_Request $request): WP_REST_Response {
         $user['dateCreated'] = $_user->user_registered;
         // $user['stripe_id'] = get_usermeta($_user->ID, 'stripe_connect_customer_id', true);
         $user['groups'] = getLearndashGroups($_user);
-
+        $user['phone'] = get_user_meta($_user->ID, 'phone', true);
         return $user;
     }, get_users($args));
 
