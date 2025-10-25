@@ -45,7 +45,7 @@ function jp_customers(WP_REST_Request $request): WP_REST_Response {
         'order' => 'ASC',
     ];
 
-    if (isset($modified_since)) {
+    if ($modified_since) {
         $args['date_query'] = [
             [
                 'column' => 'user_registered',
