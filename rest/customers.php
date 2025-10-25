@@ -13,6 +13,10 @@ add_action('rest_api_init', function () {
                 'type' => 'integer',
                 'default' => 1,
             ],
+            'modified_since' => [
+                'type' => 'string',
+                'default' => null,
+            ],
         ],
         'permission_callback' => function () {
             // Restrict who can use this endpoint as necessary
@@ -26,6 +30,7 @@ add_action('rest_api_init', function () {
 function jp_customers(WP_REST_Request $request): WP_REST_Response {
     $perPage = $request->get_param('per_page');
     $page = $request->get_param('page');
+    $modified_since = $request->get_param('modified_since');
     $users = [];
     $args = [
         'number' => $perPage,
@@ -39,6 +44,16 @@ function jp_customers(WP_REST_Request $request): WP_REST_Response {
         'orderby' => 'ID',
         'order' => 'ASC',
     ];
+
+    if (isset($modified_since)) {
+        $args['date_query'] = [
+            [
+                'column' => 'user_registered',
+                'after' => $modified_since,
+                'inclusive' => true,
+            ],
+        ];
+    }
 
     $users = array_map(function (\WP_User $_user) {
         $user = [];
