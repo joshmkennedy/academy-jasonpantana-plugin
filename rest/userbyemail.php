@@ -21,7 +21,6 @@ add_action('rest_api_init', function () {
             ),
         ),
         'permission_callback' => function () {
-            return true;
             // Restrict who can use this endpoint as necessary
             // For example, only logged-in users who can list users:
             return current_user_can('list_users');
