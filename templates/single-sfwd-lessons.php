@@ -8,7 +8,7 @@ $lessonCategoryService = new \JP\LessonCategoryService();
 $categoryName = null;
 if (get_post()) {
     $category = $lessonCategoryService->getAllFor(get_post());
-    if ($category[0]) {
+    if (is_array($category) && $category[0]) {
         $categoryName = $lessonCategoryService->singlularLabel($category[0]);
     }
 }
