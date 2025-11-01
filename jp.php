@@ -113,6 +113,7 @@ try {
             error_log("should hide");
             return null;
         }
+        $isProfilePage = is_page('profile');
         $userId = get_current_user_id();
         $groups = array_filter(learndash_get_users_group_ids($userId), fn($id) => isPaidGroup($id));
         $link = ($userId > 0) ? (
@@ -124,7 +125,7 @@ try {
         ob_start(); ?>
         <div class="header-button-wrap">
             <div class="header-button-inner-wrap">
-                <a href="<?= $link; ?>" target="_self" class="button header-button button-size-custom button-style-filled button-style-gradient--primary" style="padding-block:16px;">
+            <a href="<?= $link; ?>" target="_self" class="button header-button button-size-custom button-style-filled button-style-gradient--primary <?=$isProfilePage ? 'on-profile':'';?>" style="padding-block:16px;">
                     <?= $buttonText; ?>
                 </a>
 
