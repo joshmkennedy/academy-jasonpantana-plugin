@@ -22,6 +22,7 @@ class MainSection extends Lolole {
             ]); ?>
         </div>
 
+
         <div class="lolole-wrapper ">
             <?php $this->renderLessonsSection(
                 title: 'Lectures',
