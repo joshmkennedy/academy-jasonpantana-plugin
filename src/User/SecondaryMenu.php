@@ -50,7 +50,7 @@ add_filter('jp_secondary_menu_items', function ($items, $userId) {
 
     if ($lps->getActiveList()) {
         $items[] = [
-            'label' => 'Starting Plans',
+            'label' => 'Fast Tracks',
             'icon' => 'gear',
             'link' => aimSubscribedPathsLink()
         ];

@@ -25,7 +25,7 @@ $emailsRecieved = $listId ? $learningPathSettings->getReceivedEmailsForList($lis
                 Back to Profile
             </a>
             <div class="title">
-                <span style="font-size:.5em;">Subscribed Starting Plan</span>
+                <span style="font-size:.5em;">Subscribed Fast Track</span>
                 <h1>
                     Settings
                 </h1>
