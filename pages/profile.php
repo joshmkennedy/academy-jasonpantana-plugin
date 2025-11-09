@@ -19,6 +19,13 @@ add_shortcode('aim_profile_lololes', function () {
     return ob_get_clean();
 });
 
+add_action("wp", function () {
+    if (!is_page('profile')) {
+        return;
+    }
+    protect_paid_content(true);
+});
+
 add_shortcode('aim_profile_lololes__main', function () {
     ob_start();
     $mainSection = new \JP\Profile\MainSection();

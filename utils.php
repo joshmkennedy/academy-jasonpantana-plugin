@@ -124,6 +124,10 @@ if (!function_exists('protect_paid_content')) {
             $userId = get_current_user_id();
             $groups = array_filter(\learndash_get_users_group_ids($userId), fn($id) => isPaidGroup($id));
             if (!count($groups)) {
+                if($userId){
+                    wp_redirect(site_url("choose-your-plan"));
+                    exit;
+                }
                 wp_redirect(wp_login_url(redirect:getCurrentURL()));
                 exit;
             }
