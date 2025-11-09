@@ -28,6 +28,7 @@ class Instructors {
     }
     public function render(): void {
         if(!feature_flag('instuctors')) return;
+        if(empty($this->instructors) || !is_array($this->instructors) || count($this->instructors) === 0) return;
         add_action('wp_footer', [$this, 'renderData']);
 ?>
         <div class="profile-aim-instructors">
