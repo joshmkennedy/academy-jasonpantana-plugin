@@ -1,0 +1,58 @@
+<?php
+
+namespace JP\Profile;
+
+
+class Instructors {
+    public array $instructors = [];
+    public function __construct() {
+        $this->instructors = array_map(
+            fn(\WP_User $user) => [
+                'id' => $user->ID,
+                'name' => sprintf("%s %s", $user->first_name, $user->last_name),
+                'img' => wp_get_attachment_image_url(get_user_meta($user->ID, 'instructor-profile-img-id', true), 'medium'),
+                'focus_description' => get_user_meta($user->ID, 'instructor-speacialties-ai-area-of-focus-description', true),
+                'tags' => get_user_meta($user->ID, 'instructor-speacialties-tags', true),
+                'calendlyLink' => get_user_meta($user->ID, 'instructor-calendly-link', true),
+            ],
+            get_users([
+                'role' => 'aim_instructors',
+                'meta_query' => [
+                    [
+                        'key' => 'instructor-is-available',
+                        'compare' => 'EXISTS',
+                    ],
+                ],
+            ])
+        );
+    }
+    public function render(): void {
+        add_action('wp_footer', [$this, 'renderData']);
+?>
+        <div class="profile-aim-instructors">
+            <div class="instructors-header">
+            <h3>AiM Instructors</h3>
+            <p>Book a one on one to take a jump start</p>
+            </div>
+            <ul class="profile-instructors-list">
+                <?php foreach ($this->instructors as $instructor): ?>
+                    <li class="profile-instructor-list-item" data-id="<?= $instructor['id']; ?>">
+                        <button class="profile-instructor-trigger" data-user-id="<?= $instructor['id']; ?>">
+                            <img src="<?= $instructor['img']; ?>" alt="<?= $instructor['name']; ?>" width="100" height="100" />
+                        </button>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+<?php
+    }
+
+    public function renderData(): void {
+        $data = json_encode($this->instructors);
+?>
+        <script>
+            window.aimInstructorsData = <?= $data; ?>
+        </script>
+<?php
+    }
+}

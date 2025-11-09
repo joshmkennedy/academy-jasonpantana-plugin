@@ -8,6 +8,7 @@ import "./card/resource-card.css";
 import "./search/search-page";
 import "./walkthrough-banner";
 import "./profile-user-notices";
+import "./instructors";
 
 import "./profile.css";
 

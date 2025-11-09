@@ -22,6 +22,8 @@ class MainSection extends Lolole {
             ]); ?>
         </div>
 
+        <?php (new Instructors())->render(); ?>
+
 
         <div class="lolole-wrapper ">
             <?php $this->renderLessonsSection(
@@ -101,10 +103,10 @@ class MainSection extends Lolole {
     public function renderNotices(array $banners): void {
         $max = 2;
         foreach ($banners as $bannerCB) {
-            if($max <= 0) break;
+            if ($max <= 0) break;
 
             $content = call_user_func($bannerCB);
-            if(!$content) continue;
+            if (!$content) continue;
             $max--
         ?>
             <div class="profile-user-notice shimmer">
