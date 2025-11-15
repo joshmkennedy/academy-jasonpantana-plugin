@@ -27,31 +27,33 @@ class Instructors {
         );
     }
     public function render(): void {
-        if(!feature_flag('instuctors')) return;
-        if(empty($this->instructors) || !is_array($this->instructors) || count($this->instructors) === 0) return;
+        if (!feature_flag('instuctors')) return;
+        if (empty($this->instructors) || !is_array($this->instructors) || count($this->instructors) === 0) return;
         add_action('wp_footer', [$this, 'renderData']);
 ?>
-        <div class="profile-aim-instructors">
-            <div class="instructors-header">
-            <h3>AiM Instructors</h3>
-            <p>Book a one on one to take a jump start</p>
+        <div class="profile-aim-instructors__container">
+            <div class="profile-aim-instructors__layout">
+                <div class="instructors-header">
+                    <h3>AiM Instructors</h3>
+                    <p>Book a one on one to take a jump start</p>
+                </div>
+                <ul class="profile-instructors-list">
+                    <?php foreach ($this->instructors as $instructor): ?>
+                        <li class="profile-instructor-list-item" data-id="<?= $instructor['id']; ?>">
+                            <button class="profile-instructor-trigger" data-user-id="<?= $instructor['id']; ?>">
+                                <img src="<?= $instructor['img']; ?>" alt="<?= $instructor['name']; ?>" width="100" height="100" />
+                            </button>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
             </div>
-            <ul class="profile-instructors-list">
-                <?php foreach ($this->instructors as $instructor): ?>
-                    <li class="profile-instructor-list-item" data-id="<?= $instructor['id']; ?>">
-                        <button class="profile-instructor-trigger" data-user-id="<?= $instructor['id']; ?>">
-                            <img src="<?= $instructor['img']; ?>" alt="<?= $instructor['name']; ?>" width="100" height="100" />
-                        </button>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
         </div>
-<?php
+    <?php
     }
 
     public function renderData(): void {
         $data = json_encode($this->instructors);
-?>
+    ?>
         <script>
             window.aimInstructorsData = <?= $data; ?>
         </script>

@@ -290,6 +290,30 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./assets/src/profile-hero/index.ts":
+/*!******************************************!*\
+  !*** ./assets/src/profile-hero/index.ts ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _profile_hero_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./profile-hero.css */ "./assets/src/profile-hero/profile-hero.css");
+
+
+/***/ }),
+
+/***/ "./assets/src/profile-hero/profile-hero.css":
+/*!**************************************************!*\
+  !*** ./assets/src/profile-hero/profile-hero.css ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./assets/src/profile-notices/actions.ts":
 /*!***********************************************!*\
   !*** ./assets/src/profile-notices/actions.ts ***!
@@ -2450,10 +2474,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _card_resource_card_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./card/resource-card.css */ "./assets/src/card/resource-card.css");
 /* harmony import */ var _search_search_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./search/search-page */ "./assets/src/search/search-page.ts");
 /* harmony import */ var _walkthrough_banner__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./walkthrough-banner */ "./assets/src/walkthrough-banner/index.ts");
-/* harmony import */ var _profile_user_notices__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./profile-user-notices */ "./assets/src/profile-user-notices.ts");
-/* harmony import */ var _instructors__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./instructors */ "./assets/src/instructors/index.ts");
-/* harmony import */ var _profile_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./profile.css */ "./assets/src/profile.css");
-/* harmony import */ var _carousel__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./carousel */ "./assets/src/carousel/index.ts");
+/* harmony import */ var _profile_hero__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./profile-hero */ "./assets/src/profile-hero/index.ts");
+/* harmony import */ var _profile_user_notices__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./profile-user-notices */ "./assets/src/profile-user-notices.ts");
+/* harmony import */ var _instructors__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./instructors */ "./assets/src/instructors/index.ts");
+/* harmony import */ var _profile_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./profile.css */ "./assets/src/profile.css");
+/* harmony import */ var _carousel__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./carousel */ "./assets/src/carousel/index.ts");
+
 
 
 
@@ -2468,7 +2494,7 @@ __webpack_require__.r(__webpack_exports__);
 addEventListener("DOMContentLoaded", () => {
   const sliders = document.querySelectorAll(".lolole-slider");
   sliders.forEach(slider => {
-    (0,_carousel__WEBPACK_IMPORTED_MODULE_10__.initCarousel)(slider);
+    (0,_carousel__WEBPACK_IMPORTED_MODULE_11__.initCarousel)(slider);
   });
 });
 })();

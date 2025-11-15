@@ -13,15 +13,23 @@ class Hero {
 
     public function render() {
 ?>
-        <div class="profile-user-notices">
-            <?php $this->renderNotices([
-                // banner for the assessment to sign up for the 100 days.
-                fn() => (new \JP\Aim100daysModal())->renderNotice(),
-            ]); ?>
+        <div class="profile-hero">
+            <div class="profile-user-notices">
+                <?php $this->renderNotices([
+                    // banner for the assessment to sign up for the 100 days.
+                    fn() => (new \JP\Aim100daysModal())->renderNotice(),
+                ]); ?>
+            </div>
+            <div class="profile-hero__container">
+                <div class="profile-hero__sidebar">
+                    <?php (new Instructors())->render(); ?>
+                </div>
+
+                <div class="profile-hero__main">
+
+                </div>
+            </div>
         </div>
-
-        <?php (new Instructors())->render(); ?>
-
         <?php
     }
 
