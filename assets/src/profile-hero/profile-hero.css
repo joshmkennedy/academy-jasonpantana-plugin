@@ -1,51 +1,64 @@
 .profile-hero {
-  position: relative;
-  min-width: 100%;
-  container-type: inline-size;
+	position: relative;
+	min-width: 100%;
+	container-type: inline-size;
 
-  margin-bottom: 48px;
+	&:has(:is(.profile-hero__main, .profile-hero__sidebar)) {
+		margin-bottom: 48px;
 
-  @media(min-width:763px) {
-    margin-bottom: 86px;
-  }
+		@media(min-width:763px) {
+			margin-bottom: 86px;
+		}
+	}
 }
 
 .profile-hero__container {
-  --layout-gap: 24px;
-  display: flex;
-  flex-direction: column-reverse;
-  gap: var(--layout-gap);
+	--layout-gap: 24px;
+	display: flex;
+	flex-direction: column-reverse;
+	gap: var(--layout-gap);
 
-  min-width: 300px;
+	min-width: 300px;
 
-  @container(width > 763px) {
-    flex-direction: row;
-    --layout-gap: 32px;
-  }
+	@container(width > 763px) {
+		flex-direction: row;
+		--layout-gap: 32px;
+	}
 }
 
 .profile-hero__sidebar {
-  width: 100%;
-  flex: 1 1 40%;
-  min-width: 250px;
-  max-width: 400px;
+	width: 100%;
 }
 
+body:has(.profile-hero__main) {
+	.profile-hero__sidebar {
+		flex: 1 1 40%;
+		min-width: 250px;
+		max-width: 400px;
+	}
+}
+
+
 .profile-hero__main {
-  width: 100%;
-  flex: 1 1 60%;
+	width: 100%;
+}
+
+body:has(.profile-hero__sidebar) {
+	.profile-hero__main {
+		flex: 1 1 60%;
+	}
 }
 
 .profile-hero__main,
 .profile-hero__sidebar {
-  border-radius: 8px;
-  overflow: hidden;
+	border-radius: 8px;
+	overflow: hidden;
 
 
-  /* on mobile we want full width */
-  @container (width < 763px) {
-    max-width: 100%;
-    min-width: 100%;
-    flex: 1 1 100%;
-  }
+	/* on mobile we want full width */
+	@container (width < 763px) {
+		max-width: 100%;
+		min-width: 100%;
+		flex: 1 1 100%;
+	}
 }

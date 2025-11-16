@@ -12,6 +12,8 @@ class Hero {
     }
 
     public function render() {
+        $mainSnippet = (new \JP\ContentSnippets\RenderSnippet("testing-snippet-editor"))->render();
+        $hasAccessToInstructors = feature_flag('instuctors');
 ?>
         <div class="profile-hero">
             <div class="profile-user-notices">
@@ -20,14 +22,19 @@ class Hero {
                     fn() => (new \JP\Aim100daysModal())->renderNotice(),
                 ]); ?>
             </div>
-            <div class="profile-hero__container">
-                <div class="profile-hero__sidebar">
-                    <?php (new Instructors())->render(); ?>
-                </div>
 
-                <div class="profile-hero__main">
-                    <?= (new \JP\ContentSnippets\RenderSnippet("testing-snippet-editor"))->render(); ?>
-                </div>
+            <div class="profile-hero__container">
+                <?php if ($hasAccessToInstructors): ?>
+                    <div class="profile-hero__sidebar">
+                        <?php (new Instructors())->render(); ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($mainSnippet): ?>
+                    <div class="profile-hero__main">
+                        <?= $mainSnippet; ?>
+                    </div>
+                <?php endif; ?>
             </div>
 
         </div>
