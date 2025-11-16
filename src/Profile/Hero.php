@@ -12,7 +12,7 @@ class Hero {
     }
 
     public function render() {
-        $mainSnippet = (new \JP\ContentSnippets\RenderSnippet("testing-snippet-editor"))->render();
+        $mainSnippet = (new \JP\ContentSnippets\RenderSnippet("main-hero-snippet"))->render();
         $hasAccessToInstructors = feature_flag('instuctors');
 ?>
         <div class="profile-hero">
