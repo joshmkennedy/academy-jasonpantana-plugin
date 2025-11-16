@@ -16,7 +16,6 @@ class Instructors {
                 'calendlyLink' => get_user_meta($user->ID, 'instructor-calendly-link', true),
             ],
             get_users([
-                'role' => 'aim_instructors',
                 'meta_query' => [
                     [
                         'key' => 'instructor-is-available',
