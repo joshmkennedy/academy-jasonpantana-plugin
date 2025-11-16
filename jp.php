@@ -21,6 +21,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/utils.php';
 // custom rest endpoint
 require_once __DIR__ . '/rest/routes.php';
+
 use JP\User\SecondaryMenu;
 
 /*╭───────────────────────────╮*/
@@ -125,7 +126,7 @@ try {
         ob_start(); ?>
         <div class="header-button-wrap">
             <div class="header-button-inner-wrap">
-            <a href="<?= $link; ?>" target="_self" class="button header-button button-size-custom button-style-filled button-style-gradient--primary <?=$isProfilePage ? 'on-profile':'';?>" style="padding-block:16px;">
+                <a href="<?= $link; ?>" target="_self" class="button header-button button-size-custom button-style-filled button-style-gradient--primary <?= $isProfilePage ? 'on-profile' : ''; ?>" style="padding-block:16px;">
                     <?= $buttonText; ?>
                 </a>
 
@@ -190,6 +191,9 @@ try {
     require_once __DIR__ . '/admin/jp-settings.php';
     require_once __DIR__ . '/admin/lesson-admin-columns.php';
     require_once __DIR__ . '/admin/instructors.php';
+
+    // BLOCKS
+    (new \JP\ContentSnippets\Blocks(JP_PLUGIN_ROOT_DIR_PATH . '/assets/build/content-snippets/blocks'))->register();
 } catch (Exception $e) {
     error_log($e->getMessage());
 }
@@ -218,3 +222,28 @@ register_meta(
 );
 
 require __DIR__ . '/admin/protect-lesson.php';
+
+// Add Gradient Presets probably belongs in some other file but here you go.
+add_theme_support('settings', array(
+    "spacing" => [
+        "blockGap" => true,
+    ]
+));
+add_theme_support('editor-gradient-presets', array(
+    array(
+        'name' => __('Greenish Blue', 'theme-text-domain'),
+        'slug' => 'greenish-blue',
+        'gradient' => 'linear-gradient(38deg, #144776 0%, #2BB09B 100%)',
+    ),
+    array(
+        'name' => __('Bluish Green', 'theme-text-domain'),
+        'slug' => 'bluish-green',
+        'gradient' => 'linear-gradient(90deg, rgba(48, 219, 166, 1) 0%, rgba(28, 76, 138, 1) 100%)',
+    ),
+
+    array(
+        'name' => __('Orangish Blue', 'theme-text-domain'),
+        'slug' => 'orangish-blue',
+        'gradient' => 'linear-gradient(40deg,rgb(135,120,102) 0%,rgb(101,105,111) 32%,rgb(52,83,123) 100%)',
+    ),
+));

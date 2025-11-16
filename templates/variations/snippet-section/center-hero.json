@@ -1,0 +1,130 @@
+{
+  "name": "jp-hero-section",
+  "title": "Center Heading With CTA",
+  "innerBlocks": [
+    [
+      "core/group",
+      {
+        "style": {
+          "spacing": {
+            "padding": {
+              "top": "var:preset|spacing|30",
+              "bottom": "var:preset|spacing|30",
+              "left": "var:preset|spacing|30",
+              "right": "var:preset|spacing|30"
+            }
+          },
+          "dimensions": {
+            "minHeight": "200px"
+          }
+        },
+        "gradient": "bluish-green",
+        "layout": {
+          "type": "flex",
+          "orientation": "vertical",
+          "verticalAlignment": "center",
+          "justifyContent": "center"
+        }
+      },
+      [
+        [
+          "core/group",
+          {
+            "style": {
+              "spacing": {
+                "margin": {
+                  "bottom": "var:preset|spacing|20"
+                }
+              }
+            },
+            "layout": {
+              "type": "flex",
+              "orientation": "vertical",
+              "verticalAlignment": "center",
+              "justifyContent": "center"
+            }
+          },
+          [
+            [
+              "core/heading",
+              {
+                "textAlign": "center",
+                "content": "Headline",
+                "level": 2,
+                "style": {
+                  "elements": {
+                    "link": {
+                      "color": {
+                        "text": "var:preset|color|theme-palette9"
+                      }
+                    }
+                  },
+                  "spacing": {
+                    "margin": {
+                      "top": "0px",
+                      "bottom": "0px"
+                    }
+                  }
+                },
+                "textColor": "theme-palette9",
+                "fontSize": "large"
+              }
+            ],
+            [
+              "core/paragraph",
+              {
+                "align": "center",
+                "content": "A description of this section",
+                "style": {
+                  "elements": {
+                    "link": {
+                      "color": {
+                        "text": "var:preset|color|theme-palette8"
+                      }
+                    }
+                  },
+                  "spacing": {
+                    "margin": {
+                      "top": "0px",
+                      "bottom": "0px"
+                    },
+                    "padding": {
+                      "top": "var:preset|spacing|20",
+                      "bottom": "var:preset|spacing|20",
+                      "left": "var:preset|spacing|20",
+                      "right": "var:preset|spacing|20"
+                    }
+                  },
+                  "layout": {
+                    "selfStretch": "fixed",
+                    "flexSize": "2px"
+                  }
+                },
+                "textColor": "theme-palette8",
+                "fontSize": "small"
+              }
+            ]
+          ]
+        ],
+        [
+          "core/buttons",
+          [],
+          [
+            [
+              "core/button",
+              {
+                "text": "Button",
+                "style": {
+                  "custom": {
+                    "backgroundColor": "var:preset|color|theme-palette8",
+                    "color": "var:preset|color|theme-palette-on-primary"
+                  }
+                }
+              }
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+}

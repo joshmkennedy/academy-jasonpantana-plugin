@@ -61,7 +61,7 @@ const modalTemplate = (instructor: Instructor) => `
           <img src="${instructor.img}" alt="${instructor.name}" width="100" height="100" />
         </div>
         <div class="instructor-profile__header-title">
-          <div class="profile-instructors__label"> <span>AiM</span> Instructor</div>
+          <div class="profile-instructors__label"> <span>AiM</span> Expert</div>
           <h3>${instructor.name}</h3>
         </div>
       </div>

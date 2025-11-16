@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "jp-content-snippets/snippet-carousel",
+  "title": "Snippet Carousel",
+  "category": "widget",
+  "post_types": [
+    "content-snippet"
+  ],
+  "icon": "admin-comments",
+  "description": "Renders Snippet Sections in a carousel",
+  "textdomain": "snippet-section",
+  "attributes": {},
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./view.css",
+  "viewScript": "file:./view.js",
+  "viewScriptModule": "file:./view.js",
+  "render": "file:./render.php"
+}

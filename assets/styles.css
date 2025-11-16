@@ -291,3 +291,11 @@ p:empty {
 		align-items: center;
 	}
 }
+
+.has-text-align-center {
+	text-align: center;
+}
+
+.wp-block-button__link {
+	white-space: nowrap;
+}

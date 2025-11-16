@@ -295,6 +295,8 @@ add_action('init', function () {
         ),
         'delete_with_user' => false,
     ));
+
+
 });
 
 add_action('init', function () {
@@ -327,5 +329,56 @@ add_action('init', function () {
         'rewrite' => array(
             'hierarchical' => true,
         ),
+    ));
+});
+
+// Content Snippet Post Type
+add_action('init', function () {
+    register_post_type('content-snippet', array(
+        'labels' => array(
+            'name' => 'Content Snippets',
+            'singular_name' => 'Content Snippet',
+            'menu_name' => 'Content Snippets',
+            'all_items' => 'All Content Snippets',
+            'edit_item' => 'Edit Content Snippet',
+            'view_item' => 'View Content Snippet',
+            'view_items' => 'View Content Snippets',
+            'add_new_item' => 'Add New Content Snippet',
+            'add_new' => 'Add New Content Snippet',
+            'new_item' => 'New Content Snippet',
+            'parent_item_colon' => 'Parent Content Snippet:',
+            'search_items' => 'Search Content Snippets',
+            'not_found' => 'No content snippets found',
+            'not_found_in_trash' => 'No content snippets found in Trash',
+            'archives' => 'Content Snippet Archives',
+            'attributes' => 'Content Snippet Attributes',
+            'insert_into_item' => 'Insert into content snippet',
+            'uploaded_to_this_item' => 'Uploaded to this content snippet',
+            'filter_items_list' => 'Filter content snippets list',
+            'filter_by_date' => 'Filter content snippets by date',
+            'items_list_navigation' => 'Content Snippets list navigation',
+            'items_list' => 'Content Snippets list',
+            'item_published' => 'Content Snippet published.',
+            'item_published_privately' => 'Content Snippet published privately.',
+            'item_reverted_to_draft' => 'Content Snippet reverted to draft.',
+            'item_scheduled' => 'Content Snippet scheduled.',
+            'item_updated' => 'Content Snippet updated.',
+            'item_link' => 'Content Snippet Link',
+            'item_link_description' => 'A link to a content snippet.',
+        ),
+        'public' => false,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'show_in_nav_menus' => true,
+        'show_in_rest' => true,
+        'menu_icon' => 'dashicons-table-col-before',
+        'supports' => array(
+            0 => 'title',
+            1 => 'editor',
+            2 => 'revisions',
+            3 => 'thumbnail',
+            4 => 'custom-fields',
+        ),
+        'delete_with_user' => false,
     ));
 });

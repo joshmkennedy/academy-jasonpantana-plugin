@@ -1,0 +1,126 @@
+{
+	"name": "jp-image-hero-with-overlay",
+	"title": "Image Hero with Overlay",
+	"innerBlocks": [
+		[
+			"core/group",
+			{
+				"style": {
+					"spacing": {
+						"padding": {
+							"top": "0rem",
+							"right": "0rem",
+							"bottom": "0rem",
+							"left": "0rem"
+						}
+					},
+					"dimensions": {
+						"minHeight": "250px"
+					},
+					"background": {
+						"backgroundImage": {
+							"url": "https://academy.jasonpantana.com/wp-content/uploads/2024/12/TomFerry-SuccessSummit2024-AJ-1246-scaled.jpg"
+						},
+						"backgroundSize": "cover",
+						"backgroundPosition": "27% 39%",
+						"backgroundAttachment": "scroll"
+					},
+					"elements": {
+						"link": {
+							"color": {
+								"text": "var:preset|color|theme-palette8"
+							}
+						}
+					}
+				},
+				"backgroundColor": "theme-palette3",
+				"textColor": "theme-palette8",
+				"layout": {
+					"type": "flex",
+					"orientation": "vertical",
+					"verticalAlignment": "bottom",
+					"justifyContent": "stretch"
+				}
+			},
+			[
+				[
+					"core/group",
+					{
+						"style": {
+							"spacing": {
+								"padding": {
+									"top": "var:preset|spacing|60",
+									"right": "var:preset|spacing|20",
+									"bottom": "var:preset|spacing|20",
+									"left": "var:preset|spacing|20"
+								}
+							},
+							"color": {
+								"gradient": "linear-gradient(0deg,rgb(10,31,44) 11%,rgba(82,82,82,0) 100%)"
+							}
+						},
+						"layout": {
+							"type": "flex",
+							"flexWrap": "wrap",
+							"justifyContent": "space-between",
+							"verticalAlignment": "center"
+						}
+					},
+					[
+						[
+							"core/heading",
+							{
+								"content": "Headline Giving Context to Image",
+								"level": 2,
+								"style": {
+									"elements": {
+										"link": {
+											"color": {
+												"text": "var:preset|color|theme-palette9"
+											}
+										}
+									}
+								},
+								"textColor": "theme-palette9",
+								"fontSize": "large"
+							}
+						],
+						[
+							"core/buttons",
+							[],
+							[
+								[
+									"core/button",
+									{
+										"text": "CTA Link",
+										"textColor": "theme-palette9",
+										"gradient": "greenish-blue",
+										"fontSize": "small",
+										"style": {
+											"elements": {
+												"link": {
+													"color": {
+														"text": "var:preset|color|theme-palette9"
+													}
+												}
+											},
+											"spacing": {
+												"padding": {
+													"top": "var:preset|spacing|20",
+													"right": "var:preset|spacing|60",
+													"bottom": "var:preset|spacing|20",
+													"left": "var:preset|spacing|60"
+												}
+											}
+										}
+									}
+								]
+							]
+						]
+					]
+				]
+			]
+		]
+	]
+}
+

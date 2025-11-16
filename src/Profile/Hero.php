@@ -26,9 +26,10 @@ class Hero {
                 </div>
 
                 <div class="profile-hero__main">
-
+                    <?= (new \JP\ContentSnippets\RenderSnippet("testing-snippet-editor"))->render(); ?>
                 </div>
             </div>
+
         </div>
         <?php
     }

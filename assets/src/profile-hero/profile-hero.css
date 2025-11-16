@@ -1,4 +1,5 @@
 .profile-hero {
+  position: relative;
   min-width: 100%;
   container-type: inline-size;
 
@@ -33,11 +34,13 @@
 .profile-hero__main {
   width: 100%;
   flex: 1 1 60%;
-  background: var(--brand-c-primary);
 }
 
 .profile-hero__main,
 .profile-hero__sidebar {
+  border-radius: 8px;
+  overflow: hidden;
+
 
   /* on mobile we want full width */
   @container (width < 763px) {

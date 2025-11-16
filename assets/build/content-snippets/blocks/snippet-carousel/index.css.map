@@ -1,0 +1,1 @@
+{"version":3,"file":"content-snippets/blocks/snippet-carousel/index.css","mappings":";;;;;;;AAAA;CACC,sBAAsB;IACnB","sources":["webpack://jp/./assets/src/content-snippets/blocks/snippet-carousel/view.css"],"sourcesContent":["* {\n box-sizing: border-box;\n    }\n"],"names":[],"sourceRoot":""}

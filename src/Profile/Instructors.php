@@ -34,8 +34,8 @@ class Instructors {
         <div class="profile-aim-instructors__container">
             <div class="profile-aim-instructors__layout">
                 <div class="instructors-header">
-                    <h3>AiM Instructors</h3>
-                    <p>Book a one on one to take a jump start</p>
+                    <h3>AiM Experts</h3>
+                    <p>For hands-on help, schedule a one-on-one with an AiM expert.</p>
                 </div>
                 <ul class="profile-instructors-list">
                     <?php foreach ($this->instructors as $instructor): ?>

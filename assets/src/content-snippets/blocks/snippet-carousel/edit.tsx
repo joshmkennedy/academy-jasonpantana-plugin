@@ -8,7 +8,7 @@ import {
 export default function Edit() {
   return <div {...useBlockProps()}>
     <InnerBlocks
-
+      allowedBlocks={['jp-content-snippets/snippet-section']}
     />
 
   </div>;
