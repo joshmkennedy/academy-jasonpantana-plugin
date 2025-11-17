@@ -7,7 +7,6 @@ function add_instructor_role() {
         'AIM Instructor', // Display name for the role
         array(
             'read' => true, // Example capability: can read posts
-            'edit_posts' => true, // Example capability: can edit their own posts
             // Add more capabilities as needed
         )
     );
