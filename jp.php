@@ -17,6 +17,11 @@
 define('JP_PLUGIN_ROOT_DIR_PATH', plugin_dir_path(__FILE__));
 define('JP_PLUGIN_ROOT_DIR_URL', plugin_dir_url(__FILE__));
 
+// Hide admin bar for non-admins
+add_filter( 'show_admin_bar', function( $show ) {
+	return current_user_can( 'manage_options' );
+} );
+
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/utils.php';
 // custom rest endpoint
