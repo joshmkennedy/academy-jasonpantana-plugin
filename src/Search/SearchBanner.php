@@ -12,7 +12,7 @@ class SearchBanner {
         ob_start();
 ?>
 
-        <div class="aim-partial search-banner aim-search-template" style="--bg-image: url(<?= getAimAssetUrl('orange-gradient.avif'); ?>);">
+        <div class="aim-partial search-banner aim-search-template" style="--bg-image: url(<?= getAimAssetUrl('green-gradient.avif'); ?>);">
             <div class="search-banner__content">
                 <div class="search-banner__description">
                     <p class="large-heading">Can't find what you're looking for?</p>

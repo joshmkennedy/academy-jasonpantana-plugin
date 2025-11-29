@@ -23,7 +23,7 @@
 }
 
 .search-banner {
-  --search-form-accent: var(--brand-c-tertiary);
+  --search-form-accent: var(--brand-c-primary);
 
   @media(max-width:763px) {
     margin-inline: 20px;
