@@ -73,6 +73,13 @@ function save_instructor_info_form($user_id) {
             $_POST['instructor-profile-img-id'],
         );
     }
+    if (isset($_POST['instructor-menu-order']) && is_numeric($_POST['instructor-menu-order'])) {
+        update_user_meta(
+            $user_id,
+            'instructor-menu-order',
+            (int)$_POST['instructor-menu-order'],
+        );
+    }
 }
 add_action('personal_options_update', 'save_instructor_info_form');
 add_action('edit_user_profile_update', 'save_instructor_info_form');

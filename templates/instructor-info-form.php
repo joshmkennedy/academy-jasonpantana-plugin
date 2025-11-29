@@ -8,6 +8,9 @@ $tags = is_array($tags) ? $tags : [];
 $aiAreaOfFocusDescription = get_user_meta($user->ID, 'instructor-speacialties-ai-area-of-focus-description', true);
 $calendlyLink = get_user_meta($user->ID, 'instructor-calendly-link', true);
 $instructor_is_available = get_user_meta($user->ID, 'instructor-is-available', true);
+
+$instructor_menu_order = (int)(get_user_meta($user->ID, 'instructor-menu-order', true) ?? 99);
+
 $instructor_profile_img_id = get_user_meta($user->ID, 'instructor-profile-img-id', true);
 $instructor_img_src = "";
 if ($instructor_profile_img_id) {
@@ -91,6 +94,14 @@ if ($instructor_profile_img_id) {
         </td>
     </tr>
 
+    <tr>
+        <th>
+            <label for="instructor-menu-order">Menu Order</label>
+        </th>
+        <td>
+            <input type="number" style="width:100px;" name="instructor-menu-order" id="instructor-menu-order" value="<?= $instructor_menu_order; ?>">
+        </td>
+    </tr>
 
 
 </table>

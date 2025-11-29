@@ -196,6 +196,7 @@ try {
     require_once __DIR__ . '/admin/jp-settings.php';
     require_once __DIR__ . '/admin/lesson-admin-columns.php';
     require_once __DIR__ . '/admin/instructors.php';
+    require_once __DIR__ . '/admin/instructors-settings.php';
 
     // BLOCKS
     (new \JP\ContentSnippets\Blocks(JP_PLUGIN_ROOT_DIR_PATH . '/assets/build/content-snippets/blocks'))->register();
