@@ -14,7 +14,6 @@ class MainSection extends Lolole {
 
     public function render(): void {
 ?>
-        <?php (new Hero())->render(); ?>
 
 
         <div class="lolole-wrapper ">

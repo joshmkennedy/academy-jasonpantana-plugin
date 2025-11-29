@@ -1,5 +1,4 @@
 .profile-user-notices {
-  margin-top: -36px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -52,7 +51,7 @@
         color-mix(in srgb, var(--brand-c-transition-green) 80%, transparent) 0%,
         rgba(28, 76, 138, 0) 30%);
       backdrop-filter: blur(8px);
-      border-radius: 8px;
+      border-radius: 4px;
       padding: 16px 24px;
 
     }

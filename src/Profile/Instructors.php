@@ -5,7 +5,11 @@ namespace JP\Profile;
 
 class Instructors {
     public array $instructors = [];
-    public array $copy = ["heading"=> "AiM Experts", "tagline"=>"For hands-on help, schedule a one-on-one with an AiM expert."];
+    public array $settings = [
+        "heading" => "AiM Experts",
+        "tagline" => "Book personalized one-on-one strategy sessions with our AI and marketing specialists.",
+        'view_all' => "https://aimarketingacademy.as.me/",
+    ];
     public function __construct() {
         $this->instructors = array_map(
             fn(\WP_User $user) => [
@@ -29,7 +33,7 @@ class Instructors {
                 'order' => 'ASC',
             ])
         );
-        $this->copy = (array)get_option('jp_instructor_settings', $this->copy);
+        $this->settings = (array)get_option('jp_instructor_settings', $this->settings);
     }
     public function render(): void {
         if (!feature_flag('instuctors')) return;
@@ -39,8 +43,8 @@ class Instructors {
         <div class="profile-aim-instructors__container">
             <div class="profile-aim-instructors__layout">
                 <div class="instructors-header">
-                    <h3><?= $this->copy['heading']; ?></h3>
-                    <p><?= $this->copy['tagline']; ?></p>
+                    <h3><?= $this->settings['heading']; ?></h3>
+                    <p><?= $this->settings['tagline']; ?></p>
                 </div>
                 <ul class="profile-instructors-list">
                     <?php foreach ($this->instructors as $instructor): ?>
@@ -50,6 +54,15 @@ class Instructors {
                             </button>
                         </li>
                     <?php endforeach; ?>
+
+                    <li class="profile-instructor-list-item">
+                        <a class="profile-instructor-link" href="<?= $this->settings['view_all']; ?>" target="_blank">
+                            <span class="wrap-in-circle">
+                                <?= dumpSvg('grid'); ?>
+                                <span class="profile-instructor-link__text">View All</span>
+                            </span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -2,18 +2,25 @@
 	position: relative;
 	min-width: 100%;
 	container-type: inline-size;
+	contain: layout;
+	container-name: profile-hero;
 
 	&:has(:is(.profile-hero__main, .profile-hero__sidebar)) {
-		margin-bottom: 48px;
+		/* margin-bottom: 48px; */
 
 		@media(min-width:763px) {
-			margin-bottom: 86px;
+			/* margin-bottom: 86px; */
 		}
 	}
 }
 
+/** Hides the notices parent if its empty  -- prevents odd spacing at the top */
+.profile-hero .profile-user-notices:not(:has(.profile-user-notice)) {
+	display: none;
+}
+
 .profile-hero__container {
-	--layout-gap: 24px;
+	--layout-gap: 18px;
 	display: flex;
 	flex-direction: column-reverse;
 	gap: var(--layout-gap);
@@ -22,7 +29,7 @@
 
 	@container(width > 763px) {
 		flex-direction: row;
-		--layout-gap: 32px;
+		--layout-gap: 18px;
 	}
 }
 
@@ -34,7 +41,7 @@ body:has(.profile-hero__main) {
 	.profile-hero__sidebar {
 		flex: 1 1 40%;
 		min-width: 250px;
-		max-width: 400px;
+		max-width: 420px;
 	}
 }
 
@@ -49,14 +56,18 @@ body:has(.profile-hero__sidebar) {
 	}
 }
 
-.profile-hero__main,
-.profile-hero__sidebar {
+body :is(.profile-hero__main,
+	.profile-hero__sidebar) {
 	border-radius: 8px;
 	overflow: hidden;
 
 
-	/* on mobile we want full width */
-	@container (width < 763px) {
+}
+
+/* on mobile we want full width */
+@container (width < 760px) {
+	:is(#important, .profile-hero__sidebar,
+	.profile-hero__main) {
 		max-width: 100%;
 		min-width: 100%;
 		flex: 1 1 100%;

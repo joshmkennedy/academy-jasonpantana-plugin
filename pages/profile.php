@@ -28,6 +28,7 @@ add_action("wp", function () {
 
 add_shortcode('aim_profile_lololes__main', function () {
     ob_start();
+
     $mainSection = new \JP\Profile\MainSection();
     $mainSection->render();
 
@@ -38,6 +39,13 @@ add_shortcode('aim_profile_lololes__secondary', function () {
     $secondarySection = new \JP\Profile\SecondarySection();
     $secondarySection->render();
 
+    return ob_get_clean();
+});
+
+add_shortcode('aim_profile_hero', function () {
+    ob_start();
+    $hero = new \JP\Profile\Hero();
+    $hero->render();
     return ob_get_clean();
 });
 

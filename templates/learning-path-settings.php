@@ -62,13 +62,13 @@ $emailsRecieved = $listId ? $learningPathSettings->getReceivedEmailsForList($lis
 
                     <div class="aim-user-settings__layout__right">
                         <p>Subscribed on <?= $subscribedOn; ?></p>
-                        <button class="btn btn--secondary" data-action="unsubscribe" data-list-id="<?= $listId; ?>">Stop this Plan</button>
+                        <button class="btn btn--secondary" data-action="unsubscribe" data-list-id="<?= $listId; ?>">Stop this Track</button>
                     </div>
                 </div>
             <?php else: ?>
                 <div class="aim-user-settings__layout">
                     <div class="aim-user-settings__layout__left">
-                        <h2 class="aim-user-settings__section-title">No Active Learning Paths Found</h2>
+                        <h2 class="aim-user-settings__section-title">No Active Fast Tracks Found</h2>
                         <a href="/profile" class="aim-template-header__content__back-link" style="color:var(--brand-c-primary); text-decoration:none;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="max-width:1em;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left">
                                 <line x1="19" y1="12" x2="5" y2="12"></line>

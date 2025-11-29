@@ -19,7 +19,7 @@ class Aim100daysModal {
             <p>Get currated content, delivered right to your inbox designed to get you up to speed and to meet you where you are!</p>
         </div>
         <div>
-            <button class="notice-action" data-action="open-aim-100-days">Find your startng point</button>
+            <button class="notice-action" data-action="open-aim-100-days">Find your Fast Track</button>
         </div>
         <?= $this->renderModal(); ?>
     <?php return ob_get_clean();

@@ -77,7 +77,8 @@ const modalTemplate = (instructor: Instructor) => `
       </div>
       <div class="instructor-profile__footer">
         <div class="modal-actions">
-          <a href="${instructor.calendlyLink}" class="button instructor-profile__modal-action instructor-profile__modal-action--primary" target="_blank">Book Instructor</a>
+          <a href="mailto:info@academy.jasonpantana.com" class="button instructor-profile__modal-action" target="_blank">Questions?</a>
+          <a href="${instructor.calendlyLink}" class="button instructor-profile__modal-action instructor-profile__modal-action--primary" target="_blank">Book ${instructor.name.split(' ')[0]}</a>
         </div>
       </div>
   </div>
