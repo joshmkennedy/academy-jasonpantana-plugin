@@ -1,2 +1,2 @@
 
-*{box-sizing:border-box}.wp-block-jp-content-snippets-snippet-section{max-width:100%;overflow:hidden;&>*{max-width:100%!important}}
+*{box-sizing:border-box}.wp-block-jp-content-snippets-snippet-section{max-width:100%;overflow:hidden;&>*{max-width:100%!important}&>.wp-block-columns{@media (max-width:767px){flex-direction:column;gap:1rem;padding-block:.75rem}}}

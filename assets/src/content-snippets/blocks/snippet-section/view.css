@@ -9,4 +9,12 @@
     max-width: 100% !important;
 
   }
+
+  & > .wp-block-columns {
+    @media (max-width: 767px) {
+      flex-direction: column;
+      padding-block:.75rem;
+      gap: 1rem;
+    }
+  }
  }
