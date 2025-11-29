@@ -14,16 +14,23 @@ add_action('rest_api_init', function () {
 });
 
 function jp_sync(WP_REST_Request $request): WP_REST_Response {
+    // Schedule the sync to run immediately in the background
+    as_schedule_single_action(time(), 'jp_sync_action');
+    
+    return rest_ensure_response(['message' => 'Sync scheduled']);
+}
+
+// Hook the actual sync logic to action_scheduler
+add_action('jp_sync_action', 'jp_sync_perform');
+
+function jp_sync_perform() {
     $PER_PAGE = 100;
     $afterId = null;
-    $hasMore = true;
 
     $logger = new \JP\SyncLogger();
     $stripe = new \JP\StripeClient();
 
     jp_sync_paginate($stripe, $logger, $afterId, $PER_PAGE);
-
-    return rest_ensure_response(['message' => 'ok']);
 }
 
 function jp_sync_paginate(
