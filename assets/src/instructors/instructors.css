@@ -20,7 +20,9 @@
 		gap: calc(16px * 2);
 		align-items: flex-start;
 		justify-content: space-between;
+
 		.profile-instructors-list.profile-instructors-list {
+			align-self:center;
 			justify-content: flex-start;
 		}
 	}
@@ -38,13 +40,28 @@
 		margin-bottom: 0;
 		font-size: 20px;
 		line-height: 1;
+
+		line-height: 1;
+		width: 100%;
+		color: var(--brand-c-secondary);
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+
+		> span {
+			color: var(--brand-c-primary);
+			display: inline-block;
+			border: 1px solid var(--brand-c-primary);
+			border-radius: 4px;
+			padding: 2px 4px;
+		}
+
 	}
 
 	p {
 		margin-top: 0;
-		font-size: 14px;
+		font-size: 16px;
 		color: var(--slate-500);
-		line-height: 1;
+		line-height: 1.35;
 	}
 }
 
@@ -99,8 +116,8 @@
 .profile-instructor-list-item {
 	position: relative;
 	margin-left: -16px;
-	width:75px;
-	height:75px;
+	width: 75px;
+	height: 75px;
 }
 
 @container aim-instructors--root (max-width: 600px) {
@@ -407,7 +424,6 @@ body:has(.instructor-profile__modal-container) {
 
 .e-con.e-flex:has(.profile-instructor-list-item) {
 	@media(max-width: 767px) {
-		flex-wrap:nowrap !important;
+		flex-wrap: nowrap !important;
 	}
 }
-

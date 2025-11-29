@@ -43,7 +43,7 @@ class Instructors {
         <div class="profile-aim-instructors__container">
             <div class="profile-aim-instructors__layout">
                 <div class="instructors-header">
-                    <h3><?= $this->settings['heading']; ?></h3>
+                    <h3><?= $this->asExpertLogo($this->settings['heading']); ?></h3>
                     <p><?= $this->settings['tagline']; ?></p>
                 </div>
                 <ul class="profile-instructors-list">
@@ -76,5 +76,9 @@ class Instructors {
             window.aimInstructorsData = <?= $data; ?>
         </script>
 <?php
+    }
+
+    private function asExpertLogo(string $heading): string {
+        return str_replace('AiM', '<span>AiM</span>', $heading);
     }
 }
