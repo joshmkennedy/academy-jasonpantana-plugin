@@ -41,7 +41,7 @@ class Hero {
         <?php
     }
 
-    public function renderNotices(array $banners): void {
+    public static function renderNotices(array $banners): void {
         $max = 2;
         foreach ($banners as $bannerCB) {
             if ($max <= 0) break;

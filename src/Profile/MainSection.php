@@ -15,6 +15,11 @@ class MainSection extends Lolole {
     public function render(): void {
 ?>
 
+        <div class="profile-user-notices" style="margin-top: -30px">
+            <?php \JP\Profile\Hero::renderNotices([
+                fn() => (new \JP\Aim100daysModal())->renderNotice(),
+            ]); ?>
+        </div>
 
         <div class="lolole-wrapper ">
             <?php $this->renderLessonsSection(
@@ -88,7 +93,6 @@ class MainSection extends Lolole {
             ?>
 
         </div>
-        <?php
+<?php
     }
-
 }
