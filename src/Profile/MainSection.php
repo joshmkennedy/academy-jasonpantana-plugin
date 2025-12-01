@@ -15,7 +15,7 @@ class MainSection extends Lolole {
     public function render(): void {
 ?>
 
-        <div class="profile-user-notices" style="margin-top: -30px">
+        <div class="profile-user-notices" style="margin-top: 0px">
             <?php \JP\Profile\Hero::renderNotices([
                 fn() => (new \JP\Aim100daysModal())->renderNotice(),
             ]); ?>
