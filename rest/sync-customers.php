@@ -16,7 +16,7 @@ add_action('rest_api_init', function () {
 function jp_sync(WP_REST_Request $request): WP_REST_Response {
     // Schedule the sync to run immediately in the background
     as_schedule_single_action(time(), 'jp_sync_action');
-    
+
     return rest_ensure_response(['message' => 'Sync scheduled']);
 }
 
@@ -31,6 +31,19 @@ function jp_sync_perform() {
     $stripe = new \JP\StripeClient();
 
     jp_sync_paginate($stripe, $logger, $afterId, $PER_PAGE);
+
+    as_schedule_single_action(time() + 5 * MINUTE_IN_SECONDS, 'refresh_wp_reports');
+}
+
+
+add_action('refresh_wp_reports', 'refreshReports');
+
+function refreshReports() {
+    wp_remote_get('https://aim-sheets.developer-f70.workers.dev/wp-sync', [
+        'headers' => [
+            'Authorization' => '213f5721-4406-4fb5-b450-4ec80f7ef32a',
+        ],
+    ]);
 }
 
 function jp_sync_paginate(
