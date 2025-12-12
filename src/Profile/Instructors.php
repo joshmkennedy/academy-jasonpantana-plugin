@@ -37,7 +37,7 @@ class Instructors {
             );
             set_transient('jp_instructors_cache', $this->instructors, 60 * 60 * 24 * 7);
         } else {
-            $this->instructors = get_transient('jp_instructors_cache');
+            $this->instructors = get_transient('jp_instructors_cache') ?? [];
         }
 
         $this->settings = (array)get_option('jp_instructor_settings', $this->settings);
