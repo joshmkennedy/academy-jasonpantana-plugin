@@ -1,3 +1,35 @@
+.profile-template {
+	.title {
+		justify-content: flex-start;
+		align-items: flex-start;
+
+		h1 {
+			font-size: 44px;
+			font-weight: 400;
+		}
+
+		p {
+			margin-block: 0;
+			font-size: 24px;
+		}
+	}
+
+	.aim-template-header__content {
+		max-width: var(--global-content-width);
+	}
+}
+.aim-template-content {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	.aim-template-content__page:not(:first-child) {
+		margin-top: 0 !important;
+	}
+	.aim-template-content__page {
+		width: 100%;
+	}
+}
+
 :where(html:has(.lolole-wrapper)) {
 	svg {
 		width: 1em;
@@ -292,10 +324,12 @@
 }
 
 :where(html:has(.lolole-wrapper.alt-wrapper)) {
-	[data-element_type="container"]:has(>[data-element_type="widget"] .lolole-wrapper.alt-wrapper) {
+	[data-element_type="container"]:has(>[data-element_type="widget"] .lolole-wrapper.alt-wrapper), .profile-template .aim-template-content__page:has(.lolole-wrapper.alt-wrapper) {
 		background-color: var(--slate-300) !important;
 
-		.lolole-wrapper.alt-wrapper, .lolole-wrapper::after, .lolole-wrapper::before {
+		.lolole-wrapper.alt-wrapper,
+		.lolole-wrapper::after,
+		.lolole-wrapper::before {
 			--section-title-gradient: linear-gradient(60deg, #33527D 20%, #5B626B 100%);
 			--section-header-border-color: var(--slate-400);
 			--secondary-btn-color: var(--slate-400);
@@ -316,8 +350,9 @@
 
 
 .header-button.button-style-gradient--primary.on-profile {
-  background:#414753 !important;
-  &:hover {
-    opacity: 0.8;
-  }
+	background: #414753 !important;
+
+	&:hover {
+		opacity: 0.8;
+	}
 }

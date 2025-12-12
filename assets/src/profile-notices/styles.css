@@ -56,10 +56,15 @@
 
     }
 
+
+    p:not(.heading) {
+      margin:0;
+    }
     p.heading {
       font-size: 18px;
       font-weight: bold;
       margin-bottom: 4px;
+      margin-top:0;
     }
   }
 

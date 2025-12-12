@@ -25,8 +25,11 @@ class RenderSnippet {
         }
 
         if(! $this->isVisible() ) return null;
-       
-        return apply_filters('the_content', $this->snippet->post_content);
+        global $post;
+        $post = $this->snippet;
+        $content = apply_filters('the_content', $this->snippet->post_content);
+        wp_reset_postdata();
+        return $content;
     }
 
     private function isVisible(): bool {
