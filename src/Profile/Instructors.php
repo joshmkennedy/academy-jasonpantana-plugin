@@ -11,29 +11,35 @@ class Instructors {
         'view_all' => "https://aimarketingacademy.as.me/",
     ];
     public function __construct() {
-        $this->instructors = array_map(
-            fn(\WP_User $user) => [
-                'id' => $user->ID,
-                'name' => sprintf("%s %s", $user->first_name, $user->last_name),
-                'img' => wp_get_attachment_image_url(get_user_meta($user->ID, 'instructor-profile-img-id', true), 'medium'),
-                'focus_description' => get_user_meta($user->ID, 'instructor-speacialties-ai-area-of-focus-description', true),
-                'tags' => get_user_meta($user->ID, 'instructor-speacialties-tags', true),
-                'calendlyLink' => get_user_meta($user->ID, 'instructor-calendly-link', true),
-                'instructor_menu_order' => (int)(get_user_meta($user->ID, 'instructor-menu-order', true)),
-            ],
-            get_users([
-                'meta_query' => [
-                    [
-                        'key' => 'instructor-is-available',
-                        'compare' => 'EXISTS',
-                    ],
+        if (get_transient('jp_instructors_cache') === false) {
+            $this->instructors = array_map(
+                fn(\WP_User $user) => [
+                    'id' => $user->ID,
+                    'name' => sprintf("%s %s", $user->first_name, $user->last_name),
+                    'img' => wp_get_attachment_image_url(get_user_meta($user->ID, 'instructor-profile-img-id', true), 'medium'),
+                    'focus_description' => get_user_meta($user->ID, 'instructor-speacialties-ai-area-of-focus-description', true),
+                    'tags' => get_user_meta($user->ID, 'instructor-speacialties-tags', true),
+                    'calendlyLink' => get_user_meta($user->ID, 'instructor-calendly-link', true),
+                    'instructor_menu_order' => (int)(get_user_meta($user->ID, 'instructor-menu-order', true)),
                 ],
-                'posts_per_page' => 5,
-                // 'meta_key' => 'instructor-menu-order',
-                // 'orderby' => 'meta_value_num',
-                'order' => 'ASC',
-            ])
-        );
+                get_users([
+                    'meta_query' => [
+                        [
+                            'key' => 'instructor-is-available',
+                            'compare' => 'EXISTS',
+                        ],
+                    ],
+                    'posts_per_page' => 5,
+                    'meta_key' => 'instructor-menu-order',
+                    'orderby' => 'meta_value_num',
+                    'order' => 'ASC',
+                ])
+            );
+            set_transient('jp_instructors_cache', true, 60 * 60 * 24);
+        } else {
+            $this->instructors = get_transient('jp_instructors_cache');
+        }
+
         $this->settings = (array)get_option('jp_instructor_settings', $this->settings);
     }
     public function render(): void {
