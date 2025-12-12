@@ -55,10 +55,6 @@ add_shortcode('aim_profile_lololes__secondary', function () {
 });
 
 add_shortcode('aim_profile_hero', function () {
-    if (strpos($_SERVER['REQUEST_URI'], 'elementor') !== false) {
-        return;
-    }
-
     ob_start();
     $hero = new \JP\Profile\Hero();
     $hero->render();
