@@ -5,9 +5,9 @@ add_filter('template_redirect', function ($template) {
     if (is_page("profile") && $t = $jpt->useTemplate('profile')) {
         enqueueAsset('aim-template');
         $template = $t;
+            include $template;
+            exit;
     }
-    include $template;
-    exit;
 }, 10, 1);
 add_action('wp_enqueue_scripts', function () {
     // profile and staging
