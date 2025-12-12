@@ -18,7 +18,7 @@ $tutil = new \JP\JPTemplate;
     </div>
     <!-- CONTENT -->
     <div class="aim-template-content">
-        <?php if (user_can(wp_get_current_user(), 'edit_posts')): ?>
+        <?php if (feature_flag('instuctors')): ?>
             <div class="aim-template-content__page">
                 <?php echo do_shortcode('[aim_profile_hero]'); ?>
             </div>
