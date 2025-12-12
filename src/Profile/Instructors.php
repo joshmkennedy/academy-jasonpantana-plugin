@@ -28,8 +28,9 @@ class Instructors {
                         'compare' => 'EXISTS',
                     ],
                 ],
-                'meta_key' => 'instructor-menu-order',
-                'orderby' => 'meta_value_num',
+                'posts_per_page' => 5,
+                // 'meta_key' => 'instructor-menu-order',
+                // 'orderby' => 'meta_value_num',
                 'order' => 'ASC',
             ])
         );
