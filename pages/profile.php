@@ -12,6 +12,10 @@ add_action('wp_enqueue_scripts', function () {
 
 // List of List of Lessons shortcode
 add_shortcode('aim_profile_lololes', function () {
+    if (strpos($_SERVER['REQUEST_URI'], 'elementor') !== false) {
+        return;
+    }
+
     ob_start();
     $mainSection = new \JP\Profile\MainSection();
     $mainSection->render();
@@ -27,6 +31,10 @@ add_action("wp", function () {
 });
 
 add_shortcode('aim_profile_lololes__main', function () {
+    if (strpos($_SERVER['REQUEST_URI'], 'elementor') !== false) {
+        return;
+    }
+
     ob_start();
 
     $mainSection = new \JP\Profile\MainSection();
@@ -35,6 +43,10 @@ add_shortcode('aim_profile_lololes__main', function () {
     return ob_get_clean();
 });
 add_shortcode('aim_profile_lololes__secondary', function () {
+    if (strpos($_SERVER['REQUEST_URI'], 'elementor') !== false) {
+        return;
+    }
+
     ob_start();
     $secondarySection = new \JP\Profile\SecondarySection();
     $secondarySection->render();
@@ -43,6 +55,10 @@ add_shortcode('aim_profile_lololes__secondary', function () {
 });
 
 add_shortcode('aim_profile_hero', function () {
+    if (strpos($_SERVER['REQUEST_URI'], 'elementor') !== false) {
+        return;
+    }
+
     ob_start();
     $hero = new \JP\Profile\Hero();
     $hero->render();
