@@ -11,7 +11,7 @@ class Instructors {
         'view_all' => "https://aimarketingacademy.as.me/",
     ];
     public function __construct() {
-        if (get_transient('jp_instructors_cache') === false) {
+        if (($instructors = get_transient('jp_instructors_cache')) === false || empty($instructors) || !is_array($instructors) || count($instructors) === 0) {
             $this->instructors = array_map(
                 fn(\WP_User $user) => [
                     'id' => $user->ID,
