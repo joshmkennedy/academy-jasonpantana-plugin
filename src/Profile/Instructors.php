@@ -35,7 +35,7 @@ class Instructors {
                     'order' => 'ASC',
                 ])
             );
-            set_transient('jp_instructors_cache', true, 60 * 60 * 24);
+            set_transient('jp_instructors_cache', $this->instructors, 60 * 60 * 24 * 7);
         } else {
             $this->instructors = get_transient('jp_instructors_cache');
         }
