@@ -1,13 +1,12 @@
 <?php
 
-add_filter('template_redirect', function ($template) {
+add_filter('template_include', function ($template) {
     $jpt = new \JP\JPTemplate();
     if (is_page("profile") && $t = $jpt->useTemplate('profile')) {
         enqueueAsset('aim-template');
         $template = $t;
-            include $template;
-            exit;
     }
+    return $template;
 }, 10, 1);
 add_action('wp_enqueue_scripts', function () {
     // profile and staging
