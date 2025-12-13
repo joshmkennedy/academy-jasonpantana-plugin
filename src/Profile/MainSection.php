@@ -29,7 +29,7 @@ class MainSection extends Lolole {
                 programId: 55,
                 collection: get_posts([
                     'post_type' => 'sfwd-lessons',
-                    'posts_per_page' => -1,
+                    'posts_per_page' => 20,
                     'order' => 'DESC',
                     'orderby' => 'date',
                     'post_status' => 'publish',
@@ -59,7 +59,7 @@ class MainSection extends Lolole {
                 programId: 55,
                 collection: get_posts([
                     'post_type' => 'sfwd-lessons',
-                    'posts_per_page' => -1,
+                    'posts_per_page' => 20,
                     'order' => 'DESC',
                     'orderby' => 'date',
                     'post_status' => 'publish',

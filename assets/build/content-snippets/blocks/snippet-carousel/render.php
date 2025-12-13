@@ -15,8 +15,7 @@
 ?>
 
 <div
-    <?php echo get_block_wrapper_attributes(); ?>
->
+    <?php echo get_block_wrapper_attributes(); ?>>
 
     <div
         class="snippet__embla-viewport">
@@ -24,6 +23,14 @@
             <?php foreach ($block->inner_blocks as $inner_block): ?>
                 <?php echo $inner_block->render(); ?>
             <?php endforeach; ?>
+        </div>
+        <div class="snippet__carousel-navigation">
+            <button class="embla__button embla__button--prev">
+                <?= dumpSvg('chevron-left'); ?>
+            </button>
+            <button class="embla__button embla__button--next">
+                <?= dumpSvg('chevron-right'); ?>
+            </button>
         </div>
     </div>
 

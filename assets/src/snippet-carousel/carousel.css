@@ -64,6 +64,37 @@
 }
 
 
+.snippet__carousel-navigation{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  padding:1rem;
+}
+.embla__button {
+  background-color:#ffffff77;
+  border:none !important;
+  box-shadow:0 2px 4px #00000033 !important;
+
+  padding:0;
+  width:2rem;
+  height:2rem;
+  border-radius:9999px;
+  cursor:pointer;
+  font-size:.55rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  &:active, &:focus, &:hover {
+    background-color:#ffffff55;
+    box-shadow:0 2px 4px #00000055 !important;
+    transform:scale(1.1);
+  }
+}
+
 .snippet-section__slide__number {
   box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
   border-radius: 1.8rem;
