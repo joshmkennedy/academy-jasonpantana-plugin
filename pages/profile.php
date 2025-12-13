@@ -8,6 +8,7 @@ add_filter('template_include', function ($template) {
     }
     return $template;
 }, 10, 1);
+
 add_action('wp_enqueue_scripts', function () {
     // profile and staging
     if (!isurl('/profile') && !isurl('/profile-copy'))
