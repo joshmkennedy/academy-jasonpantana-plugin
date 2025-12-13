@@ -4,7 +4,7 @@ $tutil = new \JP\JPTemplate;
 
 ?>
 
-<div class=" aim-template aim-wide-template profile-template">
+<div class=" aim-template aim-wide-template profile-template" style="--global-content-width: 1150px;">
     <!-- HEADER -->
     <div class="aim-template-header" style="--bg-image: url(<?= getAimAssetUrl('green-gradient.webp'); ?>);">
         <div class="aim-template-header__content">
@@ -42,11 +42,12 @@ $tutil = new \JP\JPTemplate;
             echo $secondarySection->render();
             ?>
         </div>
-
-        <?php
-        $searchBanner = new \JP\Search\SearchBanner();
-        echo $searchBanner->render();
-        ?>
+        <div style="max-width:var(--global-content-width); width:100%;margin:auto;">
+            <?php
+            $searchBanner = new \JP\Search\SearchBanner();
+            echo $searchBanner->render();
+            ?>
+        </div>
     </div>
 </div>
 
