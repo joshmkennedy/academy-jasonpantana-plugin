@@ -11,7 +11,7 @@ class WalkthroughBanner {
     public function __construct() {
     }
 
-    public function render($atts): string {
+    public function render($atts=[]): string {
         // DONT SHOW IF USER HAS DISSMISSED SETTINGS
         if (
             get_user_meta(get_current_user_id(), 'walkthrough-banner-dismissed', "true")
