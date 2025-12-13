@@ -12,7 +12,7 @@ class Blocks {
 		foreach ( $blocks as $block_dir ) {
 			$block_json = $block_dir . '/block.json';
 			if ( file_exists( $block_json ) ) {
-				// register_block_type( $block_dir );
+				register_block_type( $block_dir );
 			}
 		}
 	}
