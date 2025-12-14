@@ -252,6 +252,79 @@ add_action('init', function () {
 });
 
 add_action('init', function () {
+    register_taxonomy('expert-in-tag', array(
+        0 => '',
+    ), array(
+        'labels' => array(
+            'name' => 'Expert In Tags',
+            'singular_name' => 'Expert In Tag',
+            'menu_name' => 'Expert In Tags',
+            'all_items' => 'All Expert In Tags',
+            'edit_item' => 'Edit Expert In Tag',
+            'view_item' => 'View Expert In Tag',
+            'update_item' => 'Update Expert In Tag',
+            'add_new_item' => 'Add New Expert In Tag',
+            'new_item_name' => 'New Expert In Tag Name',
+            'search_items' => 'Search Expert In Tags',
+            'popular_items' => 'Popular Expert In Tags',
+            'separate_items_with_commas' => 'Separate expert in tags with commas',
+            'add_or_remove_items' => 'Add or remove expert in tags',
+            'choose_from_most_used' => 'Choose from the most used expert in tags',
+            'not_found' => 'No expert in tags found',
+            'no_terms' => 'No expert in tags',
+            'items_list_navigation' => 'Expert In Tags list navigation',
+            'items_list' => 'Expert In Tags list',
+            'back_to_items' => '← Go to expert in tags',
+            'item_link' => 'Expert In Tag Link',
+            'item_link_description' => 'A link to a expert in tag',
+        ),
+        'public' => false,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => true,
+        'show_in_rest' => true,
+    ));
+});
+
+
+add_action('init', function () {
+    register_taxonomy('expert-with-tag', array(
+        0 => '',
+    ), array(
+        'labels' => array(
+            'name' => 'Expert With Tags',
+            'singular_name' => 'Expert With Tag',
+            'menu_name' => 'Expert With Tags',
+            'all_items' => 'All Expert With Tags',
+            'edit_item' => 'Edit Expert With Tag',
+            'view_item' => 'View Expert With Tag',
+            'update_item' => 'Update Expert With Tag',
+            'add_new_item' => 'Add New Expert With Tag',
+            'new_item_name' => 'New Expert With Tag Name',
+            'search_items' => 'Search Expert With Tags',
+            'popular_items' => 'Popular Expert With Tags',
+            'separate_items_with_commas' => 'Separate expert with tags with commas',
+            'add_or_remove_items' => 'Add or remove expert with tags',
+            'choose_from_most_used' => 'Choose from the most used expert with tags',
+            'not_found' => 'No expert in tags found',
+            'no_terms' => 'No expert in tags',
+            'items_list_navigation' => 'Expert With Tags list navigation',
+            'items_list' => 'Expert With Tags list',
+            'back_to_items' => '← Go to expert with tags',
+            'item_link' => 'Expert With Tag Link',
+            'item_link_description' => 'A link to a expert with tag',
+        ),
+        'public' => false,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => true,
+        'show_in_rest' => true,
+    ));
+});
+
+add_action('init', function () {
     register_post_type('aim-tool', array(
         'labels' => array(
             'name' => 'AiM Tools',
@@ -295,8 +368,6 @@ add_action('init', function () {
         ),
         'delete_with_user' => false,
     ));
-
-
 });
 
 add_action('init', function () {

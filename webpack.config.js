@@ -13,23 +13,12 @@ module.exports = {
     ["protect-free-lesson"]: { import: "./assets/src/protect-free-lesson/index.ts" },
     ["auth-form"]: { import: "./assets/src/auth-form/auth-form.ts" },
 		["user-settings"]: { import: "./assets/src/user-settings/index.ts" },
+    ["aim-expert-tag-input"]: { import: "./assets/src/aim-expert-tag-input.ts" },
   },
   module: {
     ...defaults.module,
     rules: [
       ...defaults.module.rules,
-      {
-        test: /\.tsx?$/,
-        use: [
-          {
-            loader: "ts-loader",
-            options: {
-              configFile: "tsconfig.json",
-              transpileOnly: true,
-            },
-          },
-        ],
-      },
     ],
   },
 

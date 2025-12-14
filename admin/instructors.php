@@ -24,6 +24,18 @@ function add_user_profile_meta_box($user) {
 add_action('show_user_profile', 'add_user_profile_meta_box', 0, 1);
 add_action('edit_user_profile', 'add_user_profile_meta_box', 0, 1);
 
+function enqueue_expert_tag_input_script() {
+    $current_user = wp_get_current_user();
+    // Enqueue on edit user profile pages for admin/aim-instructor users
+    if (
+        !in_array('aim_instructors', $current_user->roles)
+        && !in_array('administrator', $current_user->roles)
+    ) return;
+    
+    enqueueAsset('aim-expert-tag-input', true);
+}
+add_action('admin_enqueue_scripts', 'enqueue_expert_tag_input_script');
+
 function display_instructor_info_form($user) {
     include JP_PLUGIN_ROOT_DIR_PATH . "/templates/instructor-info-form.php";
 }
@@ -35,13 +47,49 @@ function save_instructor_info_form($user_id) {
         && !in_array("administrator", $ud->roles)
     ) return;
 
-    if (isset($_POST['instructor-speacialties-tags'])) {
-        $tags = array_filter(array_map("trim", (explode(",", $_POST['instructor-speacialties-tags']))), fn($arg) => $arg != "");
-        update_user_meta(
+    if (isset($_POST['users-expert-in-tag-tags'])) {
+        $tags = json_decode(stripslashes($_POST['users-expert-in-tag-tags']), true);
+        $updatedTags = [];
+        foreach ((array)$tags as $tagId => $tagName) {
+            if(!is_numeric($tagId)){
+               $inserted = wp_insert_term($tagName, 'expert-in-tag');
+               if(!is_wp_error($inserted)){
+                   $updatedTags[] = $inserted['term_id'];
+               }
+            } else {
+                $updatedTags[] = $tagId;
+            }
+        }
+       $res = update_user_meta(
             $user_id,
-            'instructor-speacialties-tags',
-            $tags,
+            'expert-in-tags',
+            $updatedTags,
         );
+        if (!$res) {
+            error_log("failed to update user meta");
+        }
+    }
+    if (isset($_POST['users-expert-with-tag-tags'])) {
+        $tags = json_decode(stripslashes($_POST['users-expert-with-tag-tags']), true);
+        $updatedTags = [];
+        foreach ((array)$tags as $tagId => $tagName) {
+            if(!is_numeric($tagId)){
+               $inserted = wp_insert_term($tagName, 'expert-with-tag');
+               if(!is_wp_error($inserted)){
+                   $updatedTags[] = $inserted['term_id'];
+               }
+            } else {
+                $updatedTags[] = $tagId;
+            }
+        }
+       $res = update_user_meta(
+            $user_id,
+            'expert-with-tags',
+            $updatedTags,
+        );
+        if (!$res) {
+            error_log("failed to update user meta");
+        }
     }
     if (isset($_POST['instructor-speacialties-ai-area-of-focus-description'])) {
         update_user_meta(

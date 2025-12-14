@@ -116,7 +116,6 @@ try {
         $url = getCurrentURL();
         $registration = "registration/";
         if (strpos($url, $registration) != false) {
-            error_log("should hide");
             return null;
         }
         $isProfilePage = is_page('profile');

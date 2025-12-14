@@ -66,7 +66,7 @@ if (!function_exists("isurl")) {
 }
 
 if (!function_exists("enqueueAsset")) {
-    function enqueueAsset(string $slug) {
+    function enqueueAsset(string $slug, $inFooter=null) {
         $assetPath = "build/$slug";
 
         $configPath = getAimAssetPath("$slug.asset.php");
@@ -83,7 +83,7 @@ if (!function_exists("enqueueAsset")) {
             wp_enqueue_style("jp-$slug-styles", $uri, [], $config['version'], 'all');
         }
         if ($uri = getAimAssetUrl($assetPath . ".js")) {
-            wp_enqueue_script("jp-$slug-script", $uri, $config['dependencies'], $config['version']);
+            wp_enqueue_script("jp-$slug-script", $uri, $config['dependencies'], $config['version'], $inFooter ? true: false);
             // so we can localize stuff
             return "jp-$slug-script";
         }

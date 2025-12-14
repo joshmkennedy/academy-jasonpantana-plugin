@@ -7,6 +7,7 @@ declare global {
       [key: string]: any; // optional, if `AIM` has other unknown properties
     };
     aimInstructorsData: Instructor[];
+    aimInstructorsTagData: Record<string, string>;
   }
 }
 

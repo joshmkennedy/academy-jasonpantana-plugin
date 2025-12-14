@@ -18,6 +18,21 @@ if ($instructor_profile_img_id) {
     $instructor_img_src = is_array($instructor_img_src) ? $instructor_img_src[0] : "";
 }
 
+$expertInTags = get_terms([
+    'hide_empty' => false,
+    'fields'=> 'id=>name',
+    'taxonomy' => 'expert-in-tag',
+]);
+
+$expertWithTags = get_terms([
+    'hide_empty' => false,
+    'fields'=> 'id=>name',
+    'taxonomy' => 'expert-with-tag',
+]);
+
+// ids of expert-in-tag 's
+$userExpertInTags = get_user_meta($user->ID, 'expert-in-tags', true) ?: [];
+$userExpertWithTags = get_user_meta($user->ID, 'expert-with-tags', true) ?: [];
 ?>
 
 <h3>AIM Instructor Settings</h3>
@@ -58,21 +73,14 @@ if ($instructor_profile_img_id) {
             <label for="instructor-speacialties-tags-input">Tags</label>
         </th>
         <td id="instructor-specialty-tags">
-            <div class="tags-container" style="display: flex; flex-direction:column; gap: 8px;">
-                <div class="tag-list">
-                    <?php foreach ($tags as $tag): ?>
-                        <button data-action="remove-tag" data-tag="<?= $tag; ?>" class="tag remove-tag button button-small">
-                            <span class="tag"><?= $tag; ?></span>
-                            <span class="text-icon">&times;</span>
-                        </button>
-                    <?php endforeach; ?>
-                </div>
-                <input type="hidden" id="instructor-speacialties-tags-value" name="instructor-speacialties-tags" value="<?= implode(",", $tags); ?>">
-                <div>
-                    <input type="text" id="instructor-speacialties-tags-input" name="new-tag" value="">
-                    <button data-action="add-tag" type="button" class="tag add-tag button">Add</button>
-                </div>
-            </div>
+            <input type="hidden" value="<?=json_encode($userExpertInTags);?>" name="users-expert-in-tag-tags" />
+            <input type="hidden" value="<?=json_encode($userExpertInTags);?>" name="users-expert-with-tag-tags" />
+            <script>
+                window.AIMEXPERTINTAGS = <?= json_encode($expertInTags); ?>;
+                window.AIMEXPERTWITHTAGS = <?= json_encode($expertWithTags); ?>;
+            </script>
+            <div data-mount="expert-in-tags-mount" data-tags="<?= json_encode($userExpertInTags); ?>" ></div>
+            <div data-mount="expert-with-tags-mount" data-tags="<?= json_encode($userExpertWithTags ); ?>" ></div>
         </td>
     </tr>
 
@@ -112,10 +120,6 @@ if ($instructor_profile_img_id) {
     window.addEventListener('DOMContentLoaded', instructorSettings);
 
     function instructorSettings() {
-        const tagsEl = document.getElementById('instructor-specialty-tags');
-        if (tagsEl) {
-            initTags(tagsEl)
-        }
 
         const profileImgRowEl = document.getElementById('instructor-profile-img-row');
         if (profileImgRowEl) {
@@ -123,53 +127,6 @@ if ($instructor_profile_img_id) {
         }
     }
 
-    function initTags(el) {
-        const list = el.querySelector('.tag-list');
-        const addButton = el.querySelector('.add-tag');
-        const inputNewTag = el.querySelector('#instructor-speacialties-tags-input');
-
-        const valueInput = el.querySelector('#instructor-speacialties-tags-value');
-        list.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = e.target;
-            console.log(target)
-            if (target.tagName !== 'BUTTON' && !target.closest('.remove-tag')) return;
-            console.log("has tag");
-            const element = e.target.classList.contains('remove-tag') ? target : target.closest('.remove-tag');
-            console.log("has class remove-tag");
-            if (element.dataset.action !== 'remove-tag') return;
-            console.log("has dataset action");
-            const tag = element.dataset.tag;
-            valueInput.value = valueInput.value.replace(`,${tag}`, '');
-            element.parentNode.removeChild(element);
-        });
-        inputNewTag.addEventListener('keydown', function(e) {
-            if (e.key !== 'Enter') return;
-            e.preventDefault();
-            const newtag = e.target.value;
-            if (!newtag) return;
-            valueInput.value += `,${newtag}`;
-            inputNewTag.value = ''
-            list.appendChild(createTag(newtag));
-        });
-        addButton.addEventListener('click', function(e) {
-            console.log('add button clicked');
-            const newtag = e.target.parentNode.querySelector('#instructor-speacialties-tags-input').value;
-            if (!newtag) return;
-            valueInput.value += `,${newtag}`;
-            inputNewTag.value = ''
-            list.appendChild(createTag(newtag));
-        });
-    }
-
-    function createTag(tag) {
-        const tagEl = document.createElement('button');
-        tagEl.setAttribute('data-action', 'remove-tag');
-        tagEl.setAttribute('data-tag', tag);
-        tagEl.classList.add('tag', 'remove-tag');
-        tagEl.innerHTML = `<span class="tag">${tag}</span><span class="text-icon">&times;</span>`;
-        return tagEl;
-    }
 
     function initProfileImg(el) {
         const updateButton = el.querySelector('#update-instructor-profile-img-button');

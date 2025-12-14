@@ -12,6 +12,26 @@ function jp_register_instructor_settings_page() {
 }
 add_action('admin_menu', 'jp_register_instructor_settings_page');
 
+function jp_add_instructor_tags_menu(){
+    add_submenu_page(
+        'jp-settings',
+        'AiM Expert In',
+        'AiM Expert In',
+        'manage_options',
+        'edit-tags.php?taxonomy=expert-in-tag',
+        null
+    );
+    add_submenu_page(
+        'jp-settings',
+        'AiM Expert With',
+        'AiM Expert With',
+        'manage_options',
+        'edit-tags.php?taxonomy=expert-with-tag',
+        null
+    );
+}
+
+add_action('admin_menu', 'jp_add_instructor_tags_menu');
 
 function jp_instructor_settings_page_html() {
     if ($_POST['jp_instructor_settings_nonce'] && wp_verify_nonce(sanitize_key($_POST['jp_instructor_settings_nonce']), 'jp_instructor_settings_save')) {

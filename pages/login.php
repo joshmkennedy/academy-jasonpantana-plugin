@@ -13,8 +13,6 @@ add_filter('template_include', function ($template) {
         $jpt->onPage($slugs) &&
         $t = $jpt->useTemplate('auth-form')
     ) {
-        error_log("login");
-        enqueueAsset('aim-template');
         enqueueAsset('auth-form');
         $template = $t;
     }

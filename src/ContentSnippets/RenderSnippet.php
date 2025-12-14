@@ -5,7 +5,6 @@ namespace JP\ContentSnippets;
 class RenderSnippet {
     public $snippet;
     public function __construct(private string|int $snippet_id) {
-        error_log("creating render snippet for $this->snippet_id");
         if (is_int($this->snippet_id)) {
             $this->snippet = get_post($this->snippet_id);
         } else {

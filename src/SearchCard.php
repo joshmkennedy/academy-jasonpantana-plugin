@@ -18,11 +18,6 @@ class SearchCard {
     }
 
     public function render(): void {
-        error_log(print_r([
-            "isEssential" => $this->isEssential($this->post),
-            "isSession" => $this->isSession($this->post),
-            "isResource" => $this->isResource($this->post),
-        ], true));
         $this->cardRenderer->render();
     }
 

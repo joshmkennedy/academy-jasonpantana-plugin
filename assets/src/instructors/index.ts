@@ -7,15 +7,19 @@ export type Instructor = {
   name: string;
   img: string;
   focus_description: string;
-  tags: string[];
+  tags: {
+    ["expert-in-tags"]: string[];
+    ["expert-with-tags"]: string[];
+  };
   calendlyLink: string;
 }
 
 const icons: { [key: string]: string } = {};
 
-
+let tagData = {}
 
 window.addEventListener("DOMContentLoaded", async () => {
+  tagData = window.aimInstructorsTagData;
   const el = document.querySelector<HTMLElement>(".profile-instructors-list")
   if (el) {
     initInstructors(el)
@@ -39,6 +43,7 @@ function handleInstructorButtonClick(e: MouseEvent) {
 let modal: HTMLElement | undefined = undefined;
 
 function openInstructorProfile(instructor: Instructor) {
+  console.log(instructor);
   modal = document.createElement("div");
   modal.classList.add("instructor-profile__modal-container");
   modal.innerHTML = modalTemplate(instructor);
@@ -67,13 +72,26 @@ const modalTemplate = (instructor: Instructor) => `
       </div>
       <div class="instructor-profile__body">
           <div class="instructor-profile__body-section">
-              <ul class="instructor-profile__tags">
-                  ${Object.values(instructor.tags).map((tag) => `<li>${tag}</li>`).join("")}
-              </ul>
-          </div>
-          <div class="instructor-profile__body-section">
             <p>${instructor.focus_description}</p>
           </div>
+
+          <div class="instructor-profile__body-section stack-section stack-section--small-gap tags">
+              <div class="tag-group">
+              ${instructor.tags['expert-in-tags'].length > 0 ? `
+                <h4>Expert In</h4>
+                <ul class="instructor-profile__tags">
+                    ${(instructor.tags['expert-in-tags'] || []).map((tag) => `<li>${tagData[tag]}</li>`).join("")}
+                </ul>`: ""}
+                </div>
+              <div class="tag-group">
+              ${instructor.tags['expert-with-tags'].length > 0 ? `
+                <h4>Expert With</h4>
+                <ul class="instructor-profile__tags">
+                    ${(instructor.tags['expert-with-tags'] || []).map((tag) => `<li>${tagData[tag]}</li>`).join("")}
+                </ul>`: ""}
+              </div>
+          </div>
+
       </div>
       <div class="instructor-profile__footer">
         <div class="modal-actions">

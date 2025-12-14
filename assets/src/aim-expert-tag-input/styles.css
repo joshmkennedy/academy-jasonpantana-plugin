@@ -1,0 +1,124 @@
+.components-form-token-field__suggestions-list {
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  position: absolute;
+  max-width:300px;
+  width:100%;
+  max-height: 400px;
+  overflow-y: scroll;
+  z-index:99;
+}
+
+.components-form-token-field__suggestion {
+  position: relative;
+  min-height: 35px;
+}
+
+.components-form-token-field__suggestions-list button {
+  &:hover {
+    background-color: #f0f0f0;
+  }
+
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: .25rem 1rem;
+  text-align:left;
+
+  margin: 0;
+  position:absolute;
+  inset:0;
+}
+
+.expert-select-input {
+  max-width: 300px;
+}
+
+.combo {}
+
+.input__outer-wrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0px;
+  background-color: white;
+
+  overflow: hidden;
+
+  button {
+    background-color: transparent;
+    border: none;
+    appearance: none;
+    min-width: 35px;
+  }
+  .add-button {
+    background-color: #ccc;
+    &:hover{
+      background-color: #aaa;
+    }
+    border: none;
+    appearance: none;
+    font-weight: 600;
+  }
+}
+
+.input__inner-wrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+  button {
+    position: absolute;
+    top: 0;
+    left:0;
+    height: 100%;
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+
+  input {
+    padding-left: 35px !important;
+    width: 100%;
+    padding: 8px;
+    backgound-color: transparent;
+  }
+}
+
+.user-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.user-tag {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background-color: #ccc;
+  font-weight: 500;
+  padding: 8px;
+  border-radius: 8px;
+  button{
+    appearance: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    &:hover, &:focus, &:active {
+      background: none;
+      box-shadow: none;
+      z-index: 2;
+      transform: translateY(-2px) scale(1.01);
+    }
+  }
+} 

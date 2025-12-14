@@ -5,6 +5,7 @@ namespace JP\Profile;
 
 class Instructors {
     public array $instructors = [];
+    public array $tagData = [];
     public array $settings = [
         "heading" => "AiM Experts",
         "tagline" => "Book personalized one-on-one strategy sessions with our AI and marketing specialists.",
@@ -17,7 +18,10 @@ class Instructors {
                 'name' => sprintf("%s %s", $user->first_name, $user->last_name),
                 'img' => wp_get_attachment_image_url(get_user_meta($user->ID, 'instructor-profile-img-id', true), 'medium'),
                 'focus_description' => get_user_meta($user->ID, 'instructor-speacialties-ai-area-of-focus-description', true),
-                'tags' => get_user_meta($user->ID, 'instructor-speacialties-tags', true),
+                'tags' =>[
+                    'expert-in-tags'=> get_user_meta($user->ID, 'expert-in-tags', true) ?? [],
+                    'expert-with-tags'=> get_user_meta($user->ID, 'expert-with-tags', true) ?? [],
+                ],
                 'calendlyLink' => get_user_meta($user->ID, 'instructor-calendly-link', true),
                 'instructor_menu_order' => (int)(get_user_meta($user->ID, 'instructor-menu-order', true)),
             ],
@@ -34,6 +38,12 @@ class Instructors {
                 'order' => 'ASC',
             ])
         );
+
+        $this->tagData = get_terms([
+            'hide_empty' => false,
+            'fields'=> 'id=>name',
+            'taxonomy' => ['expert-in-tag', 'expert-with-tag'],
+        ]);
 
         $this->settings = (array)get_option('jp_instructor_settings', $this->settings);
     }
@@ -73,9 +83,11 @@ class Instructors {
 
     public function renderData(): void {
         $data = json_encode($this->instructors);
+        $tagData = json_encode($this->tagData);
     ?>
         <script>
-            window.aimInstructorsData = <?= $data; ?>
+            window.aimInstructorsData = <?= $data; ?>;
+            window.aimInstructorsTagData = <?= $tagData; ?>;
         </script>
 <?php
     }
