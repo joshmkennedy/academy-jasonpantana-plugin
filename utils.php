@@ -69,7 +69,7 @@ if (!function_exists("enqueueAsset")) {
     function enqueueAsset(string $slug, $inFooter=null) {
         $assetPath = "build/$slug";
 
-        $configPath = getAimAssetPath("$slug.asset.php");
+        $configPath = getAimAssetPath("$assetPath.asset.php");
         if ($configPath) {
             $config = include($configPath);
         } else {
