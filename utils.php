@@ -68,7 +68,6 @@ if (!function_exists("isurl")) {
 if (!function_exists("enqueueAsset")) {
     function enqueueAsset(string $slug, $inFooter=null) {
         $assetPath = "build/$slug";
-
         $configPath = getAimAssetPath("$assetPath.asset.php");
         if ($configPath) {
             $config = include($configPath);
@@ -80,7 +79,7 @@ if (!function_exists("enqueueAsset")) {
         }
 
         if ($uri = getAimAssetUrl($assetPath . ".css")) {
-            wp_enqueue_style("jp-$slug-styles", $uri, [], $config['version'], 'all');
+            wp_enqueue_style("jp-$slug-styles", $uri, [], filemtime(getAimAssetPath($assetPath.".css")), 'all');
         }
         if ($uri = getAimAssetUrl($assetPath . ".js")) {
             wp_enqueue_script("jp-$slug-script", $uri, $config['dependencies'], $config['version'], $inFooter ? true: false);
