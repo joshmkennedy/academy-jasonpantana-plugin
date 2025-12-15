@@ -24,7 +24,7 @@ class AimClipPage {
 
         $id = get_query_var('aim-learning-path');
         $week = get_query_var('week-index');
-        $weekData = $getAimClipListWeekData((int)$id, (int)$week);
+        $weekData = $getAimClipListWeekData((int)$id, (int)str_replace('week_', '', $week));
         $data = $weekData->getVimeoPluginData();
         return $data['intro'] ?: "";
     }
@@ -34,7 +34,7 @@ class AimClipPage {
         if (!$getAimClipListWeekData) return [];
         $id = get_query_var('aim-learning-path');
         $week = get_query_var('week-index');
-        $weekData = $getAimClipListWeekData((int)$id, (int)$week);
+        $weekData = $getAimClipListWeekData((int)$id, (int)(str_replace('week_', '', $week)));
         $data = $weekData->getVimeoPluginData();
         $video = $data['selectedVideo'];
         $videos = collect($data['videos']);

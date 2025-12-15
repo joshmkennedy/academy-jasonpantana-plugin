@@ -51,6 +51,7 @@ add_action('template_redirect', function () {
             $id = get_query_var('aim-learning-path');
             $week = get_query_var('week-index');
             $week = str_replace('week_', '', $week);
+            error_log("pluginsafsddfasdf week: $week");
 
             $weekData = $getAimClipListWeekData((int)$id, (int)$week);
             $data = $weekData->getVimeoPluginData();
