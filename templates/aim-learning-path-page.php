@@ -6,6 +6,8 @@ $aimClipPage = new \JP\AimClipPage();
 $selectedVideo = $aimClipPage->getSelectedVideo();
 
 $weekIntro = $aimClipPage->getWeekIntro();
+$week = get_query_var('week-index');
+$weekIdx = str_replace('week_', '', $week);
 
 ?>
 
@@ -24,7 +26,7 @@ $weekIntro = $aimClipPage->getWeekIntro();
                 <span>This Week’s AiM Lessons</span>
                 <h1>
                     <!-- TODO: Week {week_index} -->
-                    Week 1
+                    Week <?= $weekIdx ?>
                 </h1>
             </div>
         </div>

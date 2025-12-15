@@ -25,7 +25,9 @@ class AimClipPage {
         $id = get_query_var('aim-learning-path');
         $week = get_query_var('week-index');
         $weekData = $getAimClipListWeekData((int)$id, (int)str_replace('week_', '', $week));
+
         $data = $weekData->getVimeoPluginData();
+        error_log(print_r($data, true));
         return $data['intro'] ?: "";
     }
 
