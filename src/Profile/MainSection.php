@@ -15,14 +15,6 @@ class MainSection extends Lolole {
     public function render(): void {
 ?>
 
-        <?php if (!feature_flag('instuctors')) : ?>
-            <div class="profile-user-notices" style="margin-top: 0px">
-                <?php \JP\Profile\Hero::renderNotices([
-                    fn() => (new \JP\Aim100daysModal())->renderNotice(),
-                ]); ?>
-            </div>
-        <?php endif; ?>
-
         <div class="lolole-wrapper ">
             <?php $this->renderLessonsSection(
                 title: 'Lectures',
