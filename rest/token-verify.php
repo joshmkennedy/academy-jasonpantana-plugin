@@ -1,6 +1,6 @@
 <?php
 add_action('rest_api_init', function () {
-    register_rest_route('jp/v1', '/token-verify', [
+    register_rest_route('jp/v1', '/token/verify', [
         'methods' => 'POST',
         'callback' => '\JPTokenVerify::handler',
         'permission_callback' => function () {

@@ -28,6 +28,7 @@
 }
 
 .prompt-studio-link svg {
+	pointer-events: none;
   max-height: .9em;
   width: unset;
 }
