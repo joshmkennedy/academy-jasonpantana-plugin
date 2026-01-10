@@ -4,19 +4,17 @@ namespace JP\LoggedInMenu;
 
 use JP\User\SecondaryMenu;
 
-class JoinOrLogin
-{
+class JoinOrLogin {
     private array $opts;
 
     public function __construct(
         private PromptStudioMenuItem $promptStudioMenuItem,
-        array $opts = [])
-    {
+        array $opts = []
+    ) {
         $this->opts = $opts;
     }
 
-    public function shortcode(): callable
-    {
+    public function shortcode(): callable {
         return function () {
             $url = getCurrentURL();
             $registration = "registration/";
@@ -34,7 +32,9 @@ class JoinOrLogin
             ) : "Join Now";
             ob_start(); ?>
 
-            <?= $this->promptStudioMenuItem->createMenuItem(); ?>
+            <?php if (feature_flag('prompt_studio_access')): ?>
+                <?= $this->promptStudioMenuItem->createMenuItem(); ?>
+            <?php endif; ?>
 
             <div class="header-button-wrap">
                 <div class="header-button-inner-wrap">

@@ -24,10 +24,12 @@
 
   &:hover {
     background: #414753;
+		color: whitek
   }
 }
 
 .prompt-studio-link svg {
+	color: white !important;
 	pointer-events: none;
   max-height: .9em;
   width: unset;

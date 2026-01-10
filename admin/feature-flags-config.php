@@ -13,5 +13,9 @@ return [
     'instuctors'=>[
         'label'=>'Book Instructors',
         'description'=>'Book instructors for the with calendly for private lessons',
-    ]
+    ],
+    'prompt_studio_access'=>[
+        'label'=>'Prompt Studio Access',
+        'description'=>'Allow users to access Prompt Studio via the menu',
+    ],
 ];

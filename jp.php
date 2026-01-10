@@ -16,7 +16,7 @@
 
 define('JP_PLUGIN_ROOT_DIR_PATH', plugin_dir_path(__FILE__));
 define('JP_PLUGIN_ROOT_DIR_URL', plugin_dir_url(__FILE__));
-define('PROMPT_STUDIO_URL', 'https://promptstudio.com/login');
+define('PROMPT_STUDIO_URL', 'http://localhost:3000/aim-auth');
 
 // Hide admin bar for non-admins
 add_filter('show_admin_bar', function ($show) {
