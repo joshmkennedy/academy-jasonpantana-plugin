@@ -8,7 +8,9 @@ class JoinOrLogin
 {
     private array $opts;
 
-    public function __construct(array $opts = [])
+    public function __construct(
+        private PromptStudioMenuItem $promptStudioMenuItem,
+        array $opts = [])
     {
         $this->opts = $opts;
     }
@@ -31,6 +33,9 @@ class JoinOrLogin
                 count($groups) ? "My Profile" : "Finish Account Setup"
             ) : "Join Now";
             ob_start(); ?>
+
+            <?= $this->promptStudioMenuItem->createMenuItem(); ?>
+
             <div class="header-button-wrap">
                 <div class="header-button-inner-wrap">
                     <a href="<?= $link; ?>" target="_self" class="button header-button button-size-custom button-style-filled button-style-gradient--primary <?= $isProfilePage ? 'on-profile' : ''; ?>" style="padding-block:16px;">
@@ -45,5 +50,3 @@ class JoinOrLogin
         };
     }
 }
-
-add_shortcode('join_or_profile_button', (new JoinOrLogin())->shortcode());

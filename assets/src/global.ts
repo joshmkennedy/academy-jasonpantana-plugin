@@ -9,4 +9,7 @@ import "./search/search-modal";
 
 import "./utils/google-sheets";
 
+import "./main-navigation";
+
 import "./drop-down-menu";
+

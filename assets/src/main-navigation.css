@@ -1,0 +1,33 @@
+[data-state="uninitialized"] {
+  display: none;
+}
+
+[data-state="initialized"] {
+  display: flex;
+
+}
+
+#mobile-drawer .prompt-studio-wrapper {
+  margin-left: -20px;
+  margin-top: 20px;
+}
+
+.prompt-studio-link.button {
+  color: white;
+  margin-inline: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: #414753;
+  }
+}
+
+.prompt-studio-link svg {
+  max-height: .9em;
+  width: unset;
+}
