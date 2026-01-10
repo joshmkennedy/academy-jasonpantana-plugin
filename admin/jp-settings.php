@@ -6,6 +6,7 @@ add_action('admin_init', function () {
     register_setting('general', 'jp_vimeo_api_key');
     register_setting('general', 'jp_stripe_api_key');
     register_setting('general', 'aim_form_100days_id');
+    register_setting('general', 'prompt_studio_url');
 
     //setting section to group them all together
     add_settings_section(
@@ -39,6 +40,13 @@ add_action('admin_init', function () {
         'general',
         'aim_settings_section'
     );
+    add_settings_field(
+        'prompt_studio_url',
+        'Prompt Studio URL',
+        'aim_prompt_studio_url_field_callback',
+        'general',
+        'aim_settings_section'
+    );
 });
 
 function aim_settings_section_callback(): void {
@@ -68,3 +76,10 @@ function aim_100days_form_field_callback(): void {
     <input type="number" name="aim_form_100days_id" value="<?php echo isset($formId) ? esc_attr($formId) : ''; ?>">
 <?php
 }
+function aim_prompt_studio_url_field_callback(): void {
+    $url = get_option('prompt_studio_url') ?: '';
+?>
+    <input type="text" name="prompt_studio_url" value="<?php echo isset($url) ? esc_attr($url) : ''; ?>">
+<?php
+}
+

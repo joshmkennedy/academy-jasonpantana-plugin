@@ -16,7 +16,7 @@
 
 define('JP_PLUGIN_ROOT_DIR_PATH', plugin_dir_path(__FILE__));
 define('JP_PLUGIN_ROOT_DIR_URL', plugin_dir_url(__FILE__));
-define('PROMPT_STUDIO_URL', 'https://aim-prompts.vercel.app/aim-auth');
+define('PROMPT_STUDIO_URL_FALLBACK', 'https://aim-prompts.vercel.app/-auth');
 
 // Hide admin bar for non-admins
 add_filter('show_admin_bar', function ($show) {
@@ -115,7 +115,7 @@ try {
     /*╰────────────────────────────────────╯*/
 
     add_action('init', function(){
-        add_shortcode('join_or_profile_button', (new JoinOrLogin(new PromptStudioMenuItem(PROMPT_STUDIO_URL)))->shortcode());
+        add_shortcode('join_or_profile_button', (new JoinOrLogin(new PromptStudioMenuItem(PROMPT_STUDIO_URL_FALLBACK)))->shortcode());
     });
 
 

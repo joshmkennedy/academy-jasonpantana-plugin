@@ -22,6 +22,7 @@ class PromptStudioMenuItem {
             $this->hasAccessToStudio = $this->hasAccess($this->userId);
             $this->aimAppToken = new AimAppToken($this->userId);
             $this->token = $this->aimAppToken->getToken();
+            $this->url = get_option('prompt_studio_url') ?: $this->url;
         }
     }
 
