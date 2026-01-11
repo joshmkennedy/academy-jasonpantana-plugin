@@ -42,8 +42,8 @@ class PromptStudioMenuItem {
         ob_start(); ?>
         <div class="header-button-wrap prompt-studio-wrapper" data-state="uninitialized" >
             <div class="header-button-inner-wrap">
-            <a href="<?= $this->link(); ?>" target="_blank" class="button header-button button-size-custom prompt-studio-link" >
-                <?= dumpSvg("promptstudio-logo"); ?>
+            <a href="<?= $this->link(); ?>" target="_blank" class="button header-button button-size-custom prompt-studio-link" aria-label="Prompt Studio" >
+                <span>Prompt</span><?= dumpSvg("promptstudio-sparkle"); ?><span>Studio</span>
         </a>
             </div>
         </div>
