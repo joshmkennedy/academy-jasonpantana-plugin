@@ -62,7 +62,8 @@ function jp_sync_paginate(
     $customers = $stripe->customers->all($args);
 
     foreach ($customers->data as $customer) {
-        $user = get_user_by('email', $customer->email);
+        $email = in_array($customer->email, array_keys(jp_stripe_wp_email_map())) ? jp_stripe_wp_email_map()[$customer->email] : $customer->email;
+        $user = get_user_by('email', $email);
         if (!$user) {
             $logger->log("No user found for email {$customer->email}");
             continue;
@@ -76,7 +77,6 @@ function jp_sync_paginate(
 
         $activeGroups = array_filter(\learndash_get_users_group_ids($user->ID), fn($id) => isPaidGroup($id));
         $hasActiveGroup = count($activeGroups) > 0;
-
 
         // If we are subscribed in stripe but not 
         // in learndash add the group to user;
@@ -108,4 +108,10 @@ function jp_sync_paginate(
         $logger->log("Has more");
         jp_sync_paginate($stripe, $logger, $customers->data[count($customers->data) - 1]->id, $limit);
     }
+}
+
+function jp_stripe_wp_email_map() {
+    return [
+        'skabachia.realest@gmail.com' => 'steve@lentwong.com'
+    ];
 }
