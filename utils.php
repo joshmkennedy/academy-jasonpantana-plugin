@@ -138,11 +138,11 @@ if (!function_exists('jp_learndash_get_users_group_ids')) {
     function jp_learndash_get_users_group_ids($user_id) {
         $user_id = intval($user_id);
         $group_ids = [];
-        if(get_transient('jp_learndash_get_users_group_ids' . $user_id)){
+        if(get_transient('jp_learndash_get_users_group_ids' . $user_id) !== false){
             return get_transient('jp_learndash_get_users_group_ids' . $user_id);
         }
 
-        $all_user_meta = get_user_meta(2587);
+        $all_user_meta = get_user_meta($user_id);
         if (! empty($all_user_meta)) {
             foreach ($all_user_meta as $meta_key => $meta_set) {
                 if ('learndash_group_users_' == substr($meta_key, 0, strlen('learndash_group_users_'))) {
