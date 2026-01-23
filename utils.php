@@ -138,11 +138,11 @@ if (!function_exists('jp_learndash_get_users_group_ids')) {
     function jp_learndash_get_users_group_ids($user_id) {
         $user_id = intval($user_id);
         $group_ids = [];
-        if(get_transient('jp_learndash_get_users_group_ids' . $user_id) !== false){
-            do_action('qm/debug', 'found in cache');
-            do_action('qm/debug', get_transient('jp_learndash_get_users_group_ids' . $user_id));
-            return get_transient('jp_learndash_get_users_group_ids' . $user_id);
-        }
+        // if(get_transient('jp_learndash_get_users_group_ids' . $user_id) !== false){
+        //     do_action('qm/debug', 'found in cache');
+        //     do_action('qm/debug', get_transient('jp_learndash_get_users_group_ids' . $user_id));
+        //     return get_transient('jp_learndash_get_users_group_ids' . $user_id);
+        // }
 
         $all_user_meta = get_user_meta($user_id);
         if (! empty($all_user_meta)) {
@@ -153,6 +153,7 @@ if (!function_exists('jp_learndash_get_users_group_ids')) {
             }
         }
 
+        
         set_transient('jp_learndash_get_users_group_ids' . $user_id, $group_ids, 60 * 60 * 24);
 
         return $group_ids;
