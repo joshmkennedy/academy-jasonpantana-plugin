@@ -23,7 +23,7 @@ class JoinOrLogin {
             }
             $isProfilePage = is_page('profile');
             $userId = get_current_user_id();
-            $groups = array_filter(learndash_get_users_group_ids($userId), fn($id) => isPaidGroup($id));
+            $groups = array_filter(jp_learndash_get_users_group_ids($userId), fn($id) => isPaidGroup($id));
             $link = ($userId > 0) ? (
                 count($groups) ? "/profile" : getRegistrationURL($userId, "/choose-your-plan")
             ) : "/choose-your-plan/";

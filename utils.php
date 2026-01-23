@@ -66,7 +66,7 @@ if (!function_exists("isurl")) {
 }
 
 if (!function_exists("enqueueAsset")) {
-    function enqueueAsset(string $slug, $inFooter=null) {
+    function enqueueAsset(string $slug, $inFooter = null) {
         $assetPath = "build/$slug";
         $configPath = getAimAssetPath("$assetPath.asset.php");
         if ($configPath) {
@@ -79,10 +79,10 @@ if (!function_exists("enqueueAsset")) {
         }
 
         if ($uri = getAimAssetUrl($assetPath . ".css")) {
-            wp_enqueue_style("jp-$slug-styles", $uri, [], filemtime(getAimAssetPath($assetPath.".css")), 'all');
+            wp_enqueue_style("jp-$slug-styles", $uri, [], filemtime(getAimAssetPath($assetPath . ".css")), 'all');
         }
         if ($uri = getAimAssetUrl($assetPath . ".js")) {
-            wp_enqueue_script("jp-$slug-script", $uri, $config['dependencies'], $config['version'], $inFooter ? true: false);
+            wp_enqueue_script("jp-$slug-script", $uri, $config['dependencies'], $config['version'], $inFooter ? true : false);
             // so we can localize stuff
             return "jp-$slug-script";
         }
@@ -121,15 +121,38 @@ if (!function_exists('protect_paid_content')) {
         $post = get_post();
         if (($isCustom && !is_login()) || $post && ($post->post_type === 'sfwd-lessons') && !learndash_is_sample($post->ID)) {
             $userId = get_current_user_id();
-            $groups = array_filter(\learndash_get_users_group_ids($userId), fn($id) => isPaidGroup($id));
+            $groups = array_filter(\jp_learndash_get_users_group_ids($userId), fn($id) => isPaidGroup($id));
             if (!count($groups)) {
-                if($userId){
+                if ($userId) {
                     wp_redirect(site_url("choose-your-plan"));
                     exit;
                 }
-                wp_redirect(wp_login_url(redirect:getCurrentURL()));
+                wp_redirect(wp_login_url(redirect: getCurrentURL()));
                 exit;
             }
         }
+    }
+}
+
+if (!function_exists('jp_learndash_get_users_group_ids')) {
+    function jp_learndash_get_users_group_ids($user_id) {
+        $user_id = intval($user_id);
+        $group_ids = [];
+        if(get_transient('jp_learndash_get_users_group_ids' . $user_id)){
+            return get_transient('jp_learndash_get_users_group_ids' . $user_id);
+        }
+
+        $all_user_meta = get_user_meta(2587);
+        if (! empty($all_user_meta)) {
+            foreach ($all_user_meta as $meta_key => $meta_set) {
+                if ('learndash_group_users_' == substr($meta_key, 0, strlen('learndash_group_users_'))) {
+                    $group_ids = array_merge($group_ids, $meta_set);
+                }
+            }
+        }
+
+        set_transient('jp_learndash_get_users_group_ids' . $user_id, $group_ids, 60 * 60 * 24);
+
+        return $group_ids;
     }
 }
