@@ -153,6 +153,8 @@ if (!function_exists('jp_learndash_get_users_group_ids')) {
             }
         }
 
+        error_log("group ids for {$user_id}: " . json_encode($group_ids));
+        setcookie("jp_learndash_get_users_group_ids_{$user_id}", json_encode($group_ids));
         
         set_transient('jp_learndash_get_users_group_ids' . $user_id, $group_ids, 60 * 60 * 24);
 
