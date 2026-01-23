@@ -139,6 +139,8 @@ if (!function_exists('jp_learndash_get_users_group_ids')) {
         $user_id = intval($user_id);
         $group_ids = [];
         if(get_transient('jp_learndash_get_users_group_ids' . $user_id) !== false){
+            do_action('qm/debug', 'found in cache');
+            do_action('qm/debug', get_transient('jp_learndash_get_users_group_ids' . $user_id));
             return get_transient('jp_learndash_get_users_group_ids' . $user_id);
         }
 
