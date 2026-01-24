@@ -45,7 +45,7 @@ function jp_usersbyemail(WP_REST_Request $request): WP_REST_Response {
 }
 
 function getLearndashGroups($user) {
-    $groupIds = array_filter(\jp_learndash_get_users_group_ids($user->ID), fn($id) => isPaidGroup($id));
+    $groupIds = array_filter(\learndash_get_users_group_ids($user->ID), fn($id) => isPaidGroup($id));
     $groupTitles =  array_map(fn($gid) => get_post($gid)?->post_title ?? "unknown", $groupIds);
     return implode(", ", $groupTitles);
 }

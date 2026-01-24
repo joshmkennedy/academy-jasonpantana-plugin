@@ -75,7 +75,7 @@ function jp_sync_paginate(
         });
         $hasActiveSubscriptions = count($activeSubscriptions) > 0;
 
-        $activeGroups = array_filter(\jp_learndash_get_users_group_ids($user->ID), fn($id) => isPaidGroup($id));
+        $activeGroups = array_filter(\learndash_get_users_group_ids($user->ID), fn($id) => isPaidGroup($id));
         $hasActiveGroup = count($activeGroups) > 0;
 
         // If we are subscribed in stripe but not 

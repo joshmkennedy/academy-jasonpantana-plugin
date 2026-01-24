@@ -27,7 +27,7 @@ class PromptStudioMenuItem {
     }
 
     public function hasAccess($userId):bool{
-        $groups = array_filter(\jp_learndash_get_users_group_ids($userId), fn($id) => isPaidGroup($id));
+        $groups = array_filter(\learndash_get_users_group_ids($userId), fn($id) => isPaidGroup($id));
         return count($groups) > 0;
     }
 
