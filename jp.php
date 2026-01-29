@@ -106,7 +106,7 @@ try {
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-    <?php
+<?php
     });
 
 
@@ -114,7 +114,7 @@ try {
     /*│    [   Join or Login Button   ]    │*/
     /*╰────────────────────────────────────╯*/
 
-    add_action('init', function(){
+    add_action('init', function () {
         add_shortcode('join_or_profile_button', (new JoinOrLogin(new PromptStudioMenuItem(PROMPT_STUDIO_URL_FALLBACK)))->shortcode());
     });
 
@@ -152,33 +152,102 @@ try {
     }
 
     // PUBLIC TEMPLATES AND PAGES
-    require_once __DIR__ . '/pages/profile.php';
-    require_once __DIR__ . '/pages/lesson-category.php';
-    require_once __DIR__ . '/pages/lesson-single.php';
-    require_once __DIR__ . '/pages/course-single.php';
-    require_once __DIR__ . '/pages/registration-form.php';
-    require_once __DIR__ . '/pages/search.php';
-    require_once __DIR__ . '/pages/login.php';
-    require_once __DIR__ . '/pages/aim-clip-page.php';
-    require_once __DIR__ . '/pages/learning-path-settings.php';
+    try {
+        require_once __DIR__ . '/pages/profile.php';
+    } catch (Exception $e) {
+        sendErrorEmail($e, 'pages/profile.php');
+    }
+    try {
+        require_once __DIR__ . '/pages/lesson-category.php';
+    } catch (Exception $e) {
+        sendErrorEmail($e, 'pages/lesson-category.php');
+    }
+    try {
+        require_once __DIR__ . '/pages/lesson-single.php';
+    } catch (Exception $e) {
+        sendErrorEmail($e, 'pages/lesson-single.php');
+    }
+    try {
+        require_once __DIR__ . '/pages/course-single.php';
+    } catch (Exception $e) {
+        sendErrorEmail($e, 'pages/course-single.php');
+    }
+    try {
+        require_once __DIR__ . '/pages/registration-form.php';
+    } catch (Exception $e) {
+        sendErrorEmail($e, 'pages/registration-form.php');
+    }
+    try {
+        require_once __DIR__ . '/pages/search.php';
+    } catch (Exception $e) {
+        sendErrorEmail($e, 'pages/search.php');
+    }
+    try {
+        require_once __DIR__ . '/pages/login.php';
+    } catch (Exception $e) {
+        sendErrorEmail($e, 'pages/login.php');
+    }
+    try {
+        require_once __DIR__ . '/pages/aim-clip-page.php';
+    } catch (Exception $e) {
+        sendErrorEmail($e, 'pages/aim-clip-page.php');
+    }
+    try {
+        require_once __DIR__ . '/pages/learning-path-settings.php';
+    } catch (Exception $e) {
+        sendErrorEmail($e,  'pages/learning-path-settings.php');
+    }
     //ADMIN
-    require_once __DIR__ . '/admin/jp-admin-menu.php';
-    require_once __DIR__ . '/admin/feature-flag.php';
-    require_once __DIR__ . '/admin/feature-flags-admin-page.php';
-    require_once __DIR__ . '/admin/jp-settings.php';
-    require_once __DIR__ . '/admin/lesson-admin-columns.php';
-    require_once __DIR__ . '/admin/instructors.php';
-    require_once __DIR__ . '/admin/instructors-settings.php';
+    try {
+        require_once __DIR__ . '/admin/jp-admin-menu.php';
+    } catch (Exception $e) {
+        sendErrorEmail($e, 'admin/jp-admin-menu.php');
+    }
+    try {
+        require_once __DIR__ . '/admin/feature-flag.php';
+    } catch (Exception $e) {
+        sendErrorEmail($e, 'admin/feature-flag.php');
+    }
+    try {
+        require_once __DIR__ . '/admin/feature-flags-admin-page.php';
+    } catch (Exception $e) {
+        sendErrorEmail($e, 'admin/feature-flags-admin-page.php');
+    }
+    try {
+        require_once __DIR__ . '/admin/jp-settings.php';
+    } catch (Exception $e) {
+        sendErrorEmail($e, 'admin/jp-settings.php');
+    }
+    try {
+        require_once __DIR__ . '/admin/lesson-admin-columns.php';
+    } catch (Exception $e) {
+        sendErrorEmail($e, 'admin/lesson-admin-columns.php');
+    }
+    try {
+        require_once __DIR__ . '/admin/instructors.php';
+    } catch (Exception $e) {
+        sendErrorEmail($e, 'admin/instructors.php');
+    }
+    try {
+        require_once __DIR__ . '/admin/instructors-settings.php';
+    } catch (Exception $e) {
+        sendErrorEmail($e, 'admin/instructors-settings.php');
+    }
 
     // BLOCKS
     add_action("init", fn() => (new \JP\ContentSnippets\Blocks(JP_PLUGIN_ROOT_DIR_PATH . '/assets/build/content-snippets/blocks'))->register());
 } catch (Exception $e) {
-    try{
-    wp_mail('joshmk93@gmail.com', 'Error in JP', $e->getMessage());
+    error_log($e->getMessage());
+}
+
+function sendErrorEmail($e) {
+    try {
+        add_action('wp', function () use ($e) {
+            wp_mail('joshmk93@gmail.com', 'Error in JP', $e->getMessage());
+        });
     } catch (Exception $e) {
         error_log("couldnt send error email");
     }
-    error_log($e->getMessage());
 }
 
 
