@@ -173,6 +173,11 @@ try {
     // BLOCKS
     add_action("init", fn() => (new \JP\ContentSnippets\Blocks(JP_PLUGIN_ROOT_DIR_PATH . '/assets/build/content-snippets/blocks'))->register());
 } catch (Exception $e) {
+    try{
+    wp_mail('joshmk93@gmail.com', 'Error in JP', $e->getMessage());
+    } catch (Exception $e) {
+        error_log("couldnt send error email");
+    }
     error_log($e->getMessage());
 }
 
