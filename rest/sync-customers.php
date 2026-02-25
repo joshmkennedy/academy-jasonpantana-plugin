@@ -62,8 +62,16 @@ function jp_sync_paginate(
     $customers = $stripe->customers->all($args);
 
     foreach ($customers->data as $customer) {
-        $email = in_array($customer->email, array_keys(jp_stripe_wp_email_map())) ? jp_stripe_wp_email_map()[$customer->email] : $customer->email;
-        $user = get_user_by('email', $email);
+        $user;
+        try{
+            $userId = bycusId($customer->id);
+            $user = get_user_by('ID', $userId);
+        } catch(\Exception $e) {}
+
+        if (!$user) {
+            $email = in_array($customer->email, array_keys(jp_stripe_wp_email_map())) ? jp_stripe_wp_email_map()[$customer->email] : $customer->email;
+            $user = get_user_by('email', $email);
+        }
         if (!$user) {
             $logger->log("No user found for email {$customer->email}");
             continue;
@@ -102,6 +110,8 @@ function jp_sync_paginate(
             $logger->log("User {$user->ID} has a paid group but no active subscription");
             learndash_set_users_group_ids($user->ID, []); // empty array removes all groups
         }
+
+        unset($user);
     }
 
     if ($customers->has_more) {
@@ -114,4 +124,22 @@ function jp_stripe_wp_email_map() {
     return [
         'skabachia.realest@gmail.com' => 'steve@lentwong.com'
     ];
+}
+
+function bycusId($id) {
+    global $wpdb;
+
+    $sql = $wpdb->prepare(
+        "SELECT user_id 
+         FROM {$wpdb->usermeta} 
+         WHERE meta_key = %s 
+         AND meta_value = %s 
+         LIMIT 1",
+        'stripe_customer_id',
+        $id
+    );
+
+    $userId = $wpdb->get_var($sql);
+
+    return $userId ? (int) $userId : 0;
 }
