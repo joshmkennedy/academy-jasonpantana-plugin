@@ -62,6 +62,10 @@ function jp_sync_paginate(
     $customers = $stripe->customers->all($args);
 
     foreach ($customers->data as $customer) {
+        if (in_array($customer->id, jp_ignore_ids())) {
+            $logger->log("Ignoring customer {$customer->id}");
+            continue;
+        }
         $user;
         try{
             $userId = bycusId($customer->id);
@@ -123,6 +127,12 @@ function jp_sync_paginate(
 function jp_stripe_wp_email_map() {
     return [
         'skabachia.realest@gmail.com' => 'steve@lentwong.com'
+    ];
+}
+
+function jp_ignore_ids(){
+    return [
+        'cus_SP0DLarMeJ3J99',
     ];
 }
 
