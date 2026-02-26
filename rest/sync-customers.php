@@ -133,6 +133,7 @@ function jp_stripe_wp_email_map() {
 function jp_ignore_ids(){
     return [
         'cus_SP0DLarMeJ3J99',
+        'cus_TzYDkseaAoLk7r',
     ];
 }
 
@@ -140,10 +141,10 @@ function bycusId($id) {
     global $wpdb;
 
     $sql = $wpdb->prepare(
-        "SELECT user_id 
+        "SELECT user_id
          FROM {$wpdb->usermeta} 
-         WHERE meta_key = %s 
-         AND meta_value = %s 
+         WHERE meta_key = %s
+         AND meta_value = %s
          LIMIT 1",
         'stripe_customer_id',
         $id
