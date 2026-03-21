@@ -134,6 +134,8 @@ function jp_ignore_ids(){
     return [
         'cus_SP0DLarMeJ3J99',
         'cus_TzYDkseaAoLk7r',
+        'cus_SwMEsXQZ1LE7ya',
+        'cus_TLFubXwIlYnZC6'
     ];
 }
 

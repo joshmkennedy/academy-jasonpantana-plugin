@@ -1,1 +1,47 @@
-#free-lesson-signup{display:grid;place-items:center;.free-lesson-signup__overlay{-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);background:rgba(0,0,0,.5);height:100%;left:0;position:fixed;top:0;width:100%;z-index:0}}.free-lesson-signup__container{background:#fff;border:none;border-radius:8px;max-width:min(90%,600px);padding:30px 20px;position:absolute;text-align:center;top:50%;transform:translateY(-50%);width:100%;z-index:1;form{display:flex;flex-direction:column;gap:1rem}&::backdrop{-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);background:#00000088}}
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./assets/src/protect-free-lesson/index.css ***!
+  \**********************************************************************************************************************************************************************************************/
+#free-lesson-signup{
+  display:grid;
+  place-items:center;
+  .free-lesson-signup__overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    background:rgba(0,0,0,0.5);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+  }
+}
+
+.free-lesson-signup__container {
+  z-index:1;
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  max-width: min(90%, 600px);
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  background:white;
+  padding:30px 20px;
+  text-align:center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &::backdrop {
+    background: #00000088;
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+  }
+}
+
+
+/*# sourceMappingURL=protect-free-lesson.css.map*/
