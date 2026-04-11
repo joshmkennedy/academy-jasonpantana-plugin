@@ -26,7 +26,7 @@ class JoinOrLogin {
             $groups = array_filter(learndash_get_users_group_ids($userId), fn($id) => isPaidGroup($id));
             $link = ($userId > 0) ? (
                 count($groups) ? "/profile" : getRegistrationURL($userId, "/choose-your-plan")
-            ) : "/choose-your-plan/";
+            ) : "https://aimarketingacademy.com/?aim_modal=login";
             $buttonText = $userId > 0 ? (
                 count($groups) ? "My Profile" : "Finish Account Setup"
             ) : "Join Now";
